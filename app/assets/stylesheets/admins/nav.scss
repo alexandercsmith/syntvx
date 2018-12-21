@@ -1,0 +1,19 @@
+div#admin-nav {
+  @include flex(column,nowrap,flex-start,flex-start);
+  margin: 10px 0 0;
+} // div#admin-nav
+
+div#admin-nav a {
+  width: 100%;
+  text-decoration: none;
+  padding: 15px 0;
+  text-indent: 10px;
+  color: $black;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+} // div#admin-nav a
+
+div#admin-nav a:hover {
+  background-color: $eggshell;
+  color: $blue;
+} // div#admin-nav a:hover

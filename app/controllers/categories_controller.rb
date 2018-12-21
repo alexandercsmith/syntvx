@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   def index
     @categories = Category.all_approved
+    public_seo('Categories', categories_url)
   end
 
   # GET /categories/:id

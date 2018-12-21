@@ -1,3 +1,98 @@
 div.admin-page {
-  
+  @include flex(row,wrap,flex-start,flex-start);
+  width: 100%;
 } // div.admin-page
+
+div.admin-page .admin-search {
+  width: 100%;
+} // div.admin-page .admin-search
+
+form.admin-search-form {
+  @include flex(row,wrap,flex-start,flex-start);
+  @include admin-panel();
+} // form.admin-search-form
+
+form.admin-search-form .admin-search-input {
+  @include flex(row,nowrap,space-between,center);
+  width: 100%;
+  padding: 10px 0;
+  input[type="text"] {
+    width: 88%;
+    margin: 0 0 0 10px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    background-color: $white;
+    height: 32px;
+    font-size: 0.9em;
+    text-indent: 5px;
+  } // input[type="text"]
+  input[type="submit"] {
+    width: 8%;
+    margin: 0 10px 0 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    height: 32px;
+    font-size: 0.8em;
+    border-radius: 2px;
+    background-color: $blue;
+    color: $white;
+    box-shadow: 0 1px 0 lighten($blue,15%);
+    cursor: pointer;
+  } // input[type="submit"]
+  input[type="submit"]:hover {
+    box-shadow: none;
+  } // input[type="submit"]:hover
+
+  @media screen and (max-width: $sm) {
+    flex-wrap: wrap;
+    justify-content: center;
+    input[type="text"] {
+      width: 94%;
+      margin: 0 0 10px;
+    } // input[type="text"]
+    input[type="submit"] {
+      width: 94%;
+      margin: 0;
+    } // input[type="submit"]
+  } // @media
+} // form.admin-search-form .admin-search-input
+
+div.admin-page #admin-results {
+  width: 100%;
+} // div.admin-page #admin-results
+
+div.admin-page #admin-results #admin-results-panel {
+  @include flex(column,nowrap,flex-start,flex-start);
+  margin: 10px;
+  padding: 0;
+} // div.admin-page #admin-results #admin-results-panel
+
+div.admin-page .admin-settings-options {
+  width: 100%;
+} // div.admin-page .admin-settings-options
+
+div.admin-page .admin-settings-options .admin-settings-panel {
+  @include flex(row,wrap,flex-start,flex-start);
+  @include admin-panel();
+  h2 {
+    width: 100%;
+    font-size: 1.2em;
+    color: $black;
+    font-weight: normal;
+    text-indent: 10px;
+  } // h2
+  a {
+    padding: 10px;
+    color: $white;
+    background-color: $blue;
+    box-shadow: 0 1px 0 lighten($blue,15%);
+    font-size: 0.8em;
+    margin: 10px 10px 10px 0;
+    text-decoration: none;
+  } // a
+  a:first-of-type {
+    margin: 10px;
+  } // a:first-of-type
+} // div.admin-page .admin-settings-options .admin-settings-panel

@@ -1,3 +1,8 @@
 <div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
-
+  <div id="admin-head">
+    <div class="admin-head-panel">
+      <h1>DASHBOARD</h1>
+      <%= link_to 'LOGOUT', destroy_admin_session_path, method: :delete %>
+    </div>
+  </div>
 </div>

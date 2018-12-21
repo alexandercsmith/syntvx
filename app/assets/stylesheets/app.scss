@@ -15,9 +15,11 @@
 @import "components/footer.scss";
 @import "components/lightbox.scss";
 @import "components/nav.scss";
+@import "components/notification.scss";
 @import "components/sidenav.scss";
 
 // ADMIN
+@import "admins/head.scss";
 @import "admins/item.scss";
 @import "admins/nav.scss";
 @import "admins/page.scss";

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :articles
   # ADMIN
   devise_for :admins,
   path: 'admins',

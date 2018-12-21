@@ -15,3 +15,10 @@
   justify-content: $justify-content;
   align-items: $align-items;
 } // flex()
+
+@mixin admin-panel() {
+  margin: 10px;
+  padding: 0;
+  background-color: $eggshell;
+  box-shadow: 1px 1px 1px $light-grey;
+} // admin-panel()

@@ -1,0 +1,12 @@
+div#nav {
+  @include flex(row,nowrap,flex-start,center);
+  width: 100%;
+  box-shadow: 0 1px 1px $light-grey;
+} // div#nav
+
+div#nav a {
+  text-decoration: none;
+  padding: 15px;
+  color: $black;
+  font-size: 1.1em;
+} // div#nav a

@@ -1,0 +1,29 @@
+div#admin-head {
+  width: 100%;
+} // div#admin-head
+
+div#admin-head .admin-head-panel {
+  @include flex(row,nowrap,space-between,center);
+  @include admin-panel();
+  padding: 20px 0;
+  h1 {
+    font-size: 1.8em;
+    font-weight: normal;
+    margin: 0 0 0 15px;
+  } // h1
+  a {
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 15px 0 0;
+    font-size: 1em;
+    text-align: center;
+    background-color: $blue;
+    color: $white;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 lighten($blue,15%);
+    transition: .2s;
+  } // a
+  a:hover {
+    box-shadow: none;
+  } // a:hover
+} // div#admin-head .admin-head-panel

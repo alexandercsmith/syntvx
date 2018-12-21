@@ -1,8 +1,8 @@
 module ApplicationHelper
 
-  @seo_description = ''
+  @seo_description = 'SYNTVX | A Developer Resource Directory'
 
-  @seo_keywords = ''
+  @seo_keywords = 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux'
 
   def public_seo(title, path)
     set_meta_tags title: title.to_s,
