@@ -16,6 +16,7 @@ class Admins::DashboardController < Admins::AdminAppController
     @categories = Category.is_inactive
     @langauges = Language.is_inactive
     @tags = Tag.is_inactive
+    @tools = Tool.is_inactive
   end
 
   # GET /admins/cache_clear
@@ -40,7 +41,6 @@ class Admins::DashboardController < Admins::AdminAppController
       Rails.cache.delete('Article.active')
       Rails.cache.delete('Article.published')
       Rails.cache.delete('Article.featured')
-      Rails.cache.delete("Article.#{slug}")
       # Categories
       Rails.cache.delete('Category.active')
       Rails.cache.delete('Category.approved')
@@ -53,6 +53,10 @@ class Admins::DashboardController < Admins::AdminAppController
       Rails.cache.delete('Tag.active')
       Rails.cache.delete('Tag.approved')
       Rails.cache.delete('Tag.featured')
+      # Tools
+      Rails.cache.delete('Tool.active')
+      Rails.cache.delete('Tool.published')
+      Rails.cache.delete('Tool.featured')
     end
 
 end

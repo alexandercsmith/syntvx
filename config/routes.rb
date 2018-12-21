@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get '/categories' => 'categories#index'
       get '/languages'  => 'languages#index'
       get '/tags'       => 'tags#index'
+      get '/tools'      => 'tools#index'
     end
   end
 
@@ -48,6 +49,12 @@ Rails.application.routes.draw do
   match '/tags/:id/approve' => 'tags#approve', via: %i[put patch], as: :approve_tag
   match '/tags/:id/feature' => 'tags#feature', via: %i[put patch], as: :feature_tag
   match '/tags/:id/delete'  => 'tags#delete',  via: %i[put patch], as: :delete_tag
+
+  # TOOLS
+  resources :tools
+  match '/tools/:id/publish' => 'tools#publish', via: %i[put patch], as: :publish_tool
+  match '/tools/:id/feature' => 'tools#feature', via: %i[put patch], as: :feature_tool
+  match '/tools/:id/delete'  => 'tools#delete',  via: %i[put patch], as: :delete_tool
 
   # STATIC
   get '/directory' => 'static#directory'

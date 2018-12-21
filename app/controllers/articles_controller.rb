@@ -93,7 +93,7 @@ class ArticlesController < ApplicationController
   private
 
     def set_article
-      @article = Article.friendly.find(params[:id])
+      @article = Article.friendly.include_assoc.find(params[:id])
     end
 
     def set_tags

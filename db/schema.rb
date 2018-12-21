@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_231127) do
+ActiveRecord::Schema.define(version: 2018_12_21_233526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,44 @@ ActiveRecord::Schema.define(version: 2018_12_21_231127) do
     t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
+  create_table "tool_categories", force: :cascade do |t|
+    t.bigint "tool_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tool_categories_on_category_id"
+    t.index ["tool_id"], name: "index_tool_categories_on_tool_id"
+  end
+
+  create_table "tool_languages", force: :cascade do |t|
+    t.bigint "tool_id"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_tool_languages_on_language_id"
+    t.index ["tool_id"], name: "index_tool_languages_on_tool_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "description"
+    t.boolean "published", default: false
+    t.datetime "published_at"
+    t.boolean "featured", default: false
+    t.boolean "deleted", default: false
+    t.jsonb "links", default: {}
+    t.jsonb "style", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tools_on_name", unique: true
+    t.index ["slug"], name: "index_tools_on_slug", unique: true
+  end
+
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
+  add_foreign_key "tool_categories", "categories"
+  add_foreign_key "tool_categories", "tools"
+  add_foreign_key "tool_languages", "languages"
+  add_foreign_key "tool_languages", "tools"
 end

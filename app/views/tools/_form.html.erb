@@ -1,0 +1,50 @@
+<%= form_with(model: tool, local: true) do |form| %>
+  <% if tool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+
+      <ul>
+      <% tool.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <% if action_name == 'edit' %>
+    <div class="field">
+      <%= form.label :slug %>
+      <%= form.text_field :slug %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :languages %>
+    <% @languages.each do |language| %>
+      <input type="checkbox" name="tool[language_ids][]" value="<%= language.id %>"/>
+      <span><%= language.name %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categories %>
+    <% @categories.each do |category| %>
+      <input type="checkbox" name="tool[category_ids][]" value="<%= category.id %>"/>
+      <span><%= category.name %></span>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -83,7 +83,7 @@ class TagsController < ApplicationController
   private
 
     def set_tag
-      @tag = Tag.friendly.find(params[:id])
+      @tag = Tag.friendly.include_assoc.find(params[:id])
     end
 
     def tag_params
