@@ -23,8 +23,10 @@
 @import "admins/page.scss";
 
 // PAGES
+@import "pages/categories.scss";
 @import "pages/languages.scss";
 @import "pages/static.scss";
 
 // PARTIALS
+@import "partials/category.scss";
 @import "partials/language.scss";

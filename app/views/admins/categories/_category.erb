@@ -1,0 +1,8 @@
+<div id="cat-<%= category.id %>" class="admin-item">
+  <%= category.name %>
+  <%= category.description %>
+
+  <%= link_to category.approval_link, approve_category_path(category), method: :put %>
+  <%= link_to category.featured_link, feature_category_path(category), method: :put %>
+  <%= link_to category.deletion_link, delete_category_path(category), method: :put %>
+</div>

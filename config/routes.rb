@@ -12,13 +12,19 @@ Rails.application.routes.draw do
   }
   authenticate :admin do
     namespace :admins do
-      get '/'         => 'dashboard#index'
-      get '/settings' => 'dashboard#settings'
-      get '/cache'    => 'dashboard#cache_clear', as: :cache_clear
-
-      get '/languages' => 'languages#index'
+      get '/'           => 'dashboard#index'
+      get '/settings'   => 'dashboard#settings'
+      get '/cache'      => 'dashboard#cache_clear', as: :cache_clear
+      get '/languages'  => 'languages#index'
+      get '/categories' => 'categories#index'
     end
   end
+
+  # CATEGORIES
+  resources :categories
+  match '/categories/:id/approve' => 'categories#approve',via: %i[put patch], as: :approve_category
+  match '/categories/:id/feature' => 'categories#feature',via: %i[put patch], as: :feature_category
+  match '/categories/:id/delete'  => 'categories#delete', via: %i[put patch], as: :delete_category
 
   # LANGUAGES
   resources :languages
