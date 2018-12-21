@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :slug
       t.string :description
-      t.string :body
+      t.text :body
       t.boolean :published, default: false
       t.datetime :published_at
       t.boolean :featured, default: false

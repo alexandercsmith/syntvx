@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_223911) do
     t.string "name"
     t.string "slug"
     t.string "description"
-    t.string "body"
+    t.text "body"
     t.boolean "published", default: false
     t.datetime "published_at"
     t.boolean "featured", default: false

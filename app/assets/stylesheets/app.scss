@@ -25,12 +25,14 @@
 @import "admins/page.scss";
 
 // PAGES
+@import "pages/articles.scss";
 @import "pages/categories.scss";
 @import "pages/languages.scss";
 @import "pages/static.scss";
 @import "pages/tags.scss";
 
 // PARTIALS
+@import "partials/article.scss";
 @import "partials/category.scss";
 @import "partials/language.scss";
 @import "partials/tag.scss";

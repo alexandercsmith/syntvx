@@ -16,44 +16,22 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :slug %>
-    <%= form.text_field :slug %>
-  </div>
+  <% if action_name == 'edit' %>
+    <div class="field">
+      <%= form.label :slug %>
+      <%= form.text_field :slug %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
     <%= form.text_field :body %>
   </div>
-
-  <div class="field">
-    <%= form.label :published %>
-    <%= form.check_box :published %>
-  </div>
-
-  <div class="field">
-    <%= form.label :published_at %>
-    <%= form.datetime_select :published_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :featured %>
-    <%= form.check_box :featured %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted %>
-    <%= form.check_box :deleted %>
-  </div>
-
-  <div class="field">
-    <%= form.label :style %>
-    <%= form.text_field :style %>
   </div>
 
   <div class="actions">
