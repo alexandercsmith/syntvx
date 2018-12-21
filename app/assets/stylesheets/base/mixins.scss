@@ -1,0 +1,17 @@
+// @include(absolute,0,0,null,null);
+@mixin position($position, $top, $right, $bottom, $left) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+} // position()
+
+// @include flex(row,nowrap,center,flex-start)
+@mixin flex($flex-direction, $flex-wrap, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+} // flex()
