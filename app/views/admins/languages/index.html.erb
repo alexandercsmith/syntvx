@@ -1,5 +1,6 @@
 <div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
   <%= render partial: 'admins/languages/search' %>
+  <%= link_to 'New', new_language_path %>
   <%= render @languages %>
   <%= will_paginate @languages %>
 </div>

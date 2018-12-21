@@ -1,0 +1,27 @@
+div#notification {
+  width: 100%;
+} // div#notification
+
+div#notification #notice,
+div#notification #alert {
+  @include flex(row,nowrap,space-between,flex-start);
+  width: 100%;
+
+  p {
+    color: $white;
+  } // p
+  a {} // a
+  a i {
+    color: $white;
+  } // a i
+}
+// div#notification #notice
+// div#notification #alert
+
+div#notification #notice {
+  background-color: $green;
+} // div#notification #notice
+
+div#notification #alert {
+  background-color: $yellow;
+} // div#notification #alert

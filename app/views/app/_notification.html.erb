@@ -1,0 +1,18 @@
+<div id="notification">
+  <% if notice %>
+    <div id="notice">
+      <p><%= notice %></p>
+      <%= link_to 'javascript:closeNotification()' do %>
+        <%= fa_icon 'times' %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div id="alert">
+      <p><%= alert %></p>
+      <%= link_to 'javascript:closeNotification()' do %>
+        <%= fa_icon 'times' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

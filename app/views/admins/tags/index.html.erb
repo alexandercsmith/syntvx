@@ -1,0 +1,6 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+  <%= render partial: 'admins/tags/search' %>
+  <%= link_to 'New', new_tag_path %>
+  <%= render @tags %>
+  <%= will_paginate @tags %>
+</div>

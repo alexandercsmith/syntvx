@@ -50,7 +50,10 @@ class LanguagesController < ApplicationController
   def approve
     @language.approval_toggle
     respond_to do |format|
-      format.html { redirect_to admins_languages_path }
+      format.html do
+        redirect_to admins_languages_path,
+        notice: "Language #{@language.approval_check.capitalize}"
+      end
       format.js
     end
   end
@@ -59,7 +62,10 @@ class LanguagesController < ApplicationController
   def feature
     @language.feature_toggle
     respond_to do |format|
-      format.html { redirect_to admins_languages_path }
+      format.html do
+        redirect_to admins_languages_path,
+        notice: "Language #{@language.featured_check.capitalize}"
+      end
       format.js
     end
   end
@@ -68,7 +74,10 @@ class LanguagesController < ApplicationController
   def delete
     @langauge.delete_toggle
     respond_to do |format|
-      format.html { redirect_to admins_languages_path }
+      format.html do
+        redirect_to admins_languages_path,
+        notice: "Language #{@language.deletion_check.capitalize}"
+      end
       format.js
     end
   end
@@ -88,7 +97,12 @@ class LanguagesController < ApplicationController
     end
 
     def language_params
-      params.require(:language).permit(:name, :slug, :description, :approved, :featured, :deleted, :style)
+      params.require(:language).permit(:name, :slug, :description,
+                                       :approved, :featured, :deleted,
+                                       :style)
+    end
+
+    def admin_languages_responder(notice)
     end
 
 end

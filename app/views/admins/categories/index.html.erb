@@ -1,5 +1,6 @@
 <div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
   <%= render partial: 'admins/categories/search' %>
+  <%= link_to 'New', new_category_path %>
   <%= render @categories %>
   <%= will_paginate @categories %>
 </div>

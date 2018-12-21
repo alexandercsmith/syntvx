@@ -1,5 +1,5 @@
 class Admins::DashboardController < Admins::AdminAppController
-  
+
   # GET /admins
   def index
     private_seo('Dashboard')
@@ -10,14 +10,43 @@ class Admins::DashboardController < Admins::AdminAppController
     private_seo('Settings')
   end
 
+  # GET /trash
+  def trash
+    @categories = Category.is_inactive
+    @langauges = Language.is_inactive
+    @tags = Tag.is_inactive
+  end
+
   # GET /admins/cache_clear
   def cache_clear
     Rails.cache.clear
-    respond_to do |format|
-      format.html do
-        redirect_to admins_settings_path, notice: 'Cache Cleared.'
-      end
-    end
+    redirect_to admins_settings_path
+    flash[:notice] = 'Cache Cleared.'
   end
+
+  # GET /admins/explicit_cache_clear
+  def explicit_cache_clear
+    exp_cache_clear
+    redirect_to admins_settings_path
+    flash[:notice] = 'Explicit Cache Cleared.'
+  end
+
+  private
+
+    # Explicitly Clear General Cache Queries
+    def exp_cache_clear
+      # Categories
+      Rails.cache.delete('Category.active')
+      Rails.cache.delete('Category.approved')
+      Rails.cache.delete('Category.featured')
+      # Languages
+      Rails.cache.delete('Language.active')
+      Rails.cache.delete('Language.approved')
+      Rails.cache.delete('Language.featured')
+      # Tags
+      Rails.cache.delete('Tag.active')
+      Rails.cache.delete('Tag.approved')
+      Rails.cache.delete('Tag.featured')
+    end
 
 end

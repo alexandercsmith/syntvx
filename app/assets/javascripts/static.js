@@ -1,2 +1,5 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+// NOTIFICATION
+function closeNotification() {
+  var trgt = document.getElementById('notification');
+  trgt.removeChild(trgt[0])
+}

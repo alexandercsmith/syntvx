@@ -5,13 +5,14 @@
   <body id="app" class="admin">
     <%= render partial: 'app/nav' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= render partial: 'app/admin_nav' %>
+    <%= render partial: 'app/notification' %>
 
     <div id="content">
-      <%= yield %>
+      <%= render partial: 'app/admin_nav' %>
+
+      <div id="admin-render">
+        <%= yield %>
+      </div>
     </div>
 
   </body>

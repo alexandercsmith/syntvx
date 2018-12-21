@@ -1,0 +1,8 @@
+<div id="tag-<%= tag.id %>" class="admin-item">
+  <%= tag.name %>
+  <%= tag.description %>
+
+  <%= link_to tag.approval_link, approve_tag_path(tag), method: :put %>
+  <%= link_to tag.featured_link, feature_tag_path(tag), method: :put %>
+  <%= link_to tag.deletion_link, delete_tag_path(tag), method: :put %>
+</div>

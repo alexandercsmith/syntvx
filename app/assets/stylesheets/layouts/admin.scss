@@ -1,1 +1,5 @@
 body#app.admin {} // body#app.admin
+
+body#app.admin #content {} // body#app.admin #content
+
+body#app.admin #content #admin-render {} // body#app.admin #content #admin-render

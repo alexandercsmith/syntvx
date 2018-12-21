@@ -1,0 +1,15 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <h2>Categories</h2>
+
+  <%= render partial: 'admins/categories/category', collection: @categories %>
+
+  <h2>Languages</h2>
+
+  <%= render partial: 'admins/languages/language', collection: @languages %>
+
+  <h2>Tags</h2>
+
+  <%= render partial: 'admins/tags/tag', collection: @tags %>
+
+</div>
