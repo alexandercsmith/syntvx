@@ -1,9 +1,7 @@
 # S Y N T V X
 
-> Project Eve
-
 Created by: Alexander Smith
-Start: 12/20/2018
+
 
 A Developer Resource Directory Project.
 
@@ -41,7 +39,7 @@ $ rails dev:cache
 
 5. Start Server
 
-> http://localhost:3000
+> localhost:3000
 
 ```
 $ rails server
