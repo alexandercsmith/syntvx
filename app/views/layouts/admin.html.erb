@@ -3,16 +3,12 @@
   <%= render partial: 'app/head' %>
 
   <body id="app" class="admin">
-    <%= link_to 'HOME', root_path %>
+    <%= render partial: 'app/nav' %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div id="admin-nav">
-      <%= link_to 'DASHBOARD', admins_path %>
-      <%= link_to 'LANGUAGES', admins_languages_path %>
-      <%= link_to 'SETTINGS', admins_settings_path %>
-    </div>
+    <%= render partial: 'app/admin_nav' %>
 
     <div id="content">
       <%= yield %>

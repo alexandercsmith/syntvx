@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   match '/languages/:id/delete'  => 'languages#delete', via: %i[put patch], as: :delete_language
 
   # STATIC
+  get '/directory' => 'static#directory'
 
   # ROOT
   root to: 'static#index'
