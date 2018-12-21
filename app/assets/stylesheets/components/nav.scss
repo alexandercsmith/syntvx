@@ -10,3 +10,8 @@ div#nav a {
   color: $black;
   font-size: 1.1em;
 } // div#nav a
+
+div#nav a:hover {
+  color: $blue;
+  background-color: $eggshell;
+} // div#nav a:hover

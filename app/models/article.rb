@@ -10,11 +10,13 @@ class Article < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  # Associations
+
   # Attributes
   attr_accessor :style
 
   # Scopes
-  scope :active_approved, -> { is_active.is_published }
+  scope :active_published, -> { is_active.is_published }
   scope :active_featured, -> { is_active.is_published.is_featured }
 
   # Query
@@ -47,8 +49,8 @@ class Article < ApplicationRecord
     end
   end
 
-  # Article.all_approved
-  def self.all_approved
+  # Article.all_published
+  def self.all_published
     Rails.cache.fetch('Article.published', expires_in: 1.day) do
       active_published.name_asc.to_a
     end

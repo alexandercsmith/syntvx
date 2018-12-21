@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   end
 
   # ARTICLES
-  resources :articles
+  resources :articles, except: %i[index]
+  get '/blog' => 'articles#index', as: :blog
   match '/articles/:id/publish' => 'articles#publish', via: %i[put patch], as: :publish_article
   match '/articles/:id/feature' => 'articles#feature', via: %i[put patch], as: :feature_article
   match '/articles/:id/delete'  => 'articles#delete',  via: %i[put patch], as: :delete_article
