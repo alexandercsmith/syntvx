@@ -1,0 +1,8 @@
+<div id="lang-<%= language.id %>" class="admin-item">
+  <%= language.name %>
+  <%= language.description %>
+
+  <%= link_to language.approval_link, approve_language_path(language), method: :put %>
+  <%= link_to language.featured_link, feature_language_path(language), method: :put %>
+  <%= link_to language.deletion_link, delete_language_path(language), method: :put %>
+</div>

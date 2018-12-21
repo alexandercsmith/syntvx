@@ -18,10 +18,13 @@
 @import "components/sidenav.scss";
 
 // ADMIN
-@import "admin/nav.scss";
-@import "admin/page.scss";
+@import "admins/item.scss";
+@import "admins/nav.scss";
+@import "admins/page.scss";
 
 // PAGES
-@import "pages/static.scss"
+@import "pages/languages.scss";
+@import "pages/static.scss";
 
 // PARTIALS
+@import "partials/language.scss";
