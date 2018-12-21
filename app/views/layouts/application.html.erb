@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SYNTVX</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+  <%= render partial: 'app/head' %>
 
   <body id="app">
     <%= link_to 'HOME', root_path %>
-    
+
     <div id="content">
       <%= yield %>
     </div>
