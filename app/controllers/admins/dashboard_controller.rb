@@ -12,6 +12,7 @@ class Admins::DashboardController < Admins::AdminAppController
 
   # GET /trash
   def trash
+    @articles = Article.is_inactive
     @categories = Category.is_inactive
     @langauges = Language.is_inactive
     @tags = Tag.is_inactive
@@ -35,6 +36,11 @@ class Admins::DashboardController < Admins::AdminAppController
 
     # Explicitly Clear General Cache Queries
     def exp_cache_clear
+      # Articles
+      Rails.cache.delete('Article.active')
+      Rails.cache.delete('Article.published')
+      Rails.cache.delete('Article.featured')
+      Rails.cache.delete("Article.#{slug}")
       # Categories
       Rails.cache.delete('Category.active')
       Rails.cache.delete('Category.approved')

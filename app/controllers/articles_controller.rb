@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :set_language, except: %i[index new create show]
+  before_action :set_article, except: %i[index new create show]
   before_action :authenticate_admin!, except: %i[index show]
 
   # GET /articles
   def index
-    @articles = Article.all
+    @articles = Article.all_published
   end
 
   # GET /articles/:id
@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to admins_articles_path, notice: 'Article was successfully created.' }
       else
         format.html { render :new }
       end
@@ -38,14 +38,50 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to admins_articles_path, notice: 'Article was successfully updated.' }
       else
         format.html { render :edit }
       end
     end
   end
 
-  # DELETE /articles/:id
+  # PATCH/PUT /articles/:id/publish
+  def publish
+    @article.publish_toggle
+    respond_to do |format|
+      format.html do
+        redirect_to admins_articles_path,
+        notice: "Article #{@article.published_check.capitalize}"
+      end
+      format.js
+    end
+  end
+
+  # PATCH/PUT /articles/:id/feature
+  def feature
+    @article.feature_toggle
+    respond_to do |format|
+      format.html do
+        redirect_to admins_articles_path,
+        notice: "Article #{@article.featured_check.capitalize}"
+      end
+      format.js
+    end
+  end
+
+  # PATCH/PUT /articles/:id/delete
+  def delete
+    @article.delete_toggle
+    respond_to do |format|
+      format.html do
+        redirect_to admins_articles_path,
+        notice: "Article #{@article.deletion_check.capitalize}"
+      end
+      format.js
+    end
+  end
+
+  # DESTROY /articles/:id
   def destroy
     @article.destroy
     respond_to do |format|
@@ -56,7 +92,7 @@ class ArticlesController < ApplicationController
   private
 
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.friendly.find(params[:id])
     end
 
     def article_params

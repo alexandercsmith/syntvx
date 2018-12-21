@@ -5,6 +5,10 @@
     </div>
   </div>
 
+  <h2>Articles</h2>
+
+  <%= render partial: 'admins/articles/article', collection: @articles %>
+
   <h2>Categories</h2>
 
   <%= render partial: 'admins/categories/category', collection: @categories %>

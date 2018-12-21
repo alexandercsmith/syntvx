@@ -34,14 +34,14 @@ div.admin-item .admin-item-info {
     text-align: center;
     margin: 0 5px 0 0;
   } // a span
-  a span.approved {
+  a span.approved, a span.published {
     background-color: $green;
     color: $white;
-  } // a span.approved
-  a span.unapproved {
+  } // a span.approved, a span.published
+  a span.unapproved, a span.unpublished {
     background-color: $dark-grey;
     color: $black;
-  } // a span.unapproved
+  } // a span.unapproved, a span.unpublished
   p {
     margin: 0;
     padding: 0;
