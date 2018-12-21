@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, except: %i[index new create show]
+  before_action :set_tags, only: %i[new edit create update destroy]
   before_action :authenticate_admin!, except: %i[index show]
 
   # GET /articles
@@ -95,10 +96,15 @@ class ArticlesController < ApplicationController
       @article = Article.friendly.find(params[:id])
     end
 
+    def set_tags
+      @tags = Tag.all_approved
+    end
+
     def article_params
       params.require(:article).permit(:name, :slug, :description, :body,
                                       :published, :published_at, :featured, :deleted,
-                                      :style)
+                                      :style,
+                                      :tag_ids => [])
     end
 
 end

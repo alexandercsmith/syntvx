@@ -29,9 +29,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :tags %>
+    <% @tags.each do |tag| %>
+      <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>"/>
+      <span><%= tag.name %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :body %>
     <%= form.text_field :body %>
-  </div>
   </div>
 
   <div class="actions">
