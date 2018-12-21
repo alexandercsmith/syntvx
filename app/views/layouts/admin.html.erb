@@ -2,14 +2,20 @@
 <html>
   <%= render partial: 'app/head' %>
 
-  <body id="app">
+  <body id="app" class="admin">
     <%= link_to 'HOME', root_path %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <div id="admin-nav">
+      <%= link_to 'DASHBOARD', admins_path %>
+      <%= link_to 'SETTINGS', admins_settings_path %>
+    </div>
+
     <div id="content">
       <%= yield %>
     </div>
+
   </body>
 </html>
