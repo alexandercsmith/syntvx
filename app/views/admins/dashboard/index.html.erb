@@ -5,4 +5,39 @@
       <%= link_to 'LOGOUT', destroy_admin_session_path, method: :delete %>
     </div>
   </div>
+
+  <div class="admin-page-container">
+    <div class="admin-page-panel">
+      <%= link_to 'Articles', admins_articles_path, class: 'route' %>
+      <%= link_to 'NEW', new_article_path, class: 'new' %>
+    </div>
+  </div>
+
+  <div class="admin-page-container">
+    <div class="admin-page-panel">
+      <%= link_to 'Tools', admins_tools_path, class: 'route' %>
+      <%= link_to 'NEW', new_tool_path, class: 'new' %>
+    </div>
+  </div>
+
+  <div class="admin-page-container">
+    <div class="admin-page-panel">
+      <%= link_to 'Languages', admins_languages_path, class: 'route' %>
+      <%= link_to 'NEW', new_language_path, class: 'new' %>
+    </div>
+  </div>
+
+  <div class="admin-page-container">
+    <div class="admin-page-panel">
+      <%= link_to 'Categories', admins_categories_path, class: 'route' %>
+      <%= link_to 'NEW', new_category_path, class: 'new' %>
+    </div>
+  </div>
+
+  <div class="admin-page-container">
+    <div class="admin-page-panel">
+      <%= link_to 'Tags', admins_tags_path, class: 'route' %>
+      <%= link_to 'NEW', new_tag_path, class: 'new' %>
+    </div>
+  </div>
 </div>

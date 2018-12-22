@@ -3,6 +3,29 @@ div.admin-page {
   width: 100%;
 } // div.admin-page
 
+div.admin-page .admin-page-container {
+  width: 100%;
+} // div.admin-page .admin-page-container
+
+div.admin-page .admin-page-container .admin-page-panel {
+  @include flex(row,nowrap,space-between,center);
+  @include admin-panel();
+  padding: 10px 0;
+  a.route {
+    text-decoration: none;
+    color: $black;
+    font-size: 1em;
+  } // a.route
+  a.new {
+    padding: 5px;
+    margin: 0 10px 0 0;
+    color: $white;
+    background-color: $blue;
+    box-shadow: 0 1px 0 lighten($blue,15%);
+    border-radius: 2px;
+  } // a.new
+} // div.admin-page .admin-page-container .admin-page-panel
+
 div.admin-page .admin-search {
   width: 100%;
 } // div.admin-page .admin-search
