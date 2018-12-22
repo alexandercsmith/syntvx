@@ -3,119 +3,53 @@ div.admin-page {
   width: 100%;
 } // div.admin-page
 
-div.admin-page .admin-page-container {
-  width: 100%;
-} // div.admin-page .admin-page-container
-
-div.admin-page .admin-page-container .admin-page-panel {
-  @include flex(row,nowrap,space-between,center);
+div.admin-head {
   @include admin-panel();
-  padding: 10px 0;
-  a.route {
-    text-decoration: none;
-    color: $black;
-    font-size: 1em;
-  } // a.route
-  a.new {
-    padding: 5px;
-    margin: 0 10px 0 0;
-    color: $white;
-    background-color: $blue;
-    box-shadow: 0 1px 0 lighten($blue,15%);
-    border-radius: 2px;
-  } // a.new
-} // div.admin-page .admin-page-container .admin-page-panel
+  h1 {
+    font-size: 2em;
+    font-weight: normal;
+    text-indent: 15px;
+    margin: 15px 0;
+  } // h1
+} // div.admin-head
 
-div.admin-page .admin-search {
-  width: 100%;
-} // div.admin-page .admin-search
+div.admin-head .admin-head-options {
+  @include flex(row,nowrap,flex-end,center);
+  a {
+    @include admin-link();
+    margin: 0 10px 10px 0;
+  } // a
+} // div.admin-head .admin-head-options
 
-form.admin-search-form {
-  @include flex(row,wrap,flex-start,flex-start);
+form.admin-search {
   @include admin-panel();
-} // form.admin-search-form
+} // form.admin-search
 
-form.admin-search-form .admin-search-input {
-  @include flex(row,nowrap,space-between,center);
-  width: 100%;
-  padding: 10px 0;
+form.admin-search .admin-search-input {
+  @include flex(row,wrap,flex-end,flex-start);
+  margin: 10px;
   input[type="text"] {
-    width: 88%;
-    margin: 0 0 0 10px;
-    outline: none;
+    width: 100%;
     border: none;
-    border-radius: 2px;
-    background-color: $white;
-    height: 32px;
-    font-size: 0.9em;
-    text-indent: 5px;
+    outline: none;
+    height: 30px;
+    font-size: 1em;
+    text-indent: 10px;
+    margin: 0 0 10px;
   } // input[type="text"]
   input[type="submit"] {
-    width: 8%;
-    margin: 0 10px 0 0;
-    padding: 0;
-    outline: none;
-    border: none;
-    height: 32px;
-    font-size: 0.8em;
-    border-radius: 2px;
-    background-color: $blue;
-    color: $white;
-    box-shadow: 0 1px 0 lighten($blue,15%);
-    cursor: pointer;
+    @include admin-link();
   } // input[type="submit"]
-  input[type="submit"]:hover {
-    box-shadow: none;
-  } // input[type="submit"]:hover
+} // form.admin-search .admin-search-input
 
-  @media screen and (max-width: $sm) {
-    flex-wrap: wrap;
-    justify-content: center;
-    input[type="text"] {
-      width: 94%;
-      margin: 0 0 10px;
-    } // input[type="text"]
-    input[type="submit"] {
-      width: 94%;
-      margin: 0;
-    } // input[type="submit"]
-  } // @media
-} // form.admin-search-form .admin-search-input
-
-div.admin-page #admin-results {
+div.admin-panel {
+  background-color: $eggshell;
+  box-shadow: 1px 1px 1px $light-grey;
   width: 100%;
-} // div.admin-page #admin-results
+  margin: 0 0 15px;
+} // div.admin-panel
 
-div.admin-page #admin-results #admin-results-panel {
+div.admin-items {
   @include flex(column,nowrap,flex-start,flex-start);
-  margin: 10px;
-  padding: 0;
-} // div.admin-page #admin-results #admin-results-panel
-
-div.admin-page .admin-settings-options {
   width: 100%;
-} // div.admin-page .admin-settings-options
-
-div.admin-page .admin-settings-options .admin-settings-panel {
-  @include flex(row,wrap,flex-start,flex-start);
-  @include admin-panel();
-  h2 {
-    width: 100%;
-    font-size: 1.2em;
-    color: $black;
-    font-weight: normal;
-    text-indent: 10px;
-  } // h2
-  a {
-    padding: 10px;
-    color: $white;
-    background-color: $blue;
-    box-shadow: 0 1px 0 lighten($blue,15%);
-    font-size: 0.8em;
-    margin: 10px 10px 10px 0;
-    text-decoration: none;
-  } // a
-  a:first-of-type {
-    margin: 10px;
-  } // a:first-of-type
-} // div.admin-page .admin-settings-options .admin-settings-panel
+} // div.admin-items

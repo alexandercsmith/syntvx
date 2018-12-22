@@ -1,0 +1,17 @@
+.container {
+  margin: 10px;
+} // .container
+
+.web-container {
+  margin: 10px;
+  @media screen and (max-width: $sm) {
+    margin: 0;
+  } // @media
+} // .web-container
+
+.mobile-container {
+  margin: 0;
+  @media screen and (max-width: $sm) {
+    margin: 10px;
+  } // @media
+} // .mobile-container

@@ -1,17 +1,15 @@
 <div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
-  <div id="admin-head">
-    <div class="admin-head-panel">
-      <h1><%= controller_name.upcase %></h1>
+  <div class="admin-head">
+    <h1><%= controller_name.upcase %></h1>
+    <div class="admin-head-options">
       <%= link_to 'NEW', new_tag_path %>
     </div>
   </div>
 
   <%= render partial: 'admins/tags/search' %>
 
-  <div id="admin-results">
-    <div id="admin-results-panel">
-      <%= render @tags %>
-      <%= will_paginate @tags %>
-    </div>
+  <div class="admin-items">
+    <%= render @tags %>
+    <%= will_paginate @tags %>
   </div>
 </div>

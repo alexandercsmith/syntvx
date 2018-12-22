@@ -1,8 +1,6 @@
-<div class="admin-search">
-  <%= form_tag(admins_tools_path, method: :get, class: 'admin-search-form') do %>
-    <div class="admin-search-input">
-      <%= text_field_tag :term, params[:term], placeholder: 'Search Tools...' %>
-      <%= submit_tag 'Search' %>
-    </div>
-  <% end %>
-</div>
+<%= form_tag(admins_tools_path, method: :get, class: 'admin-search') do %>
+  <div class="admin-search-input">
+    <%= text_field_tag :term, params[:term], placeholder: 'Search Tools...' %>
+    <%= submit_tag 'Search' %>
+  </div>
+<% end %>

@@ -16,9 +16,28 @@
   align-items: $align-items;
 } // flex()
 
+// @include admin-panel();
 @mixin admin-panel() {
-  margin: 10px;
-  padding: 0;
   background-color: $eggshell;
   box-shadow: 1px 1px 1px $light-grey;
+  width: 100%;
+  margin: 0 0 15px;
 } // admin-panel()
+
+// @include admin-link();
+@mixin admin-link() {
+  background-color: $blue;
+  box-shadow: 0 1px 0 lighten($blue,15%);
+  color: $white;
+  padding: 5px 7px;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($blue,5%);
+    box-shadow: none;
+  } // :hover
+} // admin-link()

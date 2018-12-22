@@ -1,4 +1,6 @@
-body#app.admin {} // body#app.admin
+body#app.admin {
+  width: 100%;
+} // body#app.admin
 
 body#app.admin #content {
   @include flex(row,wrap,flex-start,flex-start);
@@ -6,6 +8,6 @@ body#app.admin #content {
   margin: 0 auto;
 } // body#app.admin #content
 
-body#app.admin #content #admin-render {
+body#app.admin #content #admin-render .container {
   @include flex(column,wrap,flex-start,flex-start);
-} // body#app.admin #content #admin-render
+} // body#app.admin #content #admin-render .container
