@@ -1,6 +1,14 @@
 <%= form_tag(admins_articles_path, method: :get, class: 'admin-search') do %>
   <div class="admin-search-input">
     <%= text_field_tag :term, params[:term], placeholder: 'Search Articles...' %>
+    <div class="admin-filter-options">
+      <%= check_box_tag :published, value: 'true' %>
+      <span class="published">Published</span>
+      <%= check_box_tag :published, value: 'false' %>
+      <span>Drafts</span>
+      <%= check_box_tag :featured, value: 'true' %>
+      <span class="featured">Featured</span>
+    </div>
     <%= submit_tag 'Search' %>
   </div>
 <% end %>

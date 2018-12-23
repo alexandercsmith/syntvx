@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/:id
   def show
     @category = Category.slugged(params[:id])
+    redirect_to directory_path unless @category.approved || current_admin
   end
 
   # GET /categories/new
@@ -25,60 +26,44 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to admins_categories_path, notice: 'Category was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @category.save
+      admins_categories_responder('created')
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /categories/:id
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to admins_categories_path, notice: 'Category was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @category.update(category_params)
+      admins_categories_responder('updated')
+    else
+      render :edit
     end
   end
 
-  # PATCH/PUT /languages/:id/approve
+  # PATCH/PUT /categories/:id/approve
   def approve
     @category.approval_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_categories_path }
-      format.js
-    end
+    admins_categories_responder(@category.approval_check.capitalize)
   end
 
-  # PATCH/PUT /languages/:id/feature
+  # PATCH/PUT /categories/:id/feature
   def feature
     @category.feature_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_categories_path }
-      format.js
-    end
+    admins_categories_responder(@category.featured_check.capitalize)
   end
 
-  # PATCH/PUT /languages/:id/delete
+  # PATCH/PUT /categories/:id/delete
   def delete
     @category.delete_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_categories_path }
-      format.js
-    end
+    admins_categories_responder(@category.deletion_check.capitalize)
   end
 
   # DESTROY /categories/:id
   def destroy
     @category.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_categories_path, notice: 'Category was successfully destroyed.' }
-    end
+    admins_categories_responder('destroyed')
   end
 
   private
@@ -93,7 +78,14 @@ class CategoriesController < ApplicationController
                                        :style)
     end
 
-    def admin_categories_responder(notice)
+    def admins_categories_responder(notice)
+      respond_to do |format|
+        format.html do
+          redirect_to admins_categories_path,
+          notice: "Category #{notice}."
+        end
+        format.js
+      end
     end
 
 end

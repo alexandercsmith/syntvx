@@ -25,69 +25,44 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to admins_articles_path, notice: 'Article was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @article.save
+      admins_article_responder('created')
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /articles/:id
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to admins_articles_path, notice: 'Article was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @article.update(article_params)
+      admins_article_responder('updated')
+    else
+      render :edit
     end
   end
 
   # PATCH/PUT /articles/:id/publish
   def publish
     @article.publish_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_articles_path,
-        notice: "Article #{@article.published_check.capitalize}"
-      end
-      format.js
-    end
+    admins_article_responder(@article.published_check.capitalize)
   end
 
   # PATCH/PUT /articles/:id/feature
   def feature
     @article.feature_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_articles_path,
-        notice: "Article #{@article.featured_check.capitalize}"
-      end
-      format.js
-    end
+    admins_article_responder(@article.featured_check.capitalize)
   end
 
   # PATCH/PUT /articles/:id/delete
   def delete
     @article.delete_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_articles_path,
-        notice: "Article #{@article.deletion_check.capitalize}"
-      end
-      format.js
-    end
+    admins_article_responder(@article.deletion_check.capitalize)
   end
 
   # DESTROY /articles/:id
   def destroy
     @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-    end
+    admins_article_responder('destroyed')
   end
 
   private
@@ -107,4 +82,13 @@ class ArticlesController < ApplicationController
                                       :tag_ids => [])
     end
 
+    def admins_article_responder(notice)
+      respond_to do |format|
+        format.html do
+          redirect_to admins_articles_path,
+          notice: "Article #{notice}."
+        end
+        format.js
+      end
+    end
 end

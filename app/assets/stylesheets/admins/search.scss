@@ -1,0 +1,35 @@
+form.admin-search {
+  @include admin-panel();
+} // form.admin-search
+
+form.admin-search .admin-search-input {
+  @include flex(row,wrap,space-between,center);
+  margin: 10px;
+  input[type="text"] {
+    @include input-text();
+    margin: 0 0 10px;
+    border-radius: $radius;
+  } // input[type="text"]
+  input[type="submit"] {
+    @include admin-link();
+  } // input[type="submit"]
+} // form.admin-search .admin-search-input
+
+form.admin-search .admin-filter-options {
+  @include flex(row,nowrap,flex-start,center);
+  input[type="checkbox"] {
+    margin: 0 5px 0 15px;
+  } // input[type="checkbox"]
+  input[type="checkbox"]:first-of-type {
+    margin: 0 5px 0 0;
+  } // input[type="checkbox"]:first-of-type
+  span {
+    font-size: 0.8em;
+  } // span
+  span.approved, span.published {
+    color: $green;
+  } // span.approved, span.published
+  span.featured {
+    color: $yellow;
+  } // span.featured
+} // form.admin-search .admin-filter-options
