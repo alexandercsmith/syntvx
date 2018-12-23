@@ -9,7 +9,7 @@ A Developer Resource Directory Project.
 
 * Rails 5.2.2
 * Ruby 2.5.1
-* PostgreSQL 
+* PostgreSQL
 
 ## Development
 
@@ -60,6 +60,17 @@ $ rails notes
 > Run Commands before Deployment
 
 Check Notes for Deployment Settings
+
 ```
 $ rails notes
+```
+
+Add Changes to Git and Push to Master
+
+```
+$ git add .
+
+$ git commit -m "{message}"
+
+$ git push -u origin master
 ```

@@ -1,12 +1,7 @@
 // All Import's Listed Here
 
-// STYLE CONFIG VARIABLES
-// transition:
-$speed: .2s;
-// border-radius:
-$radius: 2px;
-
 // BASE
+@import "base/_config.scss";
 @import "base/colors.scss";
 @import "base/columns.scss";
 @import "base/containers.scss";
