@@ -1,10 +1,15 @@
 class Admins::TagsController < Admins::AdminAppController
-  # before_action :set_tag, only: %i[]
+  before_action :set_tag, only: %i[info]
 
   # GET /admins/tags
   def index
     private_seo('Tags')
     @tags = Tag.admin_search(params[:term], params[:page])
+  end
+
+  # GET /admins/tags/:id
+  def info
+    respond_to :js
   end
 
   private

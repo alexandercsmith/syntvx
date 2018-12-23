@@ -1,10 +1,15 @@
 class Admins::ToolsController < Admins::AdminAppController
-  # before_action :set_tool, only: %i[]
+  before_action :set_tool, only: %i[info]
 
   # GET /admins/tools
   def index
     private_seo('Tools')
     @tools = Tool.admin_search(params[:term], params[:page])
+  end
+
+  # GET /admins/tools/:id
+  def info
+    respond_to :js
   end
 
   private

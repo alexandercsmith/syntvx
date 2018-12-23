@@ -1,10 +1,15 @@
 class Admins::LanguagesController < Admins::AdminAppController
-  # before_action :set_language, only: %i[]
+  before_action :set_language, only: %i[info]
 
   # GET /admins/langauges
   def index
     private_seo('Languages')
     @languages = Language.admin_search(params[:term], params[:page])
+  end
+
+  # GET /admins/languages/:id
+  def info
+    respond_to :js
   end
 
   private

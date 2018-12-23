@@ -1,10 +1,15 @@
 class Admins::ArticlesController < Admins::AdminAppController
-  # before_action :set_article, only: %i[]
+  before_action :set_article, only: %i[info]
 
   # GET /admins/articles
   def index
     private_seo('Articles')
     @articles = Article.admin_search(params[:term], params[:page])
+  end
+
+  # GET /admins/articles/:id
+  def info
+    respond_to :js
   end
 
   private

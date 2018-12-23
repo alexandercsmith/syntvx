@@ -1,10 +1,15 @@
 class Admins::CategoriesController < Admins::AdminAppController
-  # before_action :set_category, only: %i[]
+  before_action :set_category, only: %i[info]
 
   # GET /admins/categories
   def index
     private_seo('Categories')
     @categories = Category.admin_search(params[:term], params[:page])
+  end
+
+  # GET /admins/categories/:id
+  def info
+    respond_to :js
   end
 
   private
