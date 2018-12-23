@@ -31,6 +31,8 @@ $ rails server
 
 Create and Migrate Database
 
+> If First Development Session
+
 ```
 $ rails db:create
 
