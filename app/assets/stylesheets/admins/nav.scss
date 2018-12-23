@@ -9,8 +9,9 @@ div#admin-nav a {
   padding: 15px 0;
   text-indent: 10px;
   color: $black;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  transition: $speed;
 } // div#admin-nav a
 
 div#admin-nav a:hover {

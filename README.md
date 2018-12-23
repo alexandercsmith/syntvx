@@ -9,7 +9,7 @@ A Developer Resource Directory Project.
 
 * Rails 5.2.2
 * Ruby 2.5.1
-* Postgres DB
+* PostgreSQL 
 
 ## Development
 

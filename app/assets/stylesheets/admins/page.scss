@@ -29,13 +29,9 @@ form.admin-search .admin-search-input {
   @include flex(row,wrap,flex-end,flex-start);
   margin: 10px;
   input[type="text"] {
-    width: 100%;
-    border: none;
-    outline: none;
-    height: 30px;
-    font-size: 1em;
-    text-indent: 10px;
+    @include input-text();
     margin: 0 0 10px;
+    border-radius: $radius;
   } // input[type="text"]
   input[type="submit"] {
     @include admin-link();
