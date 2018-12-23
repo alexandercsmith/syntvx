@@ -1,14 +1,20 @@
 <div id="tag-<%= tag.id %>" class="admin-item">
   <div class="admin-item-info xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-2 xs-col-1-1">
-    <%= link_to tag_path(tag) do %>
-      <span class="<%= tag.approval_check %>"><%= tag.id.to_s %></span><%= tag.name %>
-    <% end %>
-    <p><%= tag.description %></p>
+    <%= link_to tag.name.truncate(25), tag_path(tag) %>
   </div>
 
   <div class="admin-item-links xl-col-1-4 lg-col-1-4 md-col-1-3 sm-col-1-2 xs-col-1-1">
-    <%= link_to tag.approval_link, approve_tag_path(tag), method: :put %>
-    <%= link_to tag.featured_link, feature_tag_path(tag), method: :put %>
-    <%= link_to tag.deletion_link, delete_tag_path(tag), method: :put %>
+    <%= link_to tag_path(tag), class: 'info', method: :put do %>
+      <%= fa_icon "info" %>
+    <% end %>
+    <%= link_to approve_tag_path(tag), class: "#{tag.approval_check}", method: :put do %>
+      <%= fa_icon "check" %>
+    <% end %>
+    <%= link_to feature_tag_path(tag), class: "#{tag.featured_check}", method: :put do %>
+      <%= fa_icon "star" %>
+    <% end %>
+    <%= link_to delete_tag_path(tag), class: "#{tag.deletion_link}", method: :put do %>
+      <%= fa_icon "times" %>
+    <% end %>
   </div>
 </div>

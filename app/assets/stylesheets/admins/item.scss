@@ -20,59 +20,83 @@ div.admin-item .admin-item-info {
     padding: 0;
     text-indent: 10px;
     font-weight: normal;
-    font-size: 1.1em;
+    font-size: 1em;
     text-decoration: none;
     color: $black;
   } // a
   a:hover {
     color: $blue;
   } // a:hover
-  a span {
-    padding: 2px 6px;
-    font-size: 0.7em;
-    border-radius: 4px;
-    text-align: center;
-    margin: 0 5px 0 0;
-  } // a span
-  a span.approved, a span.published {
-    background-color: $green;
-    color: $white;
-  } // a span.approved, a span.published
-  a span.unapproved, a span.unpublished {
-    background-color: $dark-grey;
-    color: $black;
-  } // a span.unapproved, a span.unpublished
-  p {
-    margin: 0;
-    padding: 0;
-    text-indent: 10px;
-    text-indent: 15px;
-    color: $charcoal;
-    font-size: 0.7em;
-  } // p
 } // div.admin-item .admin-item-info
 
 div.admin-item .admin-item-links {
   @include flex(row,nowrap,space-around,center);
   a {
     padding: 5px 7px;
-    color: $white;
-    background-color: $blue;
-    box-shadow: 0 1px 0 lighten($blue,15%);
     text-decoration: none;
     text-align: center;
     border-radius: 2px;
     font-size: 0.8em;
+    transition: .2s;
   } // a
-
-  @media screen and (max-width: $xs) {
-    @include flex(row,nowrap,flex-start,flex-start);
-    margin: 10px 0 0;
-    a {
-      margin: 0 10px 0 0;
-    } // a
-    a:first-of-type {
-      margin: 0 10px 0;
-    } // a:first-of-type
-  } // @media
+  a:first-of-type {
+    padding: 5px 6px;
+  } // a.first-of-type
+  a.info {
+    padding: 5px 11px;
+    color: $blue;
+    background-color: $white;
+    box-shadow: 0 1px 2px $blue;
+  } // a.info
+  a.info:hover {
+    color: $white;
+    background-color: $blue;
+    box-shadow: 0 1px 0 lighten($blue,15%);
+  } // a.info:hover
+  a.approved, a.published {
+    color: $white;
+    background-color: $green;
+    box-shadow: 0 1px 0 lighten($green,15%);
+  } // a.approved, a.published
+  a.unapproved, a.unpublished {
+    color: $green;
+    background-color: $white;
+    box-shadow: 0 1px 2px $green;
+  } // a.unapproved, a.unpublished
+  a.unapproved:hover, a.unpublished:hover {
+    color: $white;
+    background-color: $green;
+    box-shadow: 0 1px 0 lighten($green,15%);
+  } // a.unapproved:hover, a.unpublished:hover
+  a.featured {
+    color: $white;
+    background-color: $yellow;
+    box-shadow: 0 1px 0 lighten($yellow,15%);
+  } // a.featured
+  a.unfeatured {
+    color: $yellow;
+    background-color: $white;
+    box-shadow: 0 1px 2px $yellow;
+  } // a.unfeatured
+  a.unfeatured:hover {
+    color: $white;
+    background-color: $yellow;
+    box-shadow: 0 1px 0 lighten($yellow,15%);
+  } // a.unfeatured:hover
+  a.delete {
+    padding: 5px 8px;
+    color: $red;
+    background-color: $white;
+    box-shadow: 0 1px 2px $red;
+  } // a.delete
+  a.delete:hover {
+    color: $white;
+    background-color: $red;
+    box-shadow: 0 1px 0 lighten($red,15%);
+  } // a.delete:hover
+  a.restore {
+    color: $white;
+    background-color: $green;
+    box-shadow: 0 1px 0 lighten($green,15%);
+  } // a.restore
 } // div.admin-item .admin-item-links
