@@ -26,6 +26,7 @@ class Category < ApplicationRecord
   def self.admin_search(term, page)
     if term
       is_active
+      .include_assoc
       .where('categories.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
     else

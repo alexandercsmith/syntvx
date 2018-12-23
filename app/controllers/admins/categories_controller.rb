@@ -10,7 +10,7 @@ class Admins::CategoriesController < Admins::AdminAppController
   private
 
     def set_category
-      @category = Category.friendly.find(params[:id])
+      @category = Category.friendly.include_assoc.find(params[:id])
     end
 
     def admin_categories_responder(notice)

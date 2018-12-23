@@ -26,6 +26,7 @@ class Language < ApplicationRecord
   def self.admin_search(term, page)
     if term
       is_active
+      .include_assoc
       .where('languages.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
     else

@@ -10,7 +10,7 @@ class Admins::ToolsController < Admins::AdminAppController
   private
 
     def set_tool
-      @tool = Tool.friendly.find(params[:id])
+      @tool = Tool.friendly.include_assoc.find(params[:id])
     end
 
     def admin_tools_responder(notice)

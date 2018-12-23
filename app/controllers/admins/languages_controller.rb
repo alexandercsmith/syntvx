@@ -10,7 +10,7 @@ class Admins::LanguagesController < Admins::AdminAppController
   private
 
     def set_language
-      @language = Language.friendly.find(params[:id])
+      @language = Language.friendly.include_assoc.find(params[:id])
     end
 
     def admin_languages_responder(notice)

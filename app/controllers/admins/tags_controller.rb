@@ -10,7 +10,7 @@ class Admins::TagsController < Admins::AdminAppController
   private
 
     def set_tag
-      @tag = Tag.friendly.find(params[:id])
+      @tag = Tag.friendly.include_assoc.find(params[:id])
     end
 
     def admin_tags_responder(notice)

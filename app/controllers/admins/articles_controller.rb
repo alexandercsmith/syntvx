@@ -10,7 +10,7 @@ class Admins::ArticlesController < Admins::AdminAppController
   private
 
     def set_article
-      @article = Article.friendly.find(params[:id])
+      @article = Article.friendly.include_assoc.find(params[:id])
     end
 
     def admin_articles_responder(notice)
