@@ -13,60 +13,44 @@ A Developer Resource Directory Project.
 
 ## Development
 
-1. Install Dependencies
+Start Development Environment
+
+> If First Development Session: Create and Migrate Database
+
+* Install Dependencies
+* Activate Development Cache
+* Start Server
 
 ```
 $ bundle install
-```
 
-2. Ensure Database is Created & Server is Open
-
-```
-$ rails db:create
-```
-
-3. Ensure Migrations are Executed
-
-```
-$ rails db:migrate
-```
-
-4. Turn on Local Cache
-
-```
 $ rails dev:cache
-```
 
-5. Start Server
-
-> localhost:3000
-
-```
 $ rails server
 ```
 
-6. Access Console
+Create and Migrate Database
 
 ```
+$ rails db:create
+
+$ rails db:migrate
+```
+
+Console Commands
+
+```
+# Access Console
 $ rails console
-```
 
-7. View Routes
-
-```
+# View Routing
 $ rails routes
-```
 
-8. View Notes
-
-```
-$ rails notes
-```
-
-9. View Stats
-
-```
+# View Application Stats
 $ rails stats
+
+# View Developer Notes
+$ rails notes
 ```
 
 ## Deployment
