@@ -1,3 +1,9 @@
 <div id="<%= controller_name %>-<%= action_name %>">
+  <div class="container">
+    <div id="articles-list">
+      <%= render partial: 'articles/article', collection: @articles, cached: true %>
 
+      <%= will_paginate @articles %>
+    </div>
+  </div>
 </div>

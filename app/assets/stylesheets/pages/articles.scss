@@ -1,0 +1,11 @@
+// Articles#Index
+#articles-index {} // #articles-index
+
+#articles-index #articles-list {
+  @include flex(column,nowrap,flex-start,flex-start);
+  max-width: $sm;
+  margin: 0 auto;
+} // #articles-index #articles-list
+
+// Articles#Show
+#articles-show {} // #articles-show

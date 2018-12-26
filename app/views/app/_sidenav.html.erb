@@ -1,3 +1,8 @@
 <div id="sidenav">
-
+  <%= link_to 'javascript:void(0)', id: 'close-sidenav' do %>
+    <%= fa_icon 'times' %>
+  <% end %>
+  <%= link_to 'HOME', root_path %>
+  <%= link_to 'DIRECTORY', directory_path %>
+  <%= link_to 'BLOG', blog_path %>
 </div>

@@ -1,0 +1,49 @@
+// Article Card
+div.article-card {
+  @include flex(column,nowrap,flex-start,flex-start);
+  width: 100%;
+  padding: 15px 0 0;
+  border-bottom: 1px solid $light-grey;
+} // div.article-card
+
+div.article-card a {
+  width: 100%;
+  font-size: 1.3em;
+  color: $black;
+  text-decoration: none;
+  padding: 0 0 10px;
+} // div.article-card a
+
+div.article-card a:hover {
+  color: $blue;
+} // div.article-card a:hover
+
+div.article-card .article-info {
+  @include flex(row,wrap,space-between,center);
+  width: 100%;
+} // div.article-card .article-info
+
+div.article-card .article-info .article-tags {
+  @include flex(row,wrap,flex-start,center);
+} // div.article-card .article-info .article-tags
+
+div.article-card .article-info .article-tags span {
+  padding: 5px;
+  background-color: $eggshell;
+  border-radius: $radius;
+  font-size: 0.8em;
+  color: $black;
+} // div.article-card .article-info .article-tags span
+
+div.article-card .article-info span.published {
+  font-size: 0.8em;
+  color: $blue;
+} // div.article-card .article-info span.published
+
+div.article-card p {
+  width: 100%;
+  font-size: 0.8em;
+  color: $charcoal;
+  margin: 10px 0;
+  padding: 0;
+} // div.article-card p

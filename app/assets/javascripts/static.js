@@ -1,3 +1,13 @@
+// NAVIGATION
+function openSidenav() {
+  var sidenav = document.getElementById('sidenav');
+  var close = document.getElementById('close-sidenav');
+  sidenav.style.width = "280px";
+  close.addEventListener('click', function() {
+    sidenav.style.width = "0";
+  })
+}
+
 // NOTIFICATION
 function closeNotification() {
   var trgt = document.getElementById('notification');

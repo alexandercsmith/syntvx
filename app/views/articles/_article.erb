@@ -1,3 +1,17 @@
-<div class="article-card">
+<% cache article do %>
+  <div class="article-card">
+    <%= link_to article.name, article_path(article) %>
 
-</div>
+    <div class="article-info">
+      <div class="article-tags">
+        <% article.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+        <% end %>
+      </div>
+
+      <span class="published"><%= article.published_date %></span>
+    </div>
+
+    <p><%= article.description %></p>
+  </div>
+<% end %>
