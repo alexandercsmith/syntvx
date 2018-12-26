@@ -18,19 +18,29 @@ class Tool < ApplicationRecord
   has_many :categories, through: :tool_categories
 
   # Attributes
-  attr_accessor :links
+  attr_accessor :links #, :repo, :website
   attr_accessor :style
 
   # Scopes
   scope :active_published, -> { is_active.is_published }
+  scope :active_unpublished, -> { is_active.is_unpublished }
   scope :active_featured, -> { is_active.is_published.is_featured }
   scope :include_assoc, -> { includes(:languages, :categories) }
   scope :joins_assoc, -> { joins(:languages, :categories) }
 
   # Query
-  def self.admin_search(term, page)
-    if term
-      is_active
+  def self.admin_search(term, filter, page)
+    if filter
+      case filter
+      when "published"
+        active_published
+      when "unpublished"
+        active_unpublished
+      when "featured"
+        active_featured
+      else
+        is_active
+      end
       .include_assoc
       .where('tools.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
@@ -58,6 +68,11 @@ class Tool < ApplicationRecord
     end
   end
 
+  # Tool.all_inactive - Non-Cache
+  def self.all_inactive
+    is_inactive.created_desc
+  end
+
   # Tool.all_published
   def self.all_published
     Rails.cache.fetch('Tool.published', expires_in: 1.day) do
@@ -74,6 +89,8 @@ class Tool < ApplicationRecord
 
   # Tool.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Tool.#{id}", expires_in: 1.day) { friendly.include_assoc.find(id) }
+    Rails.cache.fetch("Tool.#{id}", expires_in: 1.day) do
+      friendly.include_assoc.find(id)
+    end
   end
 end

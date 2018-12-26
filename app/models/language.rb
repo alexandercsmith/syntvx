@@ -19,13 +19,23 @@ class Language < ApplicationRecord
 
   # Scopes
   scope :active_approved, -> { is_active.is_approved }
+  scope :active_unapproved, -> { is_active.is_unapproved }
   scope :active_featured, -> { is_active.is_approved.is_featured }
   scope :include_assoc,   -> { includes(:tools) }
 
   # Query
-  def self.admin_search(term, page)
-    if term
-      is_active
+  def self.admin_search(term, filter, page)
+    if filter
+      case filter
+      when "approved"
+        active_approved
+      when "unapproved"
+        active_unapproved
+      when "featured"
+        active_featured
+      else
+        is_active
+      end
       .include_assoc
       .where('languages.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
@@ -53,6 +63,11 @@ class Language < ApplicationRecord
     end
   end
 
+  # Language.all_inactive - Non-Cache
+  def self.all_inactive
+    is_inactive.created_desc
+  end
+
   # Language.all_approved
   def self.all_approved
     Rails.cache.fetch('Language.approved', expires_in: 1.day) do
@@ -69,6 +84,8 @@ class Language < ApplicationRecord
 
   # Language.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Language.#{id}", expires_in: 1.day) { friendly.include_assoc.find(id) }
+    Rails.cache.fetch("Language.#{id}", expires_in: 1.day) do
+      friendly.include_assoc.find(id)
+    end
   end
 end

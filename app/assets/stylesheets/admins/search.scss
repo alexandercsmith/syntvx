@@ -17,15 +17,18 @@ form.admin-search .admin-search-input {
 
 form.admin-search .admin-filter-options {
   @include flex(row,nowrap,flex-start,center);
-  input[type="checkbox"] {
+  input[type="radio"] {
     margin: 0 5px 0 15px;
   } // input[type="checkbox"]
-  input[type="checkbox"]:first-of-type {
+  input[type="radio"]:first-of-type {
     margin: 0 5px 0 0;
   } // input[type="checkbox"]:first-of-type
   span {
     font-size: 0.8em;
   } // span
+  span.all {
+    color: $blue;
+  } // span.all
   span.approved, span.published {
     color: $green;
   } // span.approved, span.published

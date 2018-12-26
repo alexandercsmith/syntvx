@@ -19,14 +19,24 @@ class Article < ApplicationRecord
 
   # Scopes
   scope :active_published, -> { is_active.is_published }
+  scope :active_unpublished, -> { is_active.is_unpublished }
   scope :active_featured, -> { is_active.is_published.is_featured }
   scope :include_assoc, -> { includes(:tags) }
   scope :joins_assoc, -> { joins(:tags) }
 
   # Query
-  def self.admin_search(term, page)
-    if term
-      is_active
+  def self.admin_search(term, filter, page)
+    if filter
+      case filter
+      when "published"
+        active_published
+      when "unpublished"
+        active_unpublished
+      when "featured"
+        active_featured
+      else
+        is_active
+      end
       .include_assoc
       .where('articles.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
@@ -54,6 +64,11 @@ class Article < ApplicationRecord
     end
   end
 
+  # Article.all_inactive - Non-Cache
+  def self.all_inactive
+    is_inactive.created_desc
+  end
+
   # Article.all_published
   def self.all_published
     Rails.cache.fetch('Article.published', expires_in: 1.day) do
@@ -70,6 +85,8 @@ class Article < ApplicationRecord
 
   # Article.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Article.#{id}", expires_in: 1.day) { friendly.include_assoc.find(id) }
+    Rails.cache.fetch("Article.#{id}", expires_in: 1.day) do
+      friendly.include_assoc.find(id)
+    end
   end
 end

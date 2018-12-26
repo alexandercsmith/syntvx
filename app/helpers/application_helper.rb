@@ -41,4 +41,12 @@ module ApplicationHelper
                         url: path.to_s }
   end
 
+  def filter_check(filter, param)
+    if param.nil?
+      return filter == 'all' ? true : false
+    else
+      return filter == param ? true : false
+    end
+  end
+
 end

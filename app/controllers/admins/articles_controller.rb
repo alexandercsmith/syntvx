@@ -4,7 +4,7 @@ class Admins::ArticlesController < Admins::AdminAppController
   # GET /admins/articles
   def index
     private_seo('Articles')
-    @articles = Article.admin_search(params[:term], params[:page])
+    @articles = Article.admin_search(params[:term], params[:filter], params[:page])
   end
 
   # GET /admins/articles/:id

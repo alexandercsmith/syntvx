@@ -4,7 +4,7 @@ class Admins::ToolsController < Admins::AdminAppController
   # GET /admins/tools
   def index
     private_seo('Tools')
-    @tools = Tool.admin_search(params[:term], params[:page])
+    @tools = Tool.admin_search(params[:term], params[:filter], params[:page])
   end
 
   # GET /admins/tools/:id

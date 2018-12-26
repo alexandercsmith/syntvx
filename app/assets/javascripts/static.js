@@ -1,9 +1,7 @@
 // NOTIFICATION
 function closeNotification() {
   var trgt = document.getElementById('notification');
-  setTimeout(function() {
-    trgt.removeChild(trgt.children[0])
-  }, 300)
+  trgt.removeChild(trgt.children[0])
 }
 
 function createNotification(status, text) {

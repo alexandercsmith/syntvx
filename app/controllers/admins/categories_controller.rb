@@ -4,7 +4,7 @@ class Admins::CategoriesController < Admins::AdminAppController
   # GET /admins/categories
   def index
     private_seo('Categories')
-    @categories = Category.admin_search(params[:term], params[:page])
+    @categories = Category.admin_search(params[:term], params[:filter], params[:page])
   end
 
   # GET /admins/categories/:id

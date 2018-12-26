@@ -4,7 +4,7 @@ class Admins::LanguagesController < Admins::AdminAppController
   # GET /admins/langauges
   def index
     private_seo('Languages')
-    @languages = Language.admin_search(params[:term], params[:page])
+    @languages = Language.admin_search(params[:term], params[:filter], params[:page])
   end
 
   # GET /admins/languages/:id

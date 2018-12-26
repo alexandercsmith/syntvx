@@ -4,7 +4,7 @@ class Admins::TagsController < Admins::AdminAppController
   # GET /admins/tags
   def index
     private_seo('Tags')
-    @tags = Tag.admin_search(params[:term], params[:page])
+    @tags = Tag.admin_search(params[:term], params[:filter], params[:page])
   end
 
   # GET /admins/tags/:id

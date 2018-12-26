@@ -19,13 +19,23 @@ class Category < ApplicationRecord
 
   # Scopes
   scope :active_approved, -> { is_active.is_approved }
+  scope :active_unapproved, -> { is_active.is_unapproved }
   scope :active_featured, -> { is_active.is_approved.is_featured }
   scope :include_assoc,   -> { includes(:tools) }
 
   # Query
-  def self.admin_search(term, page)
-    if term
-      is_active
+  def self.admin_search(term, filter, page)
+    if filter
+      case filter
+      when "approved"
+        active_approved
+      when "unapproved"
+        active_unapproved
+      when "featured"
+        active_featured
+      else
+        is_active
+      end
       .include_assoc
       .where('categories.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
@@ -46,29 +56,36 @@ class Category < ApplicationRecord
     Rails.cache.delete("Category.#{slug}")
   end
 
-  # Language.all_active
+  # Category.all_active
   def self.all_active
     Rails.cache.fetch('Category.active', expires_in: 1.day) do
       is_active.include_assoc.created_desc.to_a
     end
   end
 
-  # Language.all_approved
+  # Category.all_inactive - Non-Cache
+  def self.all_inactive
+    is_inactive.created_desc
+  end
+
+  # Category.all_approved
   def self.all_approved
     Rails.cache.fetch('Category.approved', expires_in: 1.day) do
       active_approved.include_assoc.name_asc.to_a
     end
   end
 
-  # Language.all_featured
+  # Category.all_featured
   def self.all_featured
     Rails.cache.fetch('Category.featured', expires_in: 1.day) do
       active_featured.include_assoc.name_asc.to_a
     end
   end
 
-  # Language.slugged(params[:id])
+  # Category.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Category.#{id}", expires_in: 1.day) { friendly.include_assoc.find(id) }
+    Rails.cache.fetch("Category.#{id}", expires_in: 1.day) do
+      friendly.include_assoc.find(id)
+    end
   end
 end

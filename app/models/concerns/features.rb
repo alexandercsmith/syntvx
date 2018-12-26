@@ -21,7 +21,7 @@ module Features
     end
 
     def featured_check
-      featured ? 'feature' : 'unfeatured'
+      featured ? 'featured' : 'unfeatured'
     end
 
     def featured_link

@@ -2,11 +2,13 @@
   <div class="admin-search-input">
     <%= text_field_tag :term, params[:term], placeholder: 'Search Languages...' %>
     <div class="admin-filter-options">
-      <%= check_box_tag :approved, value: 'true' %>
+      <%= radio_button_tag :filter, 'all', filter_check('all', params[:filter]) %>
+      <span class="all">All</span>
+      <%= radio_button_tag :filter, 'approved', filter_check('approved', params[:filter]) %>
       <span class="approved">Approved</span>
-      <%= check_box_tag :approved, value: 'false' %>
+      <%= radio_button_tag :filter, 'unapproved', filter_check('unapproved', params[:filter]) %>
       <span>Drafts</span>
-      <%= check_box_tag :featured, value: 'true' %>
+      <%= radio_button_tag :filter, 'featured', filter_check('featured', params[:filter]) %>
       <span class="featured">Featured</span>
     </div>
     <%= submit_tag 'Search' %>
