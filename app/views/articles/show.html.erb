@@ -1,3 +1,23 @@
 <div id="<%= controller_name %>-<%= action_name %>">
+  <div class="container">
+    <div id="article-title">
+      <h1><%= @article.name %></h1>
+      <div class="article-info">
+        <div class="article-tags">
+          <% @article.tags.each do |tag| %>
+            <span class="tag"><%= tag.name %></span>
+          <% end %>
+        </div>
+        <p id="article-published"><%= @article.published_date %></p>
+      </div>
+    </div>
 
+    <div id="article-cover-image">
+      <%= image_tag @article.cover_image, alt: "#{@article.name} Image" %>
+    </div>
+
+    <div id="article-body">
+      <%= @article.body.html_safe %>
+    </div>
+  </div>
 </div>
