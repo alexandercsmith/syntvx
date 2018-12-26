@@ -8,9 +8,23 @@ div.admin-panel {
   box-shadow: 1px 1px 1px $light-grey;
   width: 100%;
   margin: 0 0 15px;
+  h2 {
+    text-indent: 10px;
+  } // h2
 } // div.admin-panel
 
 div.admin-items {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;
 } // div.admin-items
+
+div.admin-panel-options {
+  @include flex(row,wrap,flex-start,center);
+  a {
+    @include admin-link();
+    margin: 0 10px 10px 0;
+  } // a
+  a:first-of-type {
+    margin: 0 10px 10px 10px;
+  } // a:first-of-type
+} // div.admin-panel-options

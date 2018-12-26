@@ -1,21 +1,21 @@
 <div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
-  <div id="admin-head">
-    <div class="admin-head-panel">
-      <h1><%= action_name.upcase %></h1>
-    </div>
+
+  <div class="admin-head">
+    <h1>Settings</h1>
   </div>
 
-  <div class="admin-settings-options">
-    <div class="admin-settings-panel">
-      <h2>Cache</h2>
+  <div class="admin-panel">
+    <h2>Cache</h2>
+
+    <div class="admin-panel-options">
       <%= link_to 'Cache Clear', admins_cache_clear_path %>
       <%= link_to 'Explicit Cache Clear', admins_explicit_cache_clear_path %>
     </div>
   </div>
 
-  <div class="admin-settings-options">
-    <div class="admin-settings-panel">
-      <h2>Trash</h2>
+  <div class="admin-panel">
+    <h2>Trash</h2>
+    <div class="admin-panel-options">
       <%= link_to 'Trash', admins_trash_path %>
     </div>
   </div>
