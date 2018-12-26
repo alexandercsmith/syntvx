@@ -13,6 +13,13 @@ form.admin-search .admin-search-input {
   input[type="submit"] {
     @include admin-link();
   } // input[type="submit"]
+
+  @media screen and (max-width: $xs) {
+    justify-content: flex-end;
+    input[type="submit"] {
+      margin: 10px 0 0;
+    } // // input[type="submit"]
+  } // @media
 } // form.admin-search .admin-search-input
 
 form.admin-search .admin-filter-options {
@@ -21,7 +28,7 @@ form.admin-search .admin-filter-options {
     margin: 0 5px 0 15px;
   } // input[type="checkbox"]
   input[type="radio"]:first-of-type {
-    margin: 0 5px 0 0;
+    margin: 0 5px 0;
   } // input[type="checkbox"]:first-of-type
   span {
     font-size: 0.8em;
@@ -35,4 +42,8 @@ form.admin-search .admin-filter-options {
   span.featured {
     color: $yellow;
   } // span.featured
+  @media screen and (max-width: $xs) {
+    width: 100%;
+    padding: 7px 0 0;
+  } // @media
 } // form.admin-search .admin-filter-options

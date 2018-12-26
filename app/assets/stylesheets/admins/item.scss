@@ -16,7 +16,7 @@ div.admin-item:first-of-type {
 div.admin-item .admin-item-info {
   @include flex(column,nowrap,flex-start,flex-start);
   a {
-    margin: 0 0 5px;
+    margin: 0;
     padding: 0;
     text-indent: 10px;
     font-weight: normal;
@@ -43,6 +43,32 @@ div.admin-item .admin-item-links {
   a:first-of-type {
     padding: 5px 6px;
   } // a.first-of-type
+
+  @media screen and (max-width: $xs) {
+    justify-content: flex-end;
+    margin: 10px 0;
+    a {
+      margin: 0 0 0 20px;
+    } // a
+    a:last-of-type {
+      margin: 0 10px 0 20px;
+    } // a:last-of-type
+    a:first-of-type {
+      margin: 0;
+    } // a:first-of-type
+  } // @media
+
+  a.edit {
+    padding: 5px 8px;
+    color: $charcoal;
+    background-color: $white;
+    box-shadow: 0 1px 2px $charcoal;
+  } // a.edit
+  a.edit:hover {
+    color: $white;
+    background-color: $charcoal;
+    box-shadow: 0 1px 0 lighten($charcoal,15%);
+  } // a.edit:hover
   a.info {
     padding: 5px 11px;
     color: $blue;

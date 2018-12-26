@@ -1,4 +1,5 @@
 #sidenav {
+  @include flex(column,nowrap,flex-start,flex-end);
   height: 100%;
   width: 0;
   position: fixed;
@@ -7,10 +8,31 @@
   left: 0;
   background-color: $blue;
   overflow-x: hidden;
-  padding-top: 60px;
   transition: $speed;
 } // #sidenav
 
-#sidenav a {
+#sidenav a#close-sidenav {
+  font-size: 2em;
   color: $white;
-} // #sidenav a
+  padding: 15px;
+} // #sidenav a#close-sidenav
+
+#sidenav a.nav-link {
+  width: 100%;
+  color: $white;
+  font-size: 1.1em;
+  text-align: left;
+  padding: 20px 0;
+  text-decoration: none;
+  text-indent: 15px;
+  border-top: 1px solid $white;
+} // #sidenav a.nav-link
+
+#sidenav a.nav-link:active {
+  background-color: $white;
+  color: $blue;
+} // #sidenav a.nav-link:active
+
+#sidenav a.nav-link:last-of-type {
+  border-bottom: 1px solid $white;
+} // #sidenav a.nav-link:last-of-type
