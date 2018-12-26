@@ -29,3 +29,28 @@ div.admin-panel-options {
     margin: 0 10px 10px 10px;
   } // a:first-of-type
 } // div.admin-panel-options
+
+form#edit_admin {
+  width: 100%;
+
+  .actions {
+    width: 100%;
+  } // .actions
+
+  .actions input[type="submit"] {
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 32px;
+    background-color: $green;
+    color: $white;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: $radius;
+    transition: $speed;
+  } // .actions input[type="submit"]
+
+  .actions input[type="submit"]:hover {
+    background-color: darken($green, 5%);
+  } // .actions input[type="submit"]:hover
+} // form#edit_admin
