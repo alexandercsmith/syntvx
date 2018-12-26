@@ -1,4 +1,4 @@
-<%= form_with(model: tag, local: true) do |form| %>
+<%= form_with(model: tag, local: true, class: 'form') do |form| %>
   <% if tag.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
@@ -12,23 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="field-label xl-col-1-4 lg-col-1-4 md-col-1-3 sm-col-1-1 xs-col-1-1">
+      <%= form.label :name %>
+    </div>
+    <div class="field-input xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
+      <%= form.text_field :name, placeholder: 'Tag Name' %>
+    </div>
   </div>
 
   <% if action_name == 'edit' %>
     <div class="field">
-      <%= form.label :slug %>
-      <%= form.text_field :slug %>
+      <div class="field-label xl-col-1-4 lg-col-1-4 md-col-1-3 sm-col-1-1 xs-col-1-1">
+        <%= form.label :slug %>
+      </div>
+      <div class="field-input xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
+        <%= form.text_field :slug, placeholder: 'Tag Slug' %>
+      </div>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <div class="field-label xl-col-1-4 lg-col-1-4 md-col-1-3 sm-col-1-1 xs-col-1-1">
+      <%= form.label :description %>
+    </div>
+    <div class="field-input xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
+      <%= form.text_field :description, placeholder: 'Tag Description' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit('Submit', data: { "disable-with": "Saving..." }) %>
   </div>
 <% end %>

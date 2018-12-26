@@ -1,5 +1,14 @@
 <div id="nav">
-  <%= link_to 'HOME', root_path %>
-  <%= link_to 'DIRECTORY', directory_path %>
-  <%= link_to 'BLOG', blog_path %>
+  <div class="general">
+    <%= link_to 'HOME', root_path %>
+    <%= link_to 'DIRECTORY', directory_path %>
+    <%= link_to 'BLOG', blog_path %>
+  </div>
+
+  <div class="admin">
+    <%= link_to admins_path do %>
+      <%= fa_icon 'user-secret' %>
+      ADMIN
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,76 @@
+// FORMS
+form.form {
+  @include flex(column,nowrap,flex-start,flex-start);
+  max-width: $sm;
+  margin: 0 auto;
+} // form.form
+
+form.form .field {
+  @include flex(row,wrap,flex-start,flex-start);
+  width: 100%;
+  margin: 10px 0;
+  border-bottom: 1px solid $grey;
+  padding: 0 0 10px;
+} // form.form .field
+
+form.form .field .field-label {
+} // form.form .field .field-label
+
+form.form .field .field-input {
+  input[type="text"] {
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 32px;
+    font-size: 0.9em;
+    text-indent: 5px;
+    border-radius: $radius;
+    background-color: $eggshell;
+  } // input[type="text"]
+
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0;
+    height: 300px;
+    font-size: 0.9em;
+    border-radius: $radius;
+    box-shadow: 0 0 2px $dark-grey;
+  } // textarea
+} // form.form .field .field-input
+
+form.form .field .field-input .field-checkbox {
+  @include flex(row,nowrap,flex-start,center);
+  width: 25%;
+  padding: 7px;
+  background-color: $eggshell;
+  border-radius: $radius;
+  margin: 0 10px 10px 0;
+  input[type="checkbox"] {
+    margin: 0 8px 0 5px;
+    padding: 0;
+  } // input[type="checkbox"]
+  span {
+    font-size: 0.8em;
+  } // span
+} // form.form .field .field-input .field-checkbox
+
+form.form .actions {
+  width: 100%;
+  input[type="submit"] {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: $white;
+    background-color: $green;
+    font-size: 1.1em;
+    border-radius: $radius;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  } // input[type="submit"]
+  input[type="submit"]:hover {
+    background-color: darken($green, 5%);
+  } // input[type="submit"]:hover
+} // form.form .actions
