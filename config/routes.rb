@@ -33,25 +33,25 @@ Rails.application.routes.draw do
   match '/articles/:id/delete'  => 'articles#delete',  via: %i[put patch], as: :delete_article
 
   # CATEGORIES
-  resources :categories
+  resources :categories, except: %i[index show]
   match '/categories/:id/approve' => 'categories#approve', via: %i[put patch], as: :approve_category
   match '/categories/:id/feature' => 'categories#feature', via: %i[put patch], as: :feature_category
   match '/categories/:id/delete'  => 'categories#delete',  via: %i[put patch], as: :delete_category
 
   # LANGUAGES
-  resources :languages
+  resources :languages, except: %i[index show]
   match '/languages/:id/approve' => 'languages#approve', via: %i[put patch], as: :approve_language
   match '/languages/:id/feature' => 'languages#feature', via: %i[put patch], as: :feature_language
   match '/languages/:id/delete'  => 'languages#delete',  via: %i[put patch], as: :delete_language
 
   # TAGS
-  resources :tags
+  resources :tags, except: %i[index show]
   match '/tags/:id/approve' => 'tags#approve', via: %i[put patch], as: :approve_tag
   match '/tags/:id/feature' => 'tags#feature', via: %i[put patch], as: :feature_tag
   match '/tags/:id/delete'  => 'tags#delete',  via: %i[put patch], as: :delete_tag
 
   # TOOLS
-  resources :tools
+  resources :tools, except: %i[index]
   match '/tools/:id/publish' => 'tools#publish', via: %i[put patch], as: :publish_tool
   match '/tools/:id/feature' => 'tools#feature', via: %i[put patch], as: :feature_tool
   match '/tools/:id/delete'  => 'tools#delete',  via: %i[put patch], as: :delete_tool

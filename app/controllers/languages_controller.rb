@@ -1,93 +1,60 @@
 class LanguagesController < ApplicationController
-  before_action :set_language, except: %i[index new create show]
-  before_action :authenticate_admin!, except: %i[index show]
-
-  # GET /languages
-  def index
-    @languages = Language.all_approved
-  end
-
-  # GET /languages/:id
-  def show
-    redirect_to languages_path unless @language.approved
-    @language = Language.slugged(params[:id])
-  end
+  before_action :set_language, except: %i[new create]
+  before_action :authenticate_admin!
 
   # GET /languages/new
   def new
     @language = Language.new
+    private_seo('New Language')
   end
 
   # GET /languages/:id/edit
   def edit
+    private_seo('Edit Language')
   end
 
   # POST /languages
   def create
     @language = Language.new(language_params)
 
-    respond_to do |format|
-      if @language.save
-        format.html { redirect_to admins_languages_path, notice: 'Language was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @language.save
+      admins_languages_responder('created')
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /languages/:id
   def update
-    respond_to do |format|
-      if @language.update(language_params)
-        format.html { redirect_to admins_languages_path, notice: 'Language was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @language.update(language_params)
+      admins_languages_responder('updated')
+    else
+      render :edit
     end
   end
 
   # PATCH/PUT /languages/:id/approve
   def approve
     @language.approval_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_languages_path,
-        notice: "Language #{@language.approval_check.capitalize}"
-      end
-      format.js
-    end
+    admins_languages_responder(@language.approval_check.capitalize)
   end
 
   # PATCH/PUT /languages/:id/feature
   def feature
     @language.feature_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_languages_path,
-        notice: "Language #{@language.featured_check.capitalize}"
-      end
-      format.js
-    end
+    admins_languages_responder(@language.featured_check.capitalize)
   end
 
   # PATCH/PUT /languages/:id/delete
   def delete
     @langauge.delete_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_languages_path,
-        notice: "Language #{@language.deletion_check.capitalize}"
-      end
-      format.js
-    end
+    admins_languages_responder(@language.deletion_check.capitalize)
   end
 
   # DESTROY /languages/:id
   def destroy
     @language.destroy
-    respond_to do |format|
-      format.html { redirect_to languages_url, notice: 'Language was successfully destroyed.' }
-    end
+    admins_languages_responder('destroyed')
   end
 
   private
@@ -102,7 +69,14 @@ class LanguagesController < ApplicationController
                                        :style)
     end
 
-    def admin_languages_responder(notice)
+    def admins_languages_responder(notice)
+      respond_to do |format|
+        format.html do
+          redirect_to admins_languages_path,
+          notice: "Language #{notice}."
+        end
+        format.js
+      end
     end
 
 end

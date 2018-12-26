@@ -1,94 +1,68 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, except: %i[index new create show]
+  before_action :set_tool, except: %i[new create show]
   before_action :set_languages, only: %i[new edit create update destroy]
   before_action :set_categories, only: %i[new edit create update destroy]
-  before_action :authenticate_admin!, except: %i[index show]
-
-  # GET /tools
-  def index
-    @tools = Tool.all
-  end
+  before_action :authenticate_admin!, except: %i[show]
 
   # GET /tools/:id
   def show
     @tool = Tool.slugged(params[:id])
+    public_seo(@tool.name, tool_url(@tool))
   end
 
   # GET /tools/new
   def new
     @tool = Tool.new
+    private_seo('New Tool')
   end
 
   # GET /tools/:id/edit
   def edit
+    private_seo('Edit Tool')
   end
 
   # POST /tools
   def create
     @tool = Tool.new(tool_params)
 
-    respond_to do |format|
-      if @tool.save
-        format.html { redirect_to @tool, notice: 'Tool was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @tool.save
+      admins_tools_responder('created')
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /tools/:id
   def update
-    respond_to do |format|
-      if @tool.update(tool_params)
-        format.html { redirect_to @tool, notice: 'Tool was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @tool.update(tool_params)
+      admins_tools_responder('updated')
+    else
+      render :edit
     end
   end
 
   # PATCH/PUT /tools/:id/publish
   def publish
     @tool.publish_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_tools_path,
-        notice: "Tool #{@tool.published_check.capitalize}"
-      end
-      format.js
-    end
+    admins_tools_responder(@tool.published_check.capitalize)
   end
 
   # PATCH/PUT /tools/:id/feature
   def feature
     @tool.feature_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_tools_path,
-        notice: "Tool #{@tool.featured_check.capitalize}"
-      end
-      format.js
-    end
+    admins_tools_responder(@tool.featured_check.capitalize)
   end
 
   # PATCH/PUT /tools/:id/delete
   def delete
     @tool.delete_toggle
-    respond_to do |format|
-      format.html do
-        redirect_to admins_tools_path,
-        notice: "Tool #{@tool.deletion_check.capitalize}"
-      end
-      format.js
-    end
+    admins_tools_responder(@tool.deletion_check.capitalize)
   end
 
   # DESTROY /tools/:id
   def destroy
     @tool.destroy
-    respond_to do |format|
-      format.html { redirect_to tools_url, notice: 'Tool was successfully destroyed.' }
-    end
+    admins_tools_responder('destroyed')
   end
 
   private
@@ -113,7 +87,14 @@ class ToolsController < ApplicationController
                                    :category_ids => [])
     end
 
-    def admin_tools_responder(notice)
+    def admins_tools_responder(notice)
+      respond_to do |format|
+        format.html do
+          redirect_to admins_tools_path,
+          notice: "Tool #{notice}."
+        end
+        format.js
+      end
     end
 
 end

@@ -6,25 +6,30 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     @articles = Article.all_published.paginate(per_page: 10, page: params[:page])
+    public_seo('Blog', articles_url)
   end
 
   # GET /articles/:id
   def show
     @article = Article.slugged(params[:id])
+    info_seo(@article.name.truncate(50), article_url(@article), @article.description, @article.cover_image)
   end
 
   # GET /articles/new
   def new
     @article = Article.new
+    private_seo('New Article')
   end
 
   # GET /articles/:id/edit
   def edit
+    private_seo('Edit Article')
   end
 
   # POST /articles
   def create
     @article = Article.new(article_params)
+    
     if @article.save
       admins_article_responder('created')
     else

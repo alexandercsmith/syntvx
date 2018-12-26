@@ -1,83 +1,60 @@
 class TagsController < ApplicationController
-  before_action :set_tag, except: %i[index new create show]
-  before_action :authenticate_admin!, except: %i[index show]
-
-  # GET /tags
-  def index
-    @tags = Tag.all_approved
-  end
-
-  # GET /tags/:id
-  def show
-    @tag = Tag.slugged(params[:id])
-  end
+  before_action :set_tag, except: %i[new create]
+  before_action :authenticate_admin!
 
   # GET /tags/new
   def new
     @tag = Tag.new
+    private_seo('New Tag')
   end
 
   # GET /tags/:id/edit
   def edit
+    private_seo('Edit Tag')
   end
 
   # POST /tags
   def create
     @tag = Tag.new(tag_params)
 
-    respond_to do |format|
-      if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @tag.save
+      admins_tags_responder('created')
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /tags/:id
   def update
-    respond_to do |format|
-      if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @tag.update(tag_params)
+      admins_tags_responder('updated')
+    else
+      render :edit
     end
   end
 
   # PATCH/PUT /tags/:id/approve
   def approve
     @tag.approval_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_tags_path }
-      format.js
-    end
+    admins_tags_responder(@tag.approval_check.capitalize)
   end
 
   # PATCH/PUT /tags/:id/feature
   def feature
     @tag.feature_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_tags_path }
-      format.js
-    end
+    admins_tags_responder(@tag.featured_check.capitalize)
   end
 
   # PATCH/PUT /tags/:id/delete
   def delete
     @tag.delete_toggle
-    respond_to do |format|
-      format.html { redirect_to admins_tags_path }
-      format.js
-    end
+    admins_tags_responder(@tag.deletion_check.capitalize)
   end
 
   # DESTROY /tags/:id
   def destroy
     @tag.destroy
-    respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
-    end
+    admins_tags_responder('destroyed')
   end
 
   private
@@ -92,7 +69,14 @@ class TagsController < ApplicationController
                                   :style)
     end
 
-    def admin_tags_responder(notice)
+    def admins_tags_responder(notice)
+      respond_to do |format|
+        format.html do
+          redirect_to admins_tags_path,
+          notice: "Tag #{notice}."
+        end
+        format.js
+      end
     end
 
 end

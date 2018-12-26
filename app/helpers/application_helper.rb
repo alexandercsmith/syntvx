@@ -22,6 +22,7 @@ module ApplicationHelper
                   keywords: @seo_keys,
                   index: false,
                   follow: false,
+                  reverse: true,
                   og: { title: :title,
                         description: :description,
                         type: 'website' }
@@ -29,7 +30,7 @@ module ApplicationHelper
 
   def info_seo(title, path, description, image)
     set_meta_tags title: title.to_s,
-                  description: desciption.to_s,
+                  description: description.to_s,
                   image_src: image,
                   keywords: @seo_keywords,
                   index: true,

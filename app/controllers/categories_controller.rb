@@ -1,31 +1,22 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, except: %i[index new create show]
-  before_action :authenticate_admin!, except: %i[index show]
-
-  # GET /categories
-  def index
-    @categories = Category.all_approved
-    public_seo('Categories', categories_url)
-  end
-
-  # GET /categories/:id
-  def show
-    @category = Category.slugged(params[:id])
-    redirect_to directory_path unless @category.approved || current_admin
-  end
+  before_action :set_category, except: %i[new create]
+  before_action :authenticate_admin!
 
   # GET /categories/new
   def new
     @category = Category.new
+    private_seo('New Category')
   end
 
   # GET /categories/:id/edit
   def edit
+    private_seo('Edit Category')
   end
 
   # POST /categories
   def create
     @category = Category.new(category_params)
+    
     if @category.save
       admins_categories_responder('created')
     else
