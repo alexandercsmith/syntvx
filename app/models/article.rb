@@ -17,6 +17,9 @@ class Article < ApplicationRecord
   # Attributes
   attr_accessor :style
 
+  # Images
+  has_one_attached :cover_image
+
   # Scopes
   scope :active_published, -> { is_active.is_published }
   scope :active_unpublished, -> { is_active.is_unpublished }

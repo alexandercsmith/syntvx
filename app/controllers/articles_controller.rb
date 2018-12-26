@@ -79,6 +79,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:name, :slug, :description, :body,
                                       :published, :published_at, :featured, :deleted,
                                       :style,
+                                      :cover_image,
                                       :tag_ids => [])
     end
 
