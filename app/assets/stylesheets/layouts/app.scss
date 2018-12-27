@@ -1,8 +1,10 @@
 body#app {
   width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 } // body#app
 
 body#app #content {
+  min-height: $min-content-height;
 } // body#app #content

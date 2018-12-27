@@ -50,6 +50,24 @@ class Tool < ApplicationRecord
     end
   end
 
+  # Directory
+  def self.directory_search(term, languages, categories)
+    if term
+      active_published
+      .joins_assoc
+      .where('tools.name ilike ?', "%#{term}%")
+      .where(tool_languages: { language: languages },
+             tool_categories: { category: categories })
+      .name_asc
+    else
+      active_published
+      .joins_assoc
+      .where(tool_languages: { language: languages },
+             tool_categories: { category: categories })
+      .name_asc
+    end
+  end
+
   # Cache
   after_commit :tool_cache_clear
   after_destroy :tool_cache_clear

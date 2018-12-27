@@ -1,4 +1,7 @@
 class StaticController < ApplicationController
+  before_action :set_articles,   only: %i[index]
+  before_action :set_languages,  only: %i[directory]
+  before_action :set_categories, only: %i[directory]
 
   # /
   def index
@@ -7,7 +10,10 @@ class StaticController < ApplicationController
 
   # /directory
   def directory
-    @tools = Tool.all_published
+    languages = params[:languages].presence ? Language.friendly.find(params[:languages]) : Language.all_approved
+    categories = params[:categories].presence ? Category.friendly.find(params[:categories]) : Category.all_approved
+    
+    @tools = Tool.directory_search(params[:q], languages, categories)
     public_seo('Directory', directory_url)
   end
 
@@ -17,8 +23,12 @@ class StaticController < ApplicationController
       @articles = Article.all_featured
     end
 
-    def set_tools
-      @tools = Tool.all_featured
+    def set_languages
+      @languages = Language.all_approved
+    end
+
+    def set_categories
+      @categories = Category.all_approved
     end
 
 end
