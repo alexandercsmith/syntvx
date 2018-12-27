@@ -17,7 +17,9 @@ form.form .field .field-label {
 } // form.form .field .field-label
 
 form.form .field .field-input {
-  input[type="text"] {
+  @include flex(row,wrap,flex-start,center);
+  input[type="text"],
+  input[type="url"] {
     width: 100%;
     outline: none;
     border: none;
@@ -27,7 +29,7 @@ form.form .field .field-input {
     border-radius: $radius;
     background-color: $eggshell;
   } // input[type="text"]
-
+    // input[type="url"]
   textarea {
     width: 100%;
     border: none;

@@ -10,10 +10,9 @@ class StaticController < ApplicationController
 
   # /directory
   def directory
-    languages = params[:languages].presence ? Language.friendly.find(params[:languages]) : Language.all_approved
-    categories = params[:categories].presence ? Category.friendly.find(params[:categories]) : Category.all_approved
-    
-    @tools = Tool.directory_search(params[:q], languages, categories)
+    languages = Language.directory_filter(params[:languages])
+    categories = Category.directory_filter(params[:categories])
+    @tools = Tool.directory_search(params[:q], languages, categories, params[:page])
     public_seo('Directory', directory_url)
   end
 

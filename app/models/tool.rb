@@ -18,8 +18,8 @@ class Tool < ApplicationRecord
   has_many :categories, through: :tool_categories
 
   # Attributes
-  attr_accessor :links #, :repo, :website
-  attr_accessor :style
+  store_accessor :links, :website
+  store_accessor :style
 
   # Scopes
   scope :active_published, -> { is_active.is_published }
@@ -51,7 +51,7 @@ class Tool < ApplicationRecord
   end
 
   # Directory
-  def self.directory_search(term, languages, categories)
+  def self.directory_search(term, languages, categories, page)
     if term
       active_published
       .joins_assoc
@@ -59,12 +59,14 @@ class Tool < ApplicationRecord
       .where(tool_languages: { language: languages },
              tool_categories: { category: categories })
       .name_asc
+      .paginate(per_page: 20, page: page)
     else
       active_published
       .joins_assoc
       .where(tool_languages: { language: languages },
              tool_categories: { category: categories })
       .name_asc
+      .paginate(per_page: 20, page: page)
     end
   end
 

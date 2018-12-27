@@ -15,7 +15,7 @@ class Category < ApplicationRecord
   has_many :tools, through: :tool_categories
 
   # Attributes
-  attr_accessor :style
+  store_accessor :style
 
   # Scopes
   scope :active_approved, -> { is_active.is_approved }
@@ -42,6 +42,15 @@ class Category < ApplicationRecord
     else
       all_active
       .paginate(page: page, per_page: 25)
+    end
+  end
+
+  # Directory
+  def self.directory_filter(categories)
+    if categories
+      friendly.find(categories)
+    else
+      all_approved
     end
   end
 

@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   has_many :tags, through: :article_tags
 
   # Attributes
-  attr_accessor :style
+  store_accessor :style
 
   # Images
   has_one_attached :cover_image

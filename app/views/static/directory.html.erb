@@ -13,7 +13,11 @@
           <div id="languages" class="filter-dropdown">
             <% @languages.each do |language| %>
               <div class="filter-cell">
-                <input type="checkbox" name="languages[]" value="<%= language.id %>" />
+                <% if params[:languages] && params[:languages].include?(language.id) %>
+                  <input type="checkbox" name="languages[]" value="<%= language.id %>" checked="checked" />
+                <% else %>
+                  <input type="checkbox" name="languages[]" value="<%= language.id %>" />
+                <% end %>
                 <span><%= language.name %></span>
               </div>
             <% end %>
@@ -33,7 +37,7 @@
           </div>
         </div>
 
-        <%= submit_tag('Filter') %>
+        <%= submit_tag('SEARCH') %>
       <% end %>
     </div>
   </div>
@@ -41,6 +45,7 @@
   <div id="directory-content" class="xl-col-4-5 lg-col-3-4 md-col-3-4 sm-col-1-1 xs-col-1-1">
     <div class="container">
       <%= render partial: 'tools/tool', collection: @tools, cached: true %>
+      <%= will_paginate @tools %>
     </div>
   </div>
 

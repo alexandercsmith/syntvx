@@ -7,25 +7,37 @@
 } // #static-directory
 
 #static-directory #directory-search {
-  background-color: $grey;
+  input[type="submit"] {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: $blue;
+    color: $white;
+    padding: 10px 0;
+    font-size: 1em;
+    margin: 10px 0 0;
+    border-radius: $radius;
+  } // input[type="submit"]
   @media screen and (min-width: $sm) {
     min-height: $min-content-height;
-    box-shadow: 1px 0 0 $light-grey;
   } // @media
 } // #static-directory #directory-search
 
 #directory-search .container .directory-search-input {
   input[type="text"] {
     outline: none;
-    border: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
     width: 100%;
-    height: 28px;
-    font-size: 0.9em;
+    height: 32px;
+    font-size: 1em;
     background-color: $white;
-    border-radius: $radius;
     text-indent: 5px;
     margin: 0;
     padding: 0;
+    box-shadow: 0 0 1px $dark-grey;
   } // input[type="text"]
 } // #directory-search .container .directory-search-input
 
@@ -33,12 +45,12 @@
   @include flex(row,wrap,space-between,center);
   margin: 10px 0 0;
   a {
-    color: $blue;
+    color: $black;
     font-size: 1.2em;
     text-decoration: none;
   } // a
   i {
-    color: $blue;
+    color: $black;
     margin: 0 5px 0 0;
   } // i
 } // #directory-search .container .directory-search-filters
@@ -46,6 +58,10 @@
 #directory-search .container .directory-search-filters .filter-dropdown {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;
+  input[type="checkbox"] {
+    height: 15px;
+    width: 15px;
+  } // input[type="checkbox"]
 } // #directory-search .container .directory-search-filters .filter-dropdown
 
 #directory-search .container .directory-search-filters .filter-dropdown .filter-cell {
@@ -54,6 +70,10 @@
   background-color: $eggshell;
   margin: 5px 0 0;
   border-radius: $radius;
+  padding: 5px 0;
+  input[type="checkbox"] {
+    margin: 0 5px 0 10px;
+  } // input[type="checkbox"]
 } // #directory-search .container .directory-search-filters .filter-dropdown .filter-cell
 
 #static-directory #directory-content {} // #static-directory #directory-content

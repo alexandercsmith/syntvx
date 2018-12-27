@@ -15,7 +15,7 @@ class Language < ApplicationRecord
   has_many :tools, through: :tool_languages
 
   # Attributes
-  attr_accessor :style
+  store_accessor :style
 
   # Scopes
   scope :active_approved, -> { is_active.is_approved }
@@ -42,6 +42,15 @@ class Language < ApplicationRecord
     else
       all_active
       .paginate(page: page, per_page: 25)
+    end
+  end
+
+  # Directory
+  def self.directory_filter(languages)
+    if languages
+      friendly.find(languages)
+    else
+      all_approved
     end
   end
 

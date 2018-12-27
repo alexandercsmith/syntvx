@@ -15,7 +15,7 @@ class Tag < ApplicationRecord
   has_many :articles, through: :article_tags
 
   # Attributes
-  attr_accessor :style
+  store_accessor :style
 
   # Scopes
   scope :active_approved, -> { is_active.is_approved }

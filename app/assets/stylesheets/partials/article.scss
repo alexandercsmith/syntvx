@@ -46,4 +46,9 @@ div.article-card p {
   color: $charcoal;
   margin: 10px 0;
   padding: 0;
+  a {
+    color: $charcoal;
+    text-decoration: none;
+    font-size: 1em;
+  } // a
 } // div.article-card p

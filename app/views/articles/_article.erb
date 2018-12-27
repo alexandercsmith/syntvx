@@ -12,6 +12,6 @@
       <span class="published"><%= article.published_date %></span>
     </div>
 
-    <p><%= article.description %></p>
+    <p><%= article.description %><%= link_to ' . . . read more', article_path(article) %></p>
   </div>
 <% end %>
