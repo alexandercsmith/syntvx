@@ -11,10 +11,12 @@
     <div class="bar3"></div>
   </div>
 
-  <div class="admin">
-    <%= link_to admins_path do %>
-      <%= fa_icon 'user-secret' %>
-      ADMIN
-    <% end %>
-  </div>
+  <% if current_admin %>
+    <div class="admin">
+      <%= link_to admins_path do %>
+        <%= fa_icon 'user-secret' %>
+        ADMIN
+      <% end %>
+    </div>
+  <% end %>
 </div>

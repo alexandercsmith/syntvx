@@ -1,5 +1,20 @@
 <div class="tool-card">
-  <%= link_to tool.name, tool_path(tool) %>
+  <div class="tool-info">
+    <%= link_to tool.name, tool_path(tool) %>
+    <p><%= tool.description %></p>
 
-  <%= link_to 'website', "#{tool.website}", target: '_blank' %>
+    <div class="tool-associations">
+      <% tool.languages.each do |language| %>
+        <span class="tag"><%= language.name %></span>
+      <% end %>
+
+      <% tool.categories.each do |category| %>
+        <span class="tag"><%= category.name %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "#{tool.website}", target: '_blank', class: 'link' do %>
+    <%= fa_icon 'external-link' %>
+  <% end %>
 </div>

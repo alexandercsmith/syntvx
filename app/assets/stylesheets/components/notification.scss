@@ -1,6 +1,7 @@
 // NOTIFICATION
 div#notification {
   width: 100%;
+  transition: $speed;
 } // div#notification
 
 div#notification #notice,

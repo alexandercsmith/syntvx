@@ -26,6 +26,8 @@ form.admin-search .admin-filter-options {
   @include flex(row,nowrap,flex-start,center);
   input[type="radio"] {
     margin: 0 5px 0 15px;
+    height: 15px;
+    width: 15px;
   } // input[type="checkbox"]
   input[type="radio"]:first-of-type {
     margin: 0 5px 0;
