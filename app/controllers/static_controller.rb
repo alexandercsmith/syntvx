@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+
   # /
   def index
     public_seo('Home', root_url)
@@ -6,6 +7,7 @@ class StaticController < ApplicationController
 
   # /directory
   def directory
+    @tools = Tool.all_published
     public_seo('Directory', directory_url)
   end
 
@@ -18,5 +20,5 @@ class StaticController < ApplicationController
     def set_tools
       @tools = Tool.all_featured
     end
-    
+
 end

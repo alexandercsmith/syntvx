@@ -1,0 +1,10 @@
+// DIRECTORY
+#static-directory {} // #static-directory
+
+#static-directory .container {
+  @include flex(row,wrap,flex-start,flex-start);
+} // #static-directory .container
+
+#static-directory .container #directory-search {
+
+} // #static-directory .container #directory-search

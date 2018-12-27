@@ -1,3 +1,25 @@
 <div id="<%= controller_name %>-<%= action_name %>">
+  <div class="container">
 
+    <div id="directory-search" class="xl-col-1-5 lg-col-1-5 md-col-1-4 sm-col-1-1 xs-col-1-1">
+      <%= form_tag(directory_path, method: :get) do %>
+        <div id="directory-search-input">
+          <%= text_field_tag :q, params[:q], placeholder: 'Search Directory...' %>
+        </div>
+
+        <div class="directory-search-filters">
+
+        </div>
+
+        <div class="directory-search-filters">
+
+        </div>
+      <% end %>
+    </div>
+
+    <div id="directory-content" class="xl-col-4-5 lg-col-4-5 md-col-3-4 sm-col-1-1 xs-col-1-1">
+      <%= render partial: 'tools/tool', collection: @tools, cached: true %>
+    </div>
+
+  </div>
 </div>
