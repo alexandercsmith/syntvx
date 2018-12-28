@@ -1,8 +1,8 @@
 // DIRECTORY
-#static-directory {} // #static-directory
-
 #static-directory {
   @include flex(row,wrap,flex-start,flex-start);
+  max-width: $md;
+  margin: 0 auto;
 } // #static-directory
 
 #static-directory #directory-search {
