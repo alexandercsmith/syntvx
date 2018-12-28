@@ -115,3 +115,13 @@
 } // #directory-search .container .directory-search-filters .filter-dropdown .filter-cell
 
 #static-directory #directory-content {} // #static-directory #directory-content
+
+#static-directory #directory-content .container #no-results {
+  @include flex(column,nowrap,center,center);
+  width: 100%;
+  box-shadow: 0 0 3px $dark-grey;
+  padding: 50px 0;
+  h1 {
+    font-weight: normal;
+  } // h1
+} // #static-directory #directory-content .container #no-results

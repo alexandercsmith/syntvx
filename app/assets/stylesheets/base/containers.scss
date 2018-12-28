@@ -1,5 +1,8 @@
 .container {
   margin: 10px;
+  @media screen and (max-width: $xs) {
+    margin: 10px 15px;
+  } // @media
 } // .container
 
 .web-container {

@@ -78,6 +78,7 @@ class Tool < ApplicationRecord
     Rails.cache.delete('Tool.active')
     Rails.cache.delete('Tool.published')
     Rails.cache.delete('Tool.featured')
+    Rails.cache.delete('Tool.recent')
     Rails.cache.delete("Tool.#{slug}")
   end
 
@@ -104,6 +105,13 @@ class Tool < ApplicationRecord
   def self.all_featured
     Rails.cache.fetch('Tool.featured', expires_in: 1.day) do
       active_featured.include_assoc.name_asc.to_a
+    end
+  end
+
+  # Tool.all_recent
+  def self.all_recent
+    Rails.cache.fetch('Tool.recent', expires_in: 1.day) do
+      active_published.include_assoc.published_desc.to_a
     end
   end
 

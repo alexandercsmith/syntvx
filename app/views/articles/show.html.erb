@@ -13,7 +13,7 @@
     </div>
 
     <div id="article-cover-image">
-      <%= image_tag @article.cover_image, alt: "#{@article.name} Image" %>
+      <%= image_tag @article.cover_image, alt: "#{@article.name} Image" if @article.cover_image.attached? %>
     </div>
 
     <div id="article-body">

@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   before_action :set_articles,   only: %i[index]
+  before_action :set_tools,      only: %i[index]
   before_action :set_languages,  only: %i[directory]
   before_action :set_categories, only: %i[directory]
 
@@ -23,6 +24,10 @@ class StaticController < ApplicationController
 
     def set_articles
       @articles = Article.all_featured
+    end
+
+    def set_tools
+      @tools = Tool.all_recent
     end
 
     def set_languages

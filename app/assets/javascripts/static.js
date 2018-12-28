@@ -35,6 +35,11 @@ function createNotification(status, text) {
   })
 }
 
+// INDEX
+function particles() {
+  particlesJS.load('particles', '/particles-js.json', function() { });
+}
+
 // DIRECTORY
 function toggleLanguages(x) {
   var languages = document.getElementById('languages');

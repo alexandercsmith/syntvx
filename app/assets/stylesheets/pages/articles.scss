@@ -58,6 +58,30 @@
   } // img
 } // #article-cover-image
 
+// ARTICLE SHOW - BODY
 #article-body {
   width: 100%;
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  } // h1, h2, h3, h4, h5, h6
+  a {
+    text-decoration: none;
+    color: $blue;
+  } // a
+  a:hover {
+    color: $red;
+  } // a:hover
+  p {} // p
 } // #article-body
+
+#article-body h1 {
+  width: 100%;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid $light-grey;
+} // #article-body h1
+#article-body h2 {} // #article-body h2
+#article-body h3 {} // #article-body h3
+#article-body h4 {} // #article-body h4
+#article-body h5 {} // #article-body h5
+#article-body h6 {} // #article-body h6

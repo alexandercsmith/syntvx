@@ -1,2 +1,25 @@
 <div id="<%= controller_name %>-<%= action_name %>">
+  <div class="container">
+
+    <div id="particles">
+      <div class="center">
+        <h1>S Y N T V X</h1>
+        <h2>Developer Resource Directory</h2>
+      </div>
+    </div>
+
+
+    <h1>Articles</h1>
+
+    <%= render partial: 'articles/article', collection: @articles, cached: true %>
+
+    <h1>Resources</h1>
+
+    <%= render partial: 'tools/tool', collection: @tools, cached: true %>
+
+  </div>
 </div>
+
+<script>
+  particles();
+</script>
