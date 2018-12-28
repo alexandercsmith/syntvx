@@ -62,7 +62,7 @@ class Article < ApplicationRecord
 
   # Article.all_active
   def self.all_active
-    Rails.cache.fetch('Article.active', expires_in: 1.day) do
+    Rails.cache.fetch('Article.active', expires_in: 1.hour) do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -88,7 +88,7 @@ class Article < ApplicationRecord
 
   # Article.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Article.#{id}", expires_in: 1.day) do
+    Rails.cache.fetch("Article.#{id}", expires_in: 1.hour) do
       friendly.include_assoc.find(id)
     end
   end

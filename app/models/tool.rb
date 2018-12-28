@@ -80,7 +80,7 @@ class Tool < ApplicationRecord
 
   # Tool.all_active
   def self.all_active
-    Rails.cache.fetch('Tool.active', expires_in: 1.day) do
+    Rails.cache.fetch('Tool.active', expires_in: 1.hour) do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -99,7 +99,7 @@ class Tool < ApplicationRecord
 
   # Tool.all_featured
   def self.all_featured
-    Rails.cache.fetch('Tool.featured', expires_in: 1.day) do
+    Rails.cache.fetch('Tool.featured', expires_in: 1.hour) do
       active_featured.include_assoc.name_asc.to_a
     end
   end
@@ -113,7 +113,7 @@ class Tool < ApplicationRecord
 
   # Tool.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Tool.#{id}", expires_in: 1.day) do
+    Rails.cache.fetch("Tool.#{id}", expires_in: 1.hour) do
       friendly.include_assoc.find(id)
     end
   end
