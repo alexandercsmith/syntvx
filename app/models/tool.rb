@@ -18,7 +18,7 @@ class Tool < ApplicationRecord
   has_many :categories, through: :tool_categories
 
   # Attributes
-  store_accessor :links, :website
+  store_accessor :links, :website, :github
   store_accessor :style
 
   # Scopes

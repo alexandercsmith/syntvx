@@ -1,7 +1,7 @@
 <div class="tool-card">
   <div class="tool-info">
     <%= link_to tool.name, tool_path(tool) %>
-    <p><%= tool.description %></p>
+    <p><%= tool.description.truncate(250) %></p>
 
     <div class="tool-associations">
       <% tool.languages.each do |language| %>
@@ -14,7 +14,19 @@
     </div>
   </div>
 
-  <%= link_to "#{tool.website}", target: '_blank', class: 'link' do %>
-    <%= fa_icon 'external-link' %>
-  <% end %>
+  <div class="tool-links">
+    <% if tool.website.presence %>
+      <%= link_to "#{tool.website}", target: '_blank' do %>
+        <%= fa_icon 'external-link' %>
+        <span>WEBSITE</span>
+      <% end %>
+    <% end %>
+
+    <% if tool.github.presence %>
+      <%= link_to "#{tool.github}", target: '_blank' do %>
+        <%= fa_icon 'github' %>
+        <span>GITHUB</span>
+      <% end %>
+    <% end %>
+  </div>
 </div>

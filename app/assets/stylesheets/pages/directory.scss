@@ -31,7 +31,7 @@
     border-bottom: none;
     border-left: none;
     width: 100%;
-    height: 32px;
+    height: 34px;
     font-size: 0.9em;
     background-color: $white;
     text-indent: 5px;
@@ -41,29 +41,65 @@
   } // input[type="text"]
 } // #directory-search .container .directory-search-input
 
+#directory-search .container .directory-search-selected .filter-cell {
+  @include flex(row,nowrap,flex-start,center);
+  width: 100%;
+  background-color: $eggshell;
+  margin: 5px 0 0;
+  border-radius: $radius;
+  padding: 8px 0;
+  font-size: 0.9em;
+  input[type="checkbox"] {
+    margin: 0 5px 0 10px;
+  } // input[type="checkbox"]
+} // #directory-search .container .directory-search-selected .filter-cell
+
 #directory-search .container .directory-search-filters {
   @include flex(row,wrap,space-between,center);
   margin: 10px 0 0;
   a {
-    color: $black;
-    font-size: 1.2em;
+    @include flex(row,nowrap,space-between,center);
+    width: 100%;
     text-decoration: none;
     padding: 5px 0;
+    text-indent: 2px;
   } // a
-  i {
+  a .link-text {
+    i {
+      font-size: 0.9em;
+      color: $black;
+    } // i
+    span {
+      font-size: 1.1em;
+      color: $black;
+    } // span
+  } // a .link-text
+  a i {
     color: $black;
-    margin: 0 5px 0 0;
-  } // i
+    transition: $speed;
+    margin: 0 2px 0 0;
+  } // a i
 } // #directory-search .container .directory-search-filters
 
+#directory-search .container .directory-search-filters a.active {
+  i.fa-caret-left {
+    transform: rotate(-90deg);
+  } // i.fa-caret-left
+} // #directory-search .container .directory-search-filters a.active
+
 #directory-search .container .directory-search-filters .filter-dropdown {
-  @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;
+  display: none;
+  transition: $speed;
   input[type="checkbox"] {
     height: 15px;
     width: 15px;
   } // input[type="checkbox"]
 } // #directory-search .container .directory-search-filters .filter-dropdown
+
+#directory-search .container .directory-search-filters .filter-dropdown.active {
+  @include flex(column,nowrap,flex-start,flex-start);
+} // #directory-search .container .directory-search-filters .filter-dropdown.active
 
 #directory-search .container .directory-search-filters .filter-dropdown .filter-cell {
   @include flex(row,nowrap,flex-start,center);

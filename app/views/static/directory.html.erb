@@ -7,32 +7,60 @@
           <%= text_field_tag :q, params[:q], placeholder: 'Search Directory...' %>
         </div>
 
-        <div class="directory-search-filters">
-          <%= link_to 'Languages', 'javascript:void(0)', onclick: 'toggleLanguages()' %>
-          <%= fa_icon 'caret-left' %>
-          <div id="languages" class="filter-dropdown">
-            <% @languages.each do |language| %>
+        <div class="directory-search-selected">
+          <% if params[:languages].presence %>
+            <% @s_languages.each do |language| %>
               <div class="filter-cell">
-                <% if params[:languages] && params[:languages].include?(language.id) %>
-                  <input type="checkbox" name="languages[]" value="<%= language.id %>" checked="checked" />
-                <% else %>
-                  <input type="checkbox" name="languages[]" value="<%= language.id %>" />
-                <% end %>
+                <input type="checkbox" name="languages[]" value="<%= language.id %>" checked="checked" />
                 <span><%= language.name %></span>
               </div>
+            <% end %>
+          <% end %>
+
+          <% if params[:categories].presence %>
+            <% @s_categories.each do |category| %>
+              <div class="filter-cell">
+                <input type="checkbox" name="categories[]" value="<%= category.id %>" checked="checked" />
+                <span><%= category.name %></span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="directory-search-filters">
+          <%= link_to 'javascript:void(0)', onclick: 'toggleLanguages(this)' do %>
+            <div class="link-text">
+              <span>Languages</span>
+            </div>
+            <%= fa_icon 'caret-left' %>
+          <% end %>
+          <div id="languages" class="filter-dropdown">
+            <% @languages.each do |language| %>
+              <% unless params[:languages].presence && @s_languages.include?(language) %>
+                <div class="filter-cell">
+                  <input type="checkbox" name="languages[]" value="<%= language.id %>" />
+                  <span><%= language.name %></span>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
 
         <div class="directory-search-filters">
-          <%= link_to 'Categories', 'javascript:void(0)', onclick: 'toggleCategories()' %>
-          <%= fa_icon 'caret-left' %>
+          <%= link_to 'javascript:void(0)', onclick: 'toggleCategories(this)' do %>
+            <div class="link-text">
+              <span>Categories</span>
+            </div>
+            <%= fa_icon 'caret-left' %>
+          <% end %>
           <div id="categories" class="filter-dropdown">
             <% @categories.each do |category| %>
-              <div class="filter-cell">
-                <input type="checkbox" name="categories[]" value="<%= category.id %>" />
-                <span><%= category.name %></span>
-              </div>
+              <% unless params[:categories].presence && @s_categories.include?(category) %>
+                <div class="filter-cell">
+                  <input type="checkbox" name="categories[]" value="<%= category.id %>" />
+                  <span><%= category.name %></span>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -44,8 +72,14 @@
 
   <div id="directory-content" class="xl-col-4-5 lg-col-3-4 md-col-3-4 sm-col-1-1 xs-col-1-1">
     <div class="container">
-      <%= render partial: 'tools/tool', collection: @tools, cached: true %>
-      <%= will_paginate @tools %>
+      <% if @tools.presence %>
+        <%= render partial: 'tools/tool', collection: @tools, cached: true %>
+        <%= will_paginate @tools %>
+      <% else %>
+        <div id="no-results">
+          <h1>No Results for your Search</h1>
+        </div>
+      <% end %>
     </div>
   </div>
 

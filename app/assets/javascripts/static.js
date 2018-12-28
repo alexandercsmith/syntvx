@@ -34,3 +34,16 @@ function createNotification(status, text) {
     closeNotification();
   })
 }
+
+// DIRECTORY
+function toggleLanguages(x) {
+  var languages = document.getElementById('languages');
+  languages.classList.toggle('active');
+  x.classList.toggle('active');
+}
+
+function toggleCategories(x) {
+  var categories = document.getElementById('categories');
+  categories.classList.toggle('active');
+  x.classList.toggle('active');
+}

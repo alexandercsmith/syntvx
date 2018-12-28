@@ -3,24 +3,9 @@ div.tool-card {
   width: 100%;
   padding: 10px 0;
   border-bottom: 1px solid $grey;
-  a.link {
-    @include flex(column,nowrap,center,center);
-    text-decoration: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: $blue;
-    box-shadow: 1px 0 2px lighten($blue,10%);
-  } // a.link
-  a.link i {
-    color: $white;
-    font-size: 1.2em;
-    padding: 3px 0 0 2px;
-  } // a.link i
-  a.link:hover {
-    box-shadow: none;
-    background-color: lighten($blue,10%);
-  } // a.link:hover
+  @media screen and (max-width: $xs) {
+    flex-wrap: wrap;
+  } // @media
 } // div.tool-card
 
 div.tool-card .tool-info {
@@ -42,6 +27,9 @@ div.tool-card .tool-info {
     margin: 10px 0;
     padding: 0 10px;
   }
+  @media screen and (max-width: $xs) {
+    width: 100%;
+  } // @media
 } // div.tool-card .tool-info
 
 div.tool-card .tool-info .tool-associations {
@@ -54,3 +42,50 @@ div.tool-card .tool-info .tool-associations {
    margin: 0 10px 0 0;
  } // span.tag
 } // div.tool-card .tool-info .tool-associations
+
+div.tool-card .tool-links {
+  @include flex(row,nowrap,center,center);
+  @media screen and (max-width: $xs) {
+    @include flex(row,nowrap,flex-start,center);
+    width: 100%;
+    margin: 15px 0;
+  } // @media
+  a {
+    @include flex(column,nowrap,center,center);
+    text-decoration: none;
+    margin: 0 10px;
+    @media screen and (max-width: $xs) {
+      @include flex(row,nowrap,center,center);
+      width: 50%;
+      margin: 0;
+      i {
+        margin: 0 5px 0 0;
+      } // i
+    } // @media
+  } // a
+  a i {
+    @include flex(column,nowrap,center,center);
+    color: $white;
+    font-size: 1em;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: $blue;
+    box-shadow: 0 0 2px lighten($blue,10%);
+  } // a i
+  a i.fa-github {
+    font-size: 1.4em;
+  } // a i.fa-github
+  a:hover i {
+    box-shadow: none;
+    background-color: lighten($blue,10%);
+  } // a:hover i
+  a span {
+    font-size: 0.7em;
+    color: $black;
+    margin: 5px 0 0 0;
+    @media screen and (max-width: $xs) {
+      margin: 0;
+    } // @media
+  } // a span
+} // div.tool-card .tool-links

@@ -82,7 +82,7 @@ class ToolsController < ApplicationController
     def tool_params
       params.require(:tool).permit(:name, :slug, :description,
                                    :published, :published_at, :featured, :deleted,
-                                   :links, :website, 
+                                   :links, :website, :github,
                                    :style,
                                    :language_ids => [],
                                    :category_ids => [])
