@@ -16,12 +16,21 @@
     font-size: 1em;
     margin: 10px 0 0;
     border-radius: $radius;
+    transition: $speed;
     cursor: pointer;
   } // input[type="submit"]
   input[type="submit"]:hover {
     background-color: lighten($blue,10%);
   } // input[type="submit"]:hover
 } // #static-directory #directory-search
+
+#directory-search .container form {
+  @media screen and (max-width: $sm) {
+    padding: 10px;
+    background-color: $light-grey;
+    border-radius: $radius;
+  } // @media
+} // #directory-search .container form
 
 #directory-search .container .directory-search-input {
   input[type="text"] {

@@ -9,11 +9,11 @@
     </div>
 
 
-    <h1>Articles</h1>
+    <%= link_to 'ARTICLES', blog_path, class: 'title' %>
 
     <%= render partial: 'articles/article', collection: @articles, cached: true %>
 
-    <h1>Resources</h1>
+    <%= link_to 'RECENT', directory_path, class: 'title' %>
 
     <%= render partial: 'tools/tool', collection: @tools, cached: true %>
 

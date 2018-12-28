@@ -4,9 +4,14 @@
   margin: 0 auto;
 } // #static-index
 
+#static-index .container {
+  @include flex(column,nowrap,flex-start,flex-start);
+} // #static-index .container
+
 #static-index .container #particles {
   position: relative;
   height: 300px;
+  width: 100%;
 } // #static-index .container #particles
 
 #static-index .container #particles .center {
@@ -17,7 +22,7 @@
   text-align: center;
   width: 100%;
   h1 {
-    font-size: 3em;
+    font-size: 4em;
   } // h1
   h2 {
     font-weight: normal;
@@ -25,10 +30,24 @@
   } // h2
   @media screen and (max-width: $xs) {
     h1 {
-      font-size: 2.4em;
+      font-size: 3.5em;
     } // h1
     h2 {
-      font-size: 1em;
+      font-size: 1.2em;
     } // h2
   }
 } // #static-index .container #particles .center
+
+#static-index .container a.title {
+  width: 100%;
+  text-decoration: none;
+  font-size: 2.2em;
+  font-weight: normal;
+  color: $blue;
+  border-bottom: 1px solid $light-grey;
+  padding: 50px 0 10px;
+  margin: 10px 0;
+  &:hover {
+    color: $charcoal;
+  } // :hover
+} // #static-index .container a.title

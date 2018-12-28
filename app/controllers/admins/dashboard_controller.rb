@@ -57,6 +57,7 @@ class Admins::DashboardController < Admins::AdminAppController
       Rails.cache.delete('Tool.active')
       Rails.cache.delete('Tool.published')
       Rails.cache.delete('Tool.featured')
+      Rails.cache.delete('Tool.recent')
     end
 
 end

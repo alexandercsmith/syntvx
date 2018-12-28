@@ -51,7 +51,8 @@ Rails.application.routes.draw do
   match '/tags/:id/delete'  => 'tags#delete',  via: %i[put patch], as: :delete_tag
 
   # TOOLS
-  resources :tools, except: %i[index]
+  resources :tools, except: %i[index show]
+  get   '/resource/:id'      => 'tools#show', as: :resource
   match '/tools/:id/publish' => 'tools#publish', via: %i[put patch], as: :publish_tool
   match '/tools/:id/feature' => 'tools#feature', via: %i[put patch], as: :feature_tool
   match '/tools/:id/delete'  => 'tools#delete',  via: %i[put patch], as: :delete_tool

@@ -1,6 +1,6 @@
 <div class="tool-card">
   <div class="tool-info">
-    <%= link_to tool.name, tool_path(tool) %>
+    <%= link_to tool.name, resource_path(tool) %>
     <p><%= tool.description.truncate(250) %></p>
 
     <div class="tool-associations">

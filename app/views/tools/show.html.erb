@@ -1,3 +1,45 @@
 <div id="<%= controller_name %>-<%= action_name %>">
+  <div class="container">
 
+    <div class="tool-head col-1-1">
+      <div class="tool-info xl-col-10-12 lg-col-10-12 md-col-10-12 sm-col-3-4 xs-col-1-1">
+        <div class="tool-title">
+          <h1><%= @tool.name %></h1>
+        </div>
+
+        <div class="tool-languages">
+          <% @tool.languages.each do |language| %>
+            <span><%= language.name %></span>
+          <% end %>
+        </div>
+
+        <div class="tool-categories">
+          <% @tool.categories.each do |category| %>
+            <span><%= category.name %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tool-links xl-col-1-7 lg-col-1-7 md-col-1-7 sm-col-1-4 xs-col-1-1">
+        <% if @tool.website.presence %>
+          <%= link_to "#{@tool.website}", target: '_blank' do %>
+            <%= fa_icon 'external-link' %>
+            <span>WEBSITE</span>
+          <% end %>
+        <% end %>
+
+        <% if @tool.github.presence %>
+          <%= link_to "#{@tool.github}", target: '_blank' do %>
+            <%= fa_icon 'github' %>
+            <span>GITHUB</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tool-description xl-col-3-4 lg-col-3-4 md-col-1-2 sm-col-1-1 xs-col-1-1">
+      <p><%= @tool.description %></p>
+    </div>
+
+  </div>
 </div>

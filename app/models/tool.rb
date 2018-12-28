@@ -51,8 +51,8 @@ class Tool < ApplicationRecord
   end
 
   # Directory
-  def self.directory_search(term, languages, categories, page)
-    if term
+  def self.directory_search(query, term, languages, categories, page)
+    if query
       active_published
       .joins_assoc
       .where('tools.name ilike ?', "%#{term}%")
@@ -61,11 +61,7 @@ class Tool < ApplicationRecord
       .name_asc
       .paginate(per_page: 20, page: page)
     else
-      active_published
-      .joins_assoc
-      .where(tool_languages: { language: languages },
-             tool_categories: { category: categories })
-      .name_asc
+      all_published
       .paginate(per_page: 20, page: page)
     end
   end
@@ -111,7 +107,7 @@ class Tool < ApplicationRecord
   # Tool.all_recent
   def self.all_recent
     Rails.cache.fetch('Tool.recent', expires_in: 1.day) do
-      active_published.include_assoc.published_desc.to_a
+      active_published.include_assoc.published_desc.limit(10).to_a
     end
   end
 
