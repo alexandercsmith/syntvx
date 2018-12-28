@@ -65,7 +65,7 @@ Check Notes for Deployment Settings
 $ rails notes
 ```
 
-Add Changes to Git and Push to Master
+Add Changes to Git and Push to Github Master
 
 ```
 $ git add .
@@ -73,4 +73,46 @@ $ git add .
 $ git commit -m "{message}"
 
 $ git push -u origin master
+```
+
+Push Changes & Deploy to Heroku
+
+```
+$ git push heroku master
+```
+
+Migrate Database
+
+```
+$ heroku run rails db:migrate
+```
+
+Run Console
+
+```
+$ heroku run rails console
+```
+
+Run Bash
+
+```
+$ heroku run bash
+```
+
+Check Dynos
+
+```
+$ heroku ps
+```
+
+View Logs
+
+```
+$ heroku logs --tail
+```
+
+View Database Details
+
+```
+$ heroku pg
 ```

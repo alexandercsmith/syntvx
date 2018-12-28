@@ -84,6 +84,7 @@ GEM
       nokogiri (~> 1.8)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    dalli (2.7.9)
     devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -244,6 +245,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  dalli
   devise
   font-awesome-rails
   friendly_id (~> 5.2.4)

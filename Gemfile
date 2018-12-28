@@ -7,6 +7,7 @@ gem 'awesome_print'
 gem "aws-sdk-s3", require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'dalli'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'friendly_id', '~> 5.2.4'
