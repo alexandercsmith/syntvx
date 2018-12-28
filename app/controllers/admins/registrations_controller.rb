@@ -6,9 +6,9 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   layout 'admin'
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    redirect_to root_path
+  end
 
   # POST /resource
   # def create
