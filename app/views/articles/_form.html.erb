@@ -64,6 +64,10 @@
     </div>
     <div class="field-input xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
       <%= form.file_field :cover_image %>
+      <% if @article.cover_image.attached? %>
+        <p class="col-1-1">Current Image</p>
+        <%= image_tag @article.cover_image %>
+      <% end %>
     </div>
   </div>
 
