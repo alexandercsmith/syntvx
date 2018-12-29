@@ -33,11 +33,11 @@ module Publishing
     end
 
     def published_date
-      published_at.strftime('%B %e, %Y')
+      published ? published_at.strftime('%B %e, %Y') : 'DRAFT'
     end
 
     def published_time
-      published_at.strftime('%I:%M %p')
+      published ? published_at.strftime('%I:%M %p') : 'DRAFT'
     end
   end
   class_methods do
