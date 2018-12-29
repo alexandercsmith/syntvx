@@ -47,7 +47,11 @@
     <div class="field-input xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
       <% @tags.each do |tag| %>
         <div class="field-checkbox">
-          <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>"/>
+          <% if @article.tags.include?(tag) %>
+            <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>" checked="checked"/>
+          <% else %>
+            <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>"/>
+          <% end %>
           <span><%= tag.name %></span>
         </div>
       <% end %>
