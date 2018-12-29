@@ -1,3 +1,16 @@
+# Language
+# id
+# name        :string :uniq
+# slug        :string :uniq
+# description :string
+# approved    :boolean
+# featured    :boolean
+# deleted     :boolean
+# style       :jsonb => {}
+# tools       :association => ToolLanguages
+# created_at  :datetime
+# updated_at  :datetime
+
 class Language < ApplicationRecord
   # Modules
   include Approvals
@@ -5,6 +18,10 @@ class Language < ApplicationRecord
   include Features
   include Ordering
   include Timing
+
+  # Validations
+  validates :name, presence: true, length: { minimum: 1 }
+  validates :description, presence: true, length: { minimum: 2 }
 
   # Slug
   extend FriendlyId
@@ -14,7 +31,7 @@ class Language < ApplicationRecord
   has_many :tool_languages, dependent: :destroy
   has_many :tools, through: :tool_languages
 
-  # Attributes
+  # Attributes => :jsonb
   store_accessor :style
 
   # Scopes

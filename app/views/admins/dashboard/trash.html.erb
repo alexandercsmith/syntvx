@@ -4,27 +4,28 @@
     <h1>Trash</h1>
   </div>
 
-  <div class="admin-panel">
+  <div class="admin-panel trash">
     <h2>Articles</h2>
-    <%= render partial: 'admins/articles/article', collection: @articles %>
   </div>
-  
-  <div class="admin-panel">
+
+  <%= render partial: 'admins/articles/article', collection: @articles %>
+
+  <div class="admin-panel trash">
     <h2>Categories</h2>
     <%= render partial: 'admins/categories/category', collection: @categories %>
   </div>
-  
-  <div class="admin-panel">
+
+  <div class="admin-panel trash">
     <h2>Languages</h2>
     <%= render partial: 'admins/languages/language', collection: @languages %>
   </div>
-  
-  <div class="admin-panel">
+
+  <div class="admin-panel trash">
     <h2>Tags</h2>
     <%= render partial: 'admins/tags/tag', collection: @tags %>
   </div>
-  
-  <div class="admin-panel">
+
+  <div class="admin-panel trash">
     <h2>Tools</h2>
     <%= render partial: 'admins/tools/tool', collection: @tools %>
   </div>

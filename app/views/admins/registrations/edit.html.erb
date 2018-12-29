@@ -7,6 +7,11 @@
     <%= devise_error_messages! %>
 
     <div class="admin-panel">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, placeholder: 'Name' %>
+    </div>
+
+    <div class="admin-panel">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>

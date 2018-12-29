@@ -13,30 +13,22 @@ A Developer Resource Directory Project.
 
 ## Development
 
-Start Development Environment
-
-> If First Development Session: Create and Migrate Database
-
-* Install Dependencies
-* Activate Development Cache
-* Start Server
+Install Dependencies & Database
 
 ```
 $ bundle install
 
-$ rails dev:cache
-
-$ rails server
-```
-
-Create and Migrate Database
-
-> If First Development Session
-
-```
 $ rails db:create
 
 $ rails db:migrate
+```
+
+Initiate Server & Cache
+
+```
+$ rails dev:cache
+
+$ rails server
 ```
 
 Console Commands
@@ -57,62 +49,50 @@ $ rails notes
 
 ## Deployment
 
-> Run Commands before Deployment
-
-Check Notes for Deployment Settings
+Prep App Deployment
 
 ```
+# Check Notes for Config Points
 $ rails notes
-```
 
-Add Changes to Git and Push to Github Master
-
-```
+# Stage Git
 $ git add .
-
 $ git commit -m "{message}"
+```
 
+Push to Github Repository
+
+```
 $ git push -u origin master
 ```
 
-Push Changes & Deploy to Heroku
+Deploy App to Heroku
 
 ```
 $ git push heroku master
 ```
 
-Migrate Database
+Migrate Database if Schema Updates
 
 ```
 $ heroku run rails db:migrate
 ```
 
-Run Console
+## Server Operations
 
 ```
+# Console
 $ heroku run rails console
-```
 
-Run Bash
-
-```
+# Bash
 $ heroku run bash
-```
 
-Check Dynos
-
-```
+# Dynos
 $ heroku ps
-```
 
-View Logs
-
-```
-$ heroku logs --tail
-```
-
-View Database Details
-
-```
+# Database
 $ heroku pg
+
+# Logs
+$ heroku logs --tail
 ```

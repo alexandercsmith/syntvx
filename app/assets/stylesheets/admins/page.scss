@@ -50,6 +50,10 @@ div.admin-panel {
   } // h2
 } // div.admin-panel
 
+div.admin-panel.trash {
+  margin: 15px 0 5px;
+} // div.admin-panel.trash
+
 div.admin-items {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;

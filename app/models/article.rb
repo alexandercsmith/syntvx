@@ -1,3 +1,19 @@
+# Article
+# id
+# name         :string :uniq
+# slug         :string :uniq
+# description  :string
+# body         :text
+# published    :boolean
+# published_at :datetime
+# featured     :boolean
+# deleted      :boolean
+# style        :jsonb => {}
+# cover_image  :attachement
+# tags         :association => ArticleTags
+# created_at  :datetime
+# updated_at  :datetime
+
 class Article < ApplicationRecord
   # Modules
   include Publishing
@@ -5,6 +21,10 @@ class Article < ApplicationRecord
   include Features
   include Ordering
   include Timing
+
+  # Validations
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :description, presence: true, length: { minimum: 2 }
 
   # Slug
   extend FriendlyId
@@ -14,7 +34,7 @@ class Article < ApplicationRecord
   has_many :article_tags, dependent: :destroy
   has_many :tags, through: :article_tags
 
-  # Attributes
+  # Attributes => :jsonb
   store_accessor :style
 
   # Images

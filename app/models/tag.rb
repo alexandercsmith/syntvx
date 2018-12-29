@@ -1,3 +1,16 @@
+# Tag
+# id
+# name        :string :uniq
+# slug        :string :uniq
+# description :string
+# approved    :boolean
+# featured    :boolean
+# deleted     :boolean
+# style       :jsonb => {}
+# articles    :association => ArticleTags
+# created_at  :datetime
+# updated_at  :datetime
+
 class Tag < ApplicationRecord
   # Modules
   include Approvals
@@ -5,6 +18,10 @@ class Tag < ApplicationRecord
   include Features
   include Ordering
   include Timing
+
+  # Validations
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :description, presence: true, length: { minimum: 2 }
 
   # Slug
   extend FriendlyId
@@ -14,7 +31,7 @@ class Tag < ApplicationRecord
   has_many :article_tags, dependent: :destroy
   has_many :articles, through: :article_tags
 
-  # Attributes
+  # Attributes => :jsonb
   store_accessor :style
 
   # Scopes

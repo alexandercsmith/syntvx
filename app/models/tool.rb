@@ -1,3 +1,19 @@
+# Tool
+# id
+# name         :string :uniq
+# slug         :string :uniq
+# description  :string
+# published    :boolean
+# published_at :datetime
+# featured     :boolean
+# deleted      :boolean
+# links        :jsonb => { :website, :github }
+# style        :jsonb => {}
+# languages    :association => ToolLanguages
+# categories   :association => ToolCategories
+# created_at  :datetime
+# updated_at  :datetime
+
 class Tool < ApplicationRecord
   # Modules
   include Publishing
@@ -5,6 +21,10 @@ class Tool < ApplicationRecord
   include Features
   include Ordering
   include Timing
+
+  # Validations
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :description, presence: true, length: { minimum: 2 }
 
   # Slug
   extend FriendlyId
@@ -17,7 +37,7 @@ class Tool < ApplicationRecord
   has_many :tool_categories, dependent: :destroy
   has_many :categories, through: :tool_categories
 
-  # Attributes
+  # Attributes => :jsonb
   store_accessor :links, :website, :github
   store_accessor :style
 
