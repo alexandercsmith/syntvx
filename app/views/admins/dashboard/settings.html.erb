@@ -34,8 +34,9 @@
 
   <% @api_keys.each do |key| %>
     <div class="api-key">
-      <%= key.name %>
-      <%= key.token %>
+      <p><%= key.name %></p>
+      <span class="key"><%= key.token %></span>
+      <%= link_to 'DELETE', admins_destroy_api_key_path(key), method: :delete %>
     </div>
   <% end %>
 </div>

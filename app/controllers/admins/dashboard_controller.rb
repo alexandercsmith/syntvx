@@ -22,6 +22,13 @@ class Admins::DashboardController < Admins::AdminAppController
     end
   end
 
+  # DELETE /admins/api_key/:id
+  def destroy_api_key
+    @api_key = ApiKey.find(params[:id])
+    @api_key.destroy
+    redirect_to admins_settings_path, notice: 'API Key destroyed.'
+  end
+
   # GET /trash
   def trash
     @articles = Article.is_inactive

@@ -54,6 +54,49 @@ div.admin-panel.trash {
   margin: 15px 0 5px;
 } // div.admin-panel.trash
 
+div.admin-panel-form {
+  @include flex(row,wrap,flex-start,flex-start);
+  width: 100%;
+  background-color: $eggshell;
+  form {
+    width: 100%;
+    margin: 10px;
+  } // form
+  form label {
+    margin: 0 0 15px;
+  } // form label
+  form input[type="text"] {
+    @include input-text();
+    box-shadow: 0 0 1px $grey;
+  } // form input[type="text"]
+} // div.admin-panel-form
+
+div.api-key {
+  @include flex(row,nowrap,space-between,center);
+  width: 100%;
+  background-color: $eggshell;
+  margin: 10px 0;
+  padding: 5px 0;
+  p {
+    margin: 0 0 0 10px;
+    padding: 0;
+  } // p
+  a {
+    text-decoration: none;
+    padding: 4px 7px;
+    margin: 0 10px 0 0;
+    background-color: $red;
+    color: $white;
+    border-radius: $radius;
+  } // a
+  a:hover {
+    background-color: darken($red,5%);
+  } // a:hover
+  span.key {
+    display: none;
+  } // span.key
+} // div.api-key
+
 div.admin-items {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;
