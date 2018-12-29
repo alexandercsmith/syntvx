@@ -15,7 +15,7 @@
     <div class="admin">
       <%= link_to admins_path do %>
         <%= fa_icon 'user-secret' %>
-        ADMIN
+        <%= current_admin.get_name %>
       <% end %>
     </div>
   <% end %>
