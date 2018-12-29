@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admins::SessionsController < Devise::SessionsController
+  include AuthenticateToken
+  before_action :restrict_access, only: [:new]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

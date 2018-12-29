@@ -7,7 +7,19 @@ class Admins::DashboardController < Admins::AdminAppController
 
   # GET /admins/settings
   def settings
+    @api_keys = ApiKey.all
+    @api_key = ApiKey.new
     private_seo('Settings')
+  end
+
+  # POST /admins/api_key
+  def create_api_key
+    @api_key = ApiKey.new(name: params[:name])
+    if @api_key.save
+      redirect_to admins_settings_path, notice: 'API Key created.'
+    else
+      redirect_to admins_settings_path, notice: 'Error creating API Key.'
+    end
   end
 
   # GET /trash

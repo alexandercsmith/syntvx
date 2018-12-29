@@ -19,4 +19,23 @@
       <%= link_to 'Trash', admins_trash_path %>
     </div>
   </div>
+
+  <div class="admin-panel">
+    <h2>API Keys</h2>
+  </div>
+
+  <div class="admin-panel-form">
+    <%= form_tag(admins_api_key_path, method: :post) do %>
+      <label>API Key Name</label>
+      <%= text_field_tag :name %>
+      <%= submit_tag 'Create' %>
+    <% end %>
+  </div>
+
+  <% @api_keys.each do |key| %>
+    <div class="api-key">
+      <%= key.name %>
+      <%= key.token %>
+    </div>
+  <% end %>
 </div>

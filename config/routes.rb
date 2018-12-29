@@ -12,16 +12,17 @@ Rails.application.routes.draw do
   }
   authenticate :admin do
     namespace :admins do
-      get '/'           => 'dashboard#index'
-      get '/settings'   => 'dashboard#settings'
-      get '/trash'      => 'dashboard#trash'
-      get '/cache'      => 'dashboard#cache_clear',          as: :cache_clear
-      get '/exp_cache'  => 'dashboard#explicit_cache_clear', as: :explicit_cache_clear
-      get '/articles'   => 'articles#index'
-      get '/categories' => 'categories#index'
-      get '/languages'  => 'languages#index'
-      get '/tags'       => 'tags#index'
-      get '/tools'      => 'tools#index'
+      get  '/'           => 'dashboard#index'
+      get  '/settings'   => 'dashboard#settings'
+      post '/api_key'    => 'dashboard#create_api_key',       as: :api_key
+      get  '/trash'      => 'dashboard#trash'
+      get  '/cache'      => 'dashboard#cache_clear',          as: :cache_clear
+      get  '/exp_cache'  => 'dashboard#explicit_cache_clear', as: :explicit_cache_clear
+      get  '/articles'   => 'articles#index'
+      get  '/categories' => 'categories#index'
+      get  '/languages'  => 'languages#index'
+      get  '/tags'       => 'tags#index'
+      get  '/tools'      => 'tools#index'
     end
   end
 
