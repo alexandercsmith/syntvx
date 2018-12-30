@@ -2,14 +2,16 @@
 
 Created by: Alexander Smith
 
-
 A Developer Resource Directory Project.
 
-## Details
+## Specs & Services
 
 * Rails 5.2.2
 * Ruby 2.5.1
 * PostgreSQL
+* Heroku
+* Google Analytics
+* Google AdSense
 
 ## Development
 
