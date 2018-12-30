@@ -1,5 +1,5 @@
 class Admins::LanguagesController < Admins::AdminAppController
-  before_action :set_language, only: %i[info]
+  before_action :set_language, only: %i[info edit]
 
   # GET /admins/langauges
   def index
@@ -9,20 +9,31 @@ class Admins::LanguagesController < Admins::AdminAppController
 
   # GET /admins/languages/:id
   def info
-    respond_to :js
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # GET /admins/languages/new
+  def new
+    @language = Language.new
+  end
+
+  # GET /admins/languages/:id/edit
+  def edit
   end
 
   private
 
-    def set_language
-      @language = Language.friendly.include_assoc.find(params[:id])
-    end
+  def set_language
+    @language = Language.friendly.include_assoc.find(params[:id])
+  end
 
-    def admin_languages_responder(notice)
-      respond_to do |format|
-        format.html { redirect_to admins_languages_path }
-        format.js
-      end
+  def admin_languages_responder(notice)
+    respond_to do |format|
+      format.html { redirect_to admins_languages_path }
+      format.js
     end
+  end
 
 end

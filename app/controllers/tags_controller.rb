@@ -1,17 +1,6 @@
 class TagsController < ApplicationController
-  before_action :set_tag, except: %i[new create]
+  before_action :set_tag, except: %i[create]
   before_action :authenticate_admin!
-
-  # GET /tags/new
-  def new
-    @tag = Tag.new
-    private_seo('New Tag')
-  end
-
-  # GET /tags/:id/edit
-  def edit
-    private_seo('Edit Tag')
-  end
 
   # POST /tags
   def create
@@ -59,24 +48,24 @@ class TagsController < ApplicationController
 
   private
 
-    def set_tag
-      @tag = Tag.friendly.include_assoc.find(params[:id])
-    end
+  def set_tag
+    @tag = Tag.friendly.include_assoc.find(params[:id])
+  end
 
-    def tag_params
-      params.require(:tag).permit(:name, :slug, :description,
-                                  :approved, :featured, :deleted,
-                                  :style)
-    end
+  def tag_params
+    params.require(:tag).permit(:name, :slug, :description,
+                                :approved, :featured, :deleted,
+                                :style)
+  end
 
-    def admins_tags_responder(notice)
-      respond_to do |format|
-        format.html do
-          redirect_to admins_tags_path,
-          notice: "Tag #{notice}."
-        end
-        format.js
+  def admins_tags_responder(notice)
+    respond_to do |format|
+      format.html do
+        redirect_to admins_tags_path,
+        notice: "Tag #{notice}."
       end
+      format.js
     end
+  end
 
 end

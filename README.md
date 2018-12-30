@@ -25,9 +25,11 @@ $ rails db:create
 $ rails db:migrate
 ```
 
-Initiate Server & Cache
+Initiate Server & Cache after Check
 
 ```
+$ rails notes
+
 $ rails dev:cache
 
 $ rails server

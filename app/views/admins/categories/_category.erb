@@ -4,7 +4,7 @@
   </div>
 
   <div class="admin-item-links xl-col-1-4 lg-col-1-4 md-col-1-3 sm-col-1-2 xs-col-1-1">
-    <%= link_to edit_category_path(category), class: 'edit' do %>
+    <%= link_to admins_edit_category_path(category), class: 'edit' do %>
       <%= fa_icon "pencil" %>
     <% end %>
     <%= link_to category_path(category), class: 'info' do %>

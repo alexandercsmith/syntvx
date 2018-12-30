@@ -20,28 +20,28 @@ class StaticController < ApplicationController
 
   private
 
-    def set_articles
-      @articles = Article.all_featured
-    end
+  def set_articles
+    @articles = Article.all_featured
+  end
 
-    def set_tools
-      @tools = Tool.all_recent
-    end
+  def set_tools
+    @tools = Tool.all_recent
+  end
 
-    def set_query
-      @query = if params[:q].presence || params[:languages].presence || params[:categories].presence
-                 true
-               else
-                 false
-               end
-    end
+  def set_query
+    @query = if params[:q].presence || params[:languages].presence || params[:categories].presence
+               true
+             else
+               false
+             end
+  end
 
-    def set_languages
-      @languages = Language.all_approved
-    end
+  def set_languages
+    @languages = Language.all_approved
+  end
 
-    def set_categories
-      @categories = Category.all_approved
-    end
+  def set_categories
+    @categories = Category.all_approved
+  end
 
 end

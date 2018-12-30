@@ -1,5 +1,6 @@
 class Admins::ArticlesController < Admins::AdminAppController
-  before_action :set_article, only: %i[info]
+  before_action :set_article, only: %i[info edit]
+  before_action :set_tags,    only: %i[new edit]
 
   # GET /admins/articles
   def index
@@ -9,20 +10,35 @@ class Admins::ArticlesController < Admins::AdminAppController
 
   # GET /admins/articles/:id
   def info
-    respond_to :js
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # GET /admins/articles/new
+  def new
+    @article = Article.new
+  end
+
+  # GET /admins/articles/:id/edit
+  def edit
   end
 
   private
 
-    def set_article
-      @article = Article.friendly.include_assoc.find(params[:id])
-    end
+  def set_article
+    @article = Article.friendly.include_assoc.find(params[:id])
+  end
 
-    def admin_articles_responder(notice)
-      respond_to do |format|
-        format.html { redirect_to admins_articles_path }
-        format.js
-      end
+  def set_tags
+    @tags = Tag.all_approved
+  end
+
+  def admin_articles_responder(notice)
+    respond_to do |format|
+      format.html { redirect_to admins_articles_path }
+      format.js
     end
+  end
 
 end

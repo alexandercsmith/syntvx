@@ -46,7 +46,7 @@ class Admins::DashboardController < Admins::AdminAppController
   end
 
   # GET /admins/explicit_cache_clear
-  def explicit_cache_clear
+  def exp_cache_clear
     exp_cache_clear
     redirect_to admins_settings_path
     flash[:notice] = 'Explicit Cache Cleared.'

@@ -1,8 +1,7 @@
 // FORMS
 form.form {
   @include flex(column,nowrap,flex-start,flex-start);
-  max-width: $sm;
-  margin: 0 auto;
+  width: 100%;
 } // form.form
 
 form.form .field {

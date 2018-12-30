@@ -1,0 +1,12 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <div class="admin-head">
+    <h1>EDIT ARTICLE</h1>
+    <div class="admin-head-options">
+      <%= link_to 'BACK', admins_articles_path %>
+    </div>
+  </div>
+
+  <%= render 'articles/form', article: @article %>
+
+</div>

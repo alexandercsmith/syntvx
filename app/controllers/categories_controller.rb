@@ -1,22 +1,11 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, except: %i[new create]
+  before_action :set_category, except: %i[create]
   before_action :authenticate_admin!
-
-  # GET /categories/new
-  def new
-    @category = Category.new
-    private_seo('New Category')
-  end
-
-  # GET /categories/:id/edit
-  def edit
-    private_seo('Edit Category')
-  end
 
   # POST /categories
   def create
     @category = Category.new(category_params)
-    
+
     if @category.save
       admins_categories_responder('created')
     else
@@ -59,24 +48,24 @@ class CategoriesController < ApplicationController
 
   private
 
-    def set_category
-      @category = Category.friendly.include_assoc.find(params[:id])
-    end
+  def set_category
+    @category = Category.friendly.include_assoc.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:name, :slug, :description,
-                                       :approved, :featured, :deleted,
-                                       :style)
-    end
+  def category_params
+    params.require(:category).permit(:name, :slug, :description,
+                                     :approved, :featured, :deleted,
+                                     :style)
+  end
 
-    def admins_categories_responder(notice)
-      respond_to do |format|
-        format.html do
-          redirect_to admins_categories_path,
-          notice: "Category #{notice}."
-        end
-        format.js
+  def admins_categories_responder(notice)
+    respond_to do |format|
+      format.html do
+        redirect_to admins_categories_path,
+        notice: "Category #{notice}."
       end
+      format.js
     end
+  end
 
 end

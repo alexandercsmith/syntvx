@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: %i[index new create show]
-  before_action :set_tags, only: %i[new edit create update destroy]
+  before_action :set_article, except: %i[index create show]
+  before_action :set_tags, only: %i[create update destroy]
   before_action :authenticate_admin!, except: %i[index show]
 
   # GET /articles
@@ -15,21 +15,10 @@ class ArticlesController < ApplicationController
     info_seo(@article.name.truncate(50), article_url(@article), @article.description, @article.cover_image)
   end
 
-  # GET /articles/new
-  def new
-    @article = Article.new
-    private_seo('New Article')
-  end
-
-  # GET /articles/:id/edit
-  def edit
-    private_seo('Edit Article')
-  end
-
   # POST /articles
   def create
     @article = Article.new(article_params)
-    
+
     if @article.save
       admins_article_responder('created')
     else
@@ -72,29 +61,30 @@ class ArticlesController < ApplicationController
 
   private
 
-    def set_article
-      @article = Article.friendly.include_assoc.find(params[:id])
-    end
+  def set_article
+    @article = Article.friendly.include_assoc.find(params[:id])
+  end
 
-    def set_tags
-      @tags = Tag.all_approved
-    end
+  def set_tags
+    @tags = Tag.all_approved
+  end
 
-    def article_params
-      params.require(:article).permit(:name, :slug, :description, :body,
-                                      :published, :published_at, :featured, :deleted,
-                                      :style,
-                                      :cover_image,
-                                      :tag_ids => [])
-    end
+  def article_params
+    params.require(:article).permit(:name, :slug, :description, :body,
+                                    :published, :published_at, :featured, :deleted,
+                                    :style,
+                                    :cover_image,
+                                    :tag_ids => [])
+  end
 
-    def admins_article_responder(notice)
-      respond_to do |format|
-        format.html do
-          redirect_to admins_articles_path,
-          notice: "Article #{notice}."
-        end
-        format.js
+  def admins_article_responder(notice)
+    respond_to do |format|
+      format.html do
+        redirect_to admins_articles_path,
+        notice: "Article #{notice}."
       end
+      format.js
     end
+  end
+  
 end

@@ -1,24 +1,13 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, except: %i[new create show]
-  before_action :set_languages, only: %i[new edit create update destroy]
-  before_action :set_categories, only: %i[new edit create update destroy]
+  before_action :set_tool, except: %i[create show]
+  before_action :set_languages, only: %i[create update destroy]
+  before_action :set_categories, only: %i[create update destroy]
   before_action :authenticate_admin!, except: %i[show]
 
   # GET /tools/:id
   def show
     @tool = Tool.slugged(params[:id])
     public_seo(@tool.name, tool_url(@tool))
-  end
-
-  # GET /tools/new
-  def new
-    @tool = Tool.new
-    private_seo('New Tool')
-  end
-
-  # GET /tools/:id/edit
-  def edit
-    private_seo('Edit Tool')
   end
 
   # POST /tools
@@ -67,35 +56,35 @@ class ToolsController < ApplicationController
 
   private
 
-    def set_tool
-      @tool = Tool.friendly.include_assoc.find(params[:id])
-    end
+  def set_tool
+    @tool = Tool.friendly.include_assoc.find(params[:id])
+  end
 
-    def set_languages
-      @languages = Language.all_approved
-    end
+  def set_languages
+    @languages = Language.all_approved
+  end
 
-    def set_categories
-      @categories = Category.all_approved
-    end
+  def set_categories
+    @categories = Category.all_approved
+  end
 
-    def tool_params
-      params.require(:tool).permit(:name, :slug, :description,
-                                   :published, :published_at, :featured, :deleted,
-                                   :links, :website, :github,
-                                   :style,
-                                   :language_ids => [],
-                                   :category_ids => [])
-    end
+  def tool_params
+    params.require(:tool).permit(:name, :slug, :description,
+                                 :published, :published_at, :featured, :deleted,
+                                 :links, :website, :github,
+                                 :style,
+                                 :language_ids => [],
+                                 :category_ids => [])
+  end
 
-    def admins_tools_responder(notice)
-      respond_to do |format|
-        format.html do
-          redirect_to admins_tools_path,
-          notice: "Tool #{notice}."
-        end
-        format.js
+  def admins_tools_responder(notice)
+    respond_to do |format|
+      format.html do
+        redirect_to admins_tools_path,
+        notice: "Tool #{notice}."
       end
+      format.js
     end
+  end
 
 end

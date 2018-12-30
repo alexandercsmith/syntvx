@@ -2,7 +2,10 @@
 
 class Admins::SessionsController < Devise::SessionsController
   include AuthenticateToken
-  before_action :restrict_access, only: [:new]
+
+  http_basic_authenticate_with name: "admin", password: "$Duke69", only: %i[new]
+
+  before_action :restrict_access, only: %i[new]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

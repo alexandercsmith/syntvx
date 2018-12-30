@@ -1,5 +1,7 @@
 class Admins::ToolsController < Admins::AdminAppController
-  before_action :set_tool, only: %i[info]
+  before_action :set_tool,       only: %i[info edit]
+  before_action :set_languages,  only: %i[new edit]
+  before_action :set_categories, only: %i[new edit]
 
   # GET /admins/tools
   def index
@@ -9,20 +11,39 @@ class Admins::ToolsController < Admins::AdminAppController
 
   # GET /admins/tools/:id
   def info
-    respond_to :js
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # GET /admins/tools/new
+  def new
+    @tool = Tool.new
+  end
+
+  # GET /admins/tools/:id/edit
+  def edit
   end
 
   private
 
-    def set_tool
-      @tool = Tool.friendly.include_assoc.find(params[:id])
-    end
+  def set_tool
+    @tool = Tool.friendly.include_assoc.find(params[:id])
+  end
 
-    def admin_tools_responder(notice)
-      respond_to do |format|
-        format.html { redirect_to admins_tools_path }
-        format.js
-      end
+  def set_languages
+    @languages = Language.all_approved
+  end
+
+  def set_categories
+    @categories = Category.all_approved
+  end
+
+  def admin_tools_responder(notice)
+    respond_to do |format|
+      format.html { redirect_to admins_tools_path }
+      format.js
     end
+  end
 
 end
