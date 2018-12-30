@@ -49,7 +49,7 @@ div.tool-card .tool-links {
   @media screen and (max-width: $xs) {
     @include flex(row,nowrap,flex-start,center);
     width: 100%;
-    margin: 20px 0 10px;
+    margin: 10px 0;
   } // @media
   a {
     @include flex(column,nowrap,center,center);
