@@ -47,7 +47,7 @@ class Admins::DashboardController < Admins::AdminAppController
 
   # GET /admins/explicit_cache_clear
   def exp_cache_clear
-    exp_cache_clear
+    explicit_cache_clear
     redirect_to admins_settings_path
     flash[:notice] = 'Explicit Cache Cleared.'
   end
@@ -55,7 +55,7 @@ class Admins::DashboardController < Admins::AdminAppController
   private
 
     # Explicitly Clear General Cache Queries
-    def exp_cache_clear
+    def explicit_cache_clear
       # Articles
       Rails.cache.delete('Article.active')
       Rails.cache.delete('Article.published')
