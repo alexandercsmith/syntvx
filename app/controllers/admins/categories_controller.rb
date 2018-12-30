@@ -16,11 +16,13 @@ class Admins::CategoriesController < Admins::AdminAppController
 
   # GET /admins/categories/new
   def new
+    private_seo('New Category')
     @category = Category.new
   end
 
   # GET /admins/categories/:id/edit
   def edit
+    private_seo('Edit Category')
   end
 
   private

@@ -17,11 +17,13 @@ class Admins::ArticlesController < Admins::AdminAppController
 
   # GET /admins/articles/new
   def new
+    private_seo('New Article')
     @article = Article.new
   end
 
   # GET /admins/articles/:id/edit
   def edit
+    private_seo('Edit Article')
   end
 
   private

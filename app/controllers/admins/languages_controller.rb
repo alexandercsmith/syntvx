@@ -16,11 +16,13 @@ class Admins::LanguagesController < Admins::AdminAppController
 
   # GET /admins/languages/new
   def new
+    private_seo('New Language')
     @language = Language.new
   end
 
   # GET /admins/languages/:id/edit
   def edit
+    private_seo('Edit Language')
   end
 
   private

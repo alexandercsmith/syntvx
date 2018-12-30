@@ -18,11 +18,13 @@ class Admins::ToolsController < Admins::AdminAppController
 
   # GET /admins/tools/new
   def new
+    private_seo('New Tool')
     @tool = Tool.new
   end
 
   # GET /admins/tools/:id/edit
   def edit
+    private_seo('Edit Tool')
   end
 
   private

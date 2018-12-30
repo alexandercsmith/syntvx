@@ -17,7 +17,8 @@ class ToolsController < ApplicationController
     if @tool.save
       admins_tools_responder('created')
     else
-      render :new
+      render template: 'admins/tools/new',
+             layout: 'admin'
     end
   end
 
@@ -26,7 +27,8 @@ class ToolsController < ApplicationController
     if @tool.update(tool_params)
       admins_tools_responder('updated')
     else
-      render :edit
+      render template: 'admins/tools/edit',
+             layout: 'admin'
     end
   end
 

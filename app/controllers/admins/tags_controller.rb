@@ -16,11 +16,13 @@ class Admins::TagsController < Admins::AdminAppController
 
   # GET /admins/tags/new
   def new
+    private_seo('New Tag')
     @tag = Tag.new
   end
 
   # GET /admins/tags/:id/edit
   def edit
+    private_seo('Edit Tag')
   end
 
   private

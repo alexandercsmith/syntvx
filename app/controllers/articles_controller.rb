@@ -22,7 +22,8 @@ class ArticlesController < ApplicationController
     if @article.save
       admins_article_responder('created')
     else
-      render :new
+      render template: 'admins/articles/new',
+             layout: 'admin'
     end
   end
 
@@ -31,7 +32,8 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       admins_article_responder('updated')
     else
-      render :edit
+      render template: 'admins/articles/edit',
+             layout: 'admin'
     end
   end
 
@@ -86,5 +88,5 @@ class ArticlesController < ApplicationController
       format.js
     end
   end
-  
+
 end

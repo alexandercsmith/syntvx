@@ -9,7 +9,8 @@ class TagsController < ApplicationController
     if @tag.save
       admins_tags_responder('created')
     else
-      render :new
+      render template: 'admins/tags/new',
+             layout: 'admin'
     end
   end
 
@@ -18,7 +19,8 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       admins_tags_responder('updated')
     else
-      render :edit
+      render template: 'admins/tags/edit',
+             layout: 'admin'
     end
   end
 
