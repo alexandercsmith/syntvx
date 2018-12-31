@@ -3,7 +3,7 @@
 class Admins::SessionsController < Devise::SessionsController
   include AuthenticateToken
 
-  # http_basic_authenticate_with name: "admin", password: "$Duke69", only: %i[new]
+  # http_basic_authenticate_with name: ENV['HTTP_ADMIN'], password: ENV['HTTP_PASS'], only: %i[new]
 
   before_action :restrict_access, only: %i[new]
   # before_action :configure_sign_in_params, only: [:create]
