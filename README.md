@@ -18,20 +18,26 @@ A Developer Resource Directory Project.
 Install Dependencies & Database
 
 ```
+# Install Dependencies
 $ bundle install
 
+# Create Database - If First Session
 $ rails db:create
 
+# Migrate Database - If First Session
 $ rails db:migrate
 ```
 
 Initiate Server & Cache after Check
 
 ```
+# Check Developer Notes and Tasks
 $ rails notes
 
+# Start Development Cache
 $ rails dev:cache
 
+# Start Rails Server
 $ rails server
 ```
 
@@ -56,7 +62,7 @@ $ rails notes
 Prep App Deployment
 
 ```
-# Check Notes for Config Points
+# Check Notes for Config Tasks
 $ rails notes
 
 # Stage Git

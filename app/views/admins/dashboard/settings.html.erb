@@ -35,7 +35,7 @@
     <div class="api-key">
       <p><%= key.name %></p>
       <span class="key"><%= key.token %></span>
-      <%= link_to 'DELETE', admins_destroy_api_key_path(key), method: :delete %>
+      <%= link_to 'DELETE', admins_destroy_api_key_path(key), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   <% end %>
 </div>
