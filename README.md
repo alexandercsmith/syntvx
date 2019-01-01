@@ -33,8 +33,9 @@ A Developer Resource Directory Project.
     * published:boolean(false)
     * published_at:datetime
     * admin_made:boolean(false)
-  * Implement: Email Check
+  * Implement: Email Check & Time Check
     * return if Contact.blocked
+    * if Contact made multiple comments within Time span on Model
   * Admin - Comment Management
     * Articles 'admins/articles#show' -> Comments
     * Tools 'admins/tools#show' -> Comments
@@ -58,6 +59,12 @@ A Developer Resource Directory Project.
     * tool:references
     * comment:references
   * Implement: Form -> Captcha
+3. Links
+  * Photo Grid
+  * $ rails g scaffold Lead
+    * leadable:polymorphic
+      : id
+      : type
 
 ## Development
 
