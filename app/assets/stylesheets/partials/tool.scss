@@ -4,6 +4,7 @@ div.tool-card {
   padding: 0 0 10px;
   border-bottom: 1px solid $grey;
   margin: 0 0 10px;
+  transition: .3s;
   @media screen and (max-width: $xs) {
     flex-wrap: wrap;
   } // @media

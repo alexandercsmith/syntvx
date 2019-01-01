@@ -1,11 +1,60 @@
 // Articles#Index
-#articles-index {} // #articles-index
+#articles-index,
+#articles-tagged {
 
-#articles-index #articles-list {
+}
+// #articles-index
+// #articles-tagged
+
+#articles-index #articles-list,
+#articles-tagged #articles-list {
   @include flex(column,nowrap,flex-start,flex-start);
   max-width: $sm;
   margin: 0 auto;
-} // #articles-index #articles-list
+  h2.tag-title {
+    width: 100%;
+    font-size: 1.8em;
+    color: $charcoal;
+    padding: 10px 0;
+    margin: 10px 0 0;
+    border-bottom: 1px solid $light-grey;
+  } // h2.tag-title
+}
+// #articles-index #articles-list
+// #articles-tagged #articles-list
+
+#articles-index #articles-list #articles-tags,
+#articles-tagged #articles-list #articles-tags {
+  @include flex(row,nowrap,flex-start,center);
+  width: 100%;
+  overflow: scroll;
+  margin: 0 0 15px;
+  padding: 25px 0;
+  border-bottom: 1px solid $light-grey;
+  a {
+    padding: 7px 10px;
+    font-size: 0.9em;
+    text-decoration: none;
+    border-radius: $radius;
+    transition: $speed;
+    margin: 0 10px 0 0;
+    color: $black;
+    background-color: $eggshell;
+    box-shadow: 0 1px 2px $light-grey;
+    text-align: center;
+  } // a
+  a:hover {
+    color: $blue;
+    box-shadow: none;
+  } // a:hover
+  a.active {
+    color: $white;
+    background-color: $blue;
+    box-shadow: none;
+  } // a.active
+}
+// #articles-index #articles-list #articles-tags
+// #articles-tagged #articles-list #articles-tags
 
 // Articles#Show
 #articles-show {

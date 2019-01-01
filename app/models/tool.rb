@@ -3,16 +3,16 @@
 # name         :string :uniq
 # slug         :string :uniq
 # description  :string
-# published    :boolean
-# published_at :datetime
-# featured     :boolean
-# deleted      :boolean
+# published    :boolean => false
+# published_at :datetime => nil
+# featured     :boolean => false
+# deleted      :boolean => false
 # links        :jsonb => { :website, :github }
 # style        :jsonb => {}
 # languages    :association => ToolLanguages
 # categories   :association => ToolCategories
-# created_at  :datetime
-# updated_at  :datetime
+# created_at   :datetime
+# updated_at   :datetime
 
 class Tool < ApplicationRecord
   # Modules
@@ -51,16 +51,7 @@ class Tool < ApplicationRecord
   # Query
   def self.admin_search(term, filter, page)
     if filter
-      case filter
-      when "published"
-        active_published
-      when "unpublished"
-        active_unpublished
-      when "featured"
-        active_featured
-      else
-        is_active
-      end
+      filter_check(filter)
       .include_assoc
       .where('tools.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
@@ -70,7 +61,22 @@ class Tool < ApplicationRecord
     end
   end
 
+  # Query -> Published: filter_check(filter)
+  def self.filter_check(filter)
+    case filter
+    when "published"
+      active_published
+    when "unpublished"
+      active_unpublished
+    when "featured"
+      active_featured
+    else
+      is_active
+    end
+  end
+
   # Directory
+  # Tool.directory_search(Boolean, String, @relation, @relation, Integer)
   def self.directory_search(query, term, languages, categories, page)
     if query
       active_published

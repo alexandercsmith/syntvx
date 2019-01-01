@@ -3,9 +3,9 @@
 # name        :string :uniq
 # slug        :string :uniq
 # description :string
-# approved    :boolean
-# featured    :boolean
-# deleted     :boolean
+# approved    :boolean => false
+# featured    :boolean => false
+# deleted     :boolean => false
 # style       :jsonb => {}
 # articles    :association => ArticleTags
 # created_at  :datetime
@@ -44,22 +44,27 @@ class Tag < ApplicationRecord
   # Query
   def self.admin_search(term, filter, page)
     if filter
-      case filter
-      when "approved"
-        active_approved
-      when "unapproved"
-        active_unapproved
-      when "featured"
-        active_featured
-      else
-        is_active
-      end
+      filter_check(filter)
       .include_assoc
       .where('tags.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
     else
       all_active
       .paginate(page: page, per_page: 25)
+    end
+  end
+
+  # Query -> filter_check(filter)
+  def self.filter_check(filter)
+    case filter
+    when "approved"
+      active_approved
+    when "unapproved"
+      active_unapproved
+    when "featured"
+      active_featured
+    else
+      is_active
     end
   end
 
@@ -72,6 +77,7 @@ class Tag < ApplicationRecord
     Rails.cache.delete('Tag.approved')
     Rails.cache.delete('Tag.featured')
     Rails.cache.delete("Tag.#{slug}")
+    Rails.cache.delete("Tag.#{id}.articles")
   end
 
   # Tag.all_active
@@ -104,6 +110,13 @@ class Tag < ApplicationRecord
   def self.slugged(id)
     Rails.cache.fetch("Tag.#{id}", expires_in: 1.hour) do
       friendly.include_assoc.find(id)
+    end
+  end
+
+  # @tag.articles_published(@tag.id)
+  def articles_published(id)
+    Rails.cache.fetch("Tag.#{id}.articles", expires_in: 1.hour) do
+      articles.active_published.order(published_at: :desc).to_a
     end
   end
 end

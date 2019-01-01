@@ -1,12 +1,19 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: %i[index create show]
-  before_action :set_tags, only: %i[create update destroy]
+  before_action :set_article, except: %i[index tagged create show]
+  before_action :set_tags, only: %i[index tagged create update destroy]
+  before_action :set_tag, only: %i[tagged]
   before_action :authenticate_admin!, except: %i[index show]
 
-  # GET /articles
+  # GET /blog
   def index
     @articles = Article.all_published.paginate(per_page: 10, page: params[:page])
     public_seo('Blog', articles_url)
+  end
+
+  # GET /blog/tag/:id
+  def tagged
+    @articles = @tag.articles_published(@tag.id).paginate(per_page: 10, page: params[:page])
+    render template: 'articles/index'
   end
 
   # GET /articles/:id
@@ -65,6 +72,10 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.friendly.include_assoc.find(params[:id])
+  end
+
+  def set_tag
+    @tag = Tag.slugged(params[:id])
   end
 
   def set_tags

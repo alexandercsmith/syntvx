@@ -1,3 +1,25 @@
+# PUBLISHING
+#
+# ~/app/models/concerns
+#
+# $ rails g migration AddPublishingToModel published_at:datetime published:boolean => default: false
+#
+# Model: include Publishing
+#
+# Model.is_published     => @models
+# Model.is_unpublished   => @models
+# Model.published_asc    => Published: (First -> Last)
+# Model.published_desc   => Published: (Last -> First)
+#
+# @model.published       => 1 : 0
+# @model.published_date  => {Month} ##, ####
+# @model.published_time  => i.e. 5:00 PM
+# @model.publish_toggle  => @model.approved | 1 : 0
+# @model.publish         => @model.published | 1 - Model.published_at | Time.now
+# @model.unpublish       => @model.published | 0 - Model.published_at | nil
+# @model.published_check => 'published' : 'unpublished'
+# @model.published_link  => 'unpublish' : 'publish'
+
 module Publishing
   extend ActiveSupport::Concern
   included do

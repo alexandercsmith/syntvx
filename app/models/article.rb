@@ -3,16 +3,16 @@
 # name         :string :uniq
 # slug         :string :uniq
 # description  :string
-# body         :text
-# published    :boolean
-# published_at :datetime
-# featured     :boolean
-# deleted      :boolean
+# body         :text [HTML]
+# published    :boolean => false
+# published_at :datetime => nil
+# featured     :boolean => false
+# deleted      :boolean => false
 # style        :jsonb => {}
 # cover_image  :attachement
 # tags         :association => ArticleTags
-# created_at  :datetime
-# updated_at  :datetime
+# created_at   :datetime
+# updated_at   :datetime
 
 class Article < ApplicationRecord
   # Modules
@@ -50,22 +50,27 @@ class Article < ApplicationRecord
   # Query
   def self.admin_search(term, filter, page)
     if filter
-      case filter
-      when "published"
-        active_published
-      when "unpublished"
-        active_unpublished
-      when "featured"
-        active_featured
-      else
-        is_active
-      end
+      filter_check(filter)
       .include_assoc
       .where('articles.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
     else
       all_active
       .paginate(page: page, per_page: 25)
+    end
+  end
+
+  # Query -> Published: filter_check(filter)
+  def self.filter_check(filter)
+    case filter
+    when "published"
+      active_published
+    when "unpublished"
+      active_unpublished
+    when "featured"
+      active_featured
+    else
+      is_active
     end
   end
 

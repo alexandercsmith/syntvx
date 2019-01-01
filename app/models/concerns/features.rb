@@ -1,3 +1,21 @@
+# FEATURES
+#
+# ~/app/models/concerns
+#
+# $ rails g migration AddFeaturedToModel featured:boolean => default: false
+#
+# Model: include Features
+#
+# Model.is_featured     => @models
+# Model.is_unfeatured   => @models
+#
+# @model.featured       => 1 : 0
+# @model.feature_toggle => @model.featured | 1 : 0
+# @model.feature        => @model.featured | 1
+# @model.ordinary       => @model.featured | 0
+# @model.featured_check => 'featured' : 'unfeatured'
+# @model.featured_link  => 'unfeature' : 'feature'
+
 module Features
   extend ActiveSupport::Concern
   included do

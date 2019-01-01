@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   # ARTICLES
   resources :articles, except: %i[index new edit]
   get '/blog' => 'articles#index', as: :blog
+  get '/blog/tag/:id' => 'articles#tagged', as: :blog_tag
   match '/articles/:id/publish' => 'articles#publish', via: %i[put patch], as: :publish_article
   match '/articles/:id/feature' => 'articles#feature', via: %i[put patch], as: :feature_article
   match '/articles/:id/delete'  => 'articles#delete',  via: %i[put patch], as: :delete_article

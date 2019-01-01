@@ -3,9 +3,9 @@
 # name        :string :uniq
 # slug        :string :uniq
 # description :string
-# approved    :boolean
-# featured    :boolean
-# deleted     :boolean
+# approved    :boolean => false
+# featured    :boolean => false
+# deleted     :boolean => false
 # style       :jsonb => {}
 # tools       :association => ToolLanguages
 # created_at  :datetime
@@ -43,22 +43,27 @@ class Language < ApplicationRecord
   # Query
   def self.admin_search(term, filter, page)
     if filter
-      case filter
-      when "approved"
-        active_approved
-      when "unapproved"
-        active_unapproved
-      when "featured"
-        active_featured
-      else
-        is_active
-      end
+      filter_check(filter)
       .include_assoc
       .where('languages.name ilike ?', "%#{term}%")
       .paginate(page: page, per_page: 25)
     else
       all_active
       .paginate(page: page, per_page: 25)
+    end
+  end
+
+  # Query -> filter_check(filter)
+  def self.filter_check(filter)
+    case filter
+    when "approved"
+      active_approved
+    when "unapproved"
+      active_unapproved
+    when "featured"
+      active_featured
+    else
+      is_active
     end
   end
 

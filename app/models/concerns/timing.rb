@@ -1,3 +1,14 @@
+# ORDERING
+#
+# ~/app/models/concerns
+#
+# Model: include Timing
+#
+# @model.created_date => {Month} ##, ####
+# @model.updated_date => {Month} ##, ####
+# @model.created_time => i.e. 12:00 PM
+# @model.updated_time => i.e. 4:00 AM
+
 module Timing
   extend ActiveSupport::Concern
   included do

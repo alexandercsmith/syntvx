@@ -1,3 +1,16 @@
+# ORDERING
+#
+# ~/app/models/concerns
+#
+# Model: include Ordering
+#
+# Model.name_asc     => Name (A -> Z)
+# Model.name_desc    => Name (Z -> A)
+# Model.created_asc  => Created (First -> Last)
+# Model.created_desc => Created (Last -> First)
+# Model.updated_asc  => Updated (First -> Last)
+# Model.updated_desc => Updated (Last -> First)
+
 module Ordering
   extend ActiveSupport::Concern
   included do

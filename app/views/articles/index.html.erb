@@ -1,6 +1,17 @@
 <div id="<%= controller_name %>-<%= action_name %>">
   <div class="container">
     <div id="articles-list">
+      <h2 class="tag-title">TAGS</h2>
+      <div id="articles-tags">
+        <% @tags.each do |tag| %>
+          <% if @tag.presence && @tag == tag %>
+            <%= link_to "##{tag.name}", blog_path, class: 'active' %>
+          <% else %>
+            <%= link_to "##{tag.name}", blog_tag_path(tag) %>
+          <% end %>
+        <% end %>
+      </div>
+
       <%= render partial: 'articles/article', collection: @articles, cached: true %>
 
       <%= will_paginate @articles %>

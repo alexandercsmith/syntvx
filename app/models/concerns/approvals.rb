@@ -1,3 +1,21 @@
+# APPROVALS
+#
+# ~/app/models/concerns
+#
+# $ rails g migration AddApprovedToModel approved:boolean => default: false
+#
+# Model: include Approvals
+#
+# Model.is_approved      => @models
+# Model.is_unapproved    => @models
+#
+# @model.approved        => 1 : 0
+# @model.approval_toggle => @model.approved | 1 : 0
+# @model.approve         => @model.approved | 1
+# @model.unapprove       => @model.approved | 0
+# @model.approval_check  => 'approved' : 'unapproved'
+# @model.approval_link   => 'unapprove' : 'approve'
+
 module Approvals
   extend ActiveSupport::Concern
   included do
