@@ -15,6 +15,8 @@ A Developer Resource Directory Project.
 * Memcachier
 * Google Analytics
 * Google AdSense
+* AWS S3
+* AWS Route53
 
 ## To-Do
 
