@@ -30,6 +30,8 @@ A Developer Resource Directory Project.
     * published:boolean(false)
     * published_at:datetime
     * admin_made:boolean(false)
+  * Implement: Email Check
+    * return if Contact.blocked
   * Admin - Comment Management
     * Articles 'admins/articles#show' -> Comments
     * Tools 'admins/tools#show' -> Comments
@@ -37,14 +39,15 @@ A Developer Resource Directory Project.
     * Action: Publish | Destroy
   * Callback: after_create : create_contact
     * $ rails g scaffold Contact
-      * first_name:string
-      * last_name:string
+      * first_name
+      * last_name
       * email:string:uniq
       * blocked:boolean(false)
       * terms:boolean(false)
       * terms_date:datetime
     * Admin - Contact Management
       * Block - Email -> Blocked
+      * Delete All Comments of Contact
   * $ rails g model ArticleComment
     * article:references
     * comment:references
