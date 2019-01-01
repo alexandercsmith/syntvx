@@ -22,18 +22,35 @@ A Developer Resource Directory Project.
     [ ] - Google AdSense - Need more Content
 2. Feature: Comments
   * Implement: Terms & Conditions | Privacy Policy
-  * $ rails g scaffold Comment email:string:uniq first_name last_name message:string published:boolean(false) published_at:datetime admin_made:boolean(false)
+  * $ rails g scaffold Comment
+    * email:string:uniq
+    * first_name
+    * last_name
+    * message:string
+    * published:boolean(false)
+    * published_at:datetime
+    * admin_made:boolean(false)
   * Admin - Comment Management
     * Articles 'admins/articles#show' -> Comments
     * Tools 'admins/tools#show' -> Comments
     * Query: All | Published | Admin
     * Action: Publish | Destroy
   * Callback: after_create : create_contact
-    * $ rails g scaffold Contact first_name:string last_name:string email:string:uniq blocked:boolean(false) terms:boolean(false) terms_date:datetime
+    * $ rails g scaffold Contact
+      * first_name:string
+      * last_name:string
+      * email:string:uniq
+      * blocked:boolean(false)
+      * terms:boolean(false)
+      * terms_date:datetime
     * Admin - Contact Management
       * Block - Email -> Blocked
-  * $ rails g model ArticleComment article:references comment:references
-  * $ rails g model ToolComment tool:references comment:references
+  * $ rails g model ArticleComment
+    * article:references
+    * comment:references
+  * $ rails g model ToolComment
+    * tool:references
+    * comment:references
   * Implement: Form -> Captcha
 
 ## Development
