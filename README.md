@@ -12,6 +12,7 @@ A Developer Resource Directory Project.
 * Ruby 2.5.1
 * PostgreSQL
 * Heroku
+* Memcachier
 * Google Analytics
 * Google AdSense
 
