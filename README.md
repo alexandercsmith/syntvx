@@ -18,8 +18,8 @@ A Developer Resource Directory Project.
 ## To-Do
 
 1. Implement Advertising and Analytics
-        [X] - Google Analytics
-        [ ] - Google AdSense - Need more Content
+    [X] - Google Analytics
+    [ ] - Google AdSense - Need more Content
 2. Feature: Comments
   * Implement: Terms & Conditions | Privacy Policy
   * $ rails g scaffold Comment email:string:uniq first_name last_name message:string published:boolean(false) published_at:datetime admin_made:boolean(false)
