@@ -18,16 +18,16 @@ A Developer Resource Directory Project.
 ## To-Do
 
 1. Implement Advertising and Analytics
-  * [X] - Google Analytics
-  * [ ] - Google AdSense - Need more Content
+        [X] - Google Analytics
+        [ ] - Google AdSense - Need more Content
 2. Feature: Comments
   * Implement: Terms & Conditions | Privacy Policy
   * $ rails g scaffold Comment email:string:uniq first_name last_name message:string published:boolean(false) published_at:datetime admin_made:boolean(false)
   * Admin - Comment Management
     * Articles 'admins/articles#show' -> Comments
     * Tools 'admins/tools#show' -> Comments
-    * All | Published | Admin
-    * Publish | Destroy
+    * Query: All | Published | Admin
+    * Action: Publish | Destroy
   * Callback: after_create : create_contact
     * $ rails g scaffold Contact first_name:string last_name:string email:string:uniq blocked:boolean(false) terms:boolean(false) terms_date:datetime
     * Admin - Contact Management
