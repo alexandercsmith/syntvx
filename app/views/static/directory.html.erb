@@ -8,6 +8,10 @@
         </div>
 
         <div class="directory-search-selected">
+          <% if params[:languages].presence || params[:categories].presence %>
+            <%= link_to 'Clear Filters', directory_path, class: 'clear' %>
+          <% end %>
+
           <% if params[:languages].presence %>
             <% @_languages.each do |language| %>
               <div class="filter-cell">
