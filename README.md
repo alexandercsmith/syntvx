@@ -8,15 +8,15 @@ A Developer Resource Directory Project.
 
 ## Specs & Services
 
-* Rails 5.2.2
-* Ruby 2.5.1
-* PostgreSQL
-* Heroku
-* Memcachier
-* Google Analytics
-* Google AdSense
-* AWS S3
-* AWS Route53
+* Framework: Rails 5.2.2
+* Language: Ruby 2.5.1
+* Database: PostgreSQL
+* Hosting: Heroku
+* Cache: Memcachier
+* Analytics: Google Analytics
+* Advertising: Google AdSense
+* Storage: AWS S3
+* Domain: AWS Route53
 
 ## Development
 

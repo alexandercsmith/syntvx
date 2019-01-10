@@ -8,7 +8,7 @@ class Admins::ArticlesController < Admins::AdminAppController
     @articles = Article.admin_search(params[:term], params[:filter], params[:page])
   end
 
-  # GET /admins/articles/:id
+  # GET /admins/article/:id
   def info
   end
 

@@ -7,7 +7,7 @@ class Admins::CategoriesController < Admins::AdminAppController
     @categories = Category.admin_search(params[:term], params[:filter], params[:page])
   end
 
-  # GET /admins/categories/:id
+  # GET /admins/category/:id
   def info
   end
 

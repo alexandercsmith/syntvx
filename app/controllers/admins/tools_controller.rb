@@ -9,7 +9,7 @@ class Admins::ToolsController < Admins::AdminAppController
     @tools = Tool.admin_search(params[:term], params[:filter], params[:page])
   end
 
-  # GET /admins/tools/:id
+  # GET /admins/tool/:id
   def info
   end
 

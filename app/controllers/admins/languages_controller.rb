@@ -7,7 +7,7 @@ class Admins::LanguagesController < Admins::AdminAppController
     @languages = Language.admin_search(params[:term], params[:filter], params[:page])
   end
 
-  # GET /admins/languages/:id
+  # GET /admins/language/:id
   def info
   end
 

@@ -13,10 +13,29 @@ form.form .field {
 } // form.form .field
 
 form.form .field .field-label {
+  @media screen and (min-width: $md) {
+    width: 25%;
+  } // @media
+  @media screen and (max-width: $md) and (min-width: $sm) {
+    width: 33.3333%;
+  } // @media
+  @media screen and (max-width: $sm) {
+    width: 100%;
+    margin: 0 0 10px;
+  } // @media
 } // form.form .field .field-label
 
 form.form .field .field-input {
   @include flex(row,wrap,flex-start,center);
+  @media screen and (min-width: $md) {
+    width: 75%;
+  } // @media
+  @media screen and (max-width: $md) and (min-width: $sm) {
+    width: 66.6666%;
+  } // @media
+  @media screen and (max-width: $sm) {
+    width: 100%;
+  } // @media
   input[type="text"],
   input[type="url"] {
     width: 100%;
