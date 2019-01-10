@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, except: %i[create]
   before_action :authenticate_admin!
+  before_action :set_category, except: %i[create]
 
   # POST /categories
   def create

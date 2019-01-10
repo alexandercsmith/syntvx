@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-  before_action :set_tag, except: %i[create]
   before_action :authenticate_admin!
+  before_action :set_tag, except: %i[create]
 
   # POST /tags
   def create

@@ -20,7 +20,7 @@ class Category < ApplicationRecord
   include Timing
 
   # Validations
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name,        presence: true, length: { minimum: 2 }
   validates :description, presence: true, length: { minimum: 2 }
 
   # Slug

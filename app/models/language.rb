@@ -20,7 +20,7 @@ class Language < ApplicationRecord
   include Timing
 
   # Validations
-  validates :name, presence: true, length: { minimum: 1 }
+  validates :name,        presence: true, length: { minimum: 1 }
   validates :description, presence: true, length: { minimum: 2 }
 
   # Slug

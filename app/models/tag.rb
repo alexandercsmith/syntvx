@@ -20,7 +20,7 @@ class Tag < ApplicationRecord
   include Timing
 
   # Validations
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name,        presence: true, length: { minimum: 2 }
   validates :description, presence: true, length: { minimum: 2 }
 
   # Slug
@@ -113,8 +113,8 @@ class Tag < ApplicationRecord
     end
   end
 
-  # @tag.articles_published(@tag.id)
-  def articles_published(id)
+  # @tag.articles_published
+  def articles_published
     Rails.cache.fetch("Tag.#{id}.articles") do
       articles.active_published.order(published_at: :desc).to_a
     end

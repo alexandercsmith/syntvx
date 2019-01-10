@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
-  before_action :set_language, except: %i[create]
   before_action :authenticate_admin!
+  before_action :set_language, except: %i[create]
 
   # POST /languages
   def create

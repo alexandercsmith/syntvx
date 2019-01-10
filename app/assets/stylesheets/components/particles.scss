@@ -2,6 +2,9 @@
   position: relative;
   height: 300px;
   width: 100%;
+  @media screen and (max-width: $xs) {
+    height: 225px;
+  } // @media
 } // #particles
 
 #particles .center {

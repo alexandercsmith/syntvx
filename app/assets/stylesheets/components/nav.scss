@@ -1,6 +1,7 @@
 div#nav {
   @include flex(row,nowrap,space-between,center);
   width: 100%;
+  background-color: $blue;
   box-shadow: 0 1px 1px $light-grey;
 } // div#nav
 
@@ -10,30 +11,31 @@ div#nav .general {
 
 div#nav .general a {
   text-decoration: none;
-  color: $black;
+  color: $white;
   font-size: 1.1em;
   padding: 18px 15px;
+  transition: $speed;
 } // div#nav a
 
 div#nav .general a:hover {
   color: $blue;
-  background-color: $eggshell;
+  background-color: $white;
 } // div#nav a:hover
 
 div#nav .admin a {
   text-decoration: none;
   margin: 0 20px 0 0;
   font-size: 0.8em;
-  color: $black;
+  color: $white;
   i {
-    font-size: 1em;
-    color: $black;
+    font-size: 1.5em;
+    color: $white;
     margin: 0 5px 0 0;
   } // i
   &:hover {
-    color: $blue;
+    color: $light-grey;
     i {
-      color: $blue;
+      color: $light-grey;
     } // i
   } // :hover
 } // div#nav .admin a
@@ -43,14 +45,14 @@ div#nav #sidenav-icon {
   cursor: pointer;
   padding: 10px 12px;
   &:active div {
-    background-color: $blue;
+    background-color: $white;
   } // :active div
 } // div#nav #sidenav-icon
 
 div#nav #sidenav-icon .bar1, .bar2, .bar3 {
   width: 38px;
   height: 5px;
-  background-color: $blue;
+  background-color: $white;
   transition: $speed;
   border-radius: 5px;
   margin: 6px 0;
@@ -59,7 +61,7 @@ div#nav #sidenav-icon .bar1, .bar2, .bar3 {
 div#nav #sidenav-icon.active .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);
-  background-color: $blue;
+  background-color: $white;
 } // div#nav #sidenav-icon.active bar1
 
 div#nav #sidenav-icon.active .bar2 {
@@ -69,5 +71,5 @@ div#nav #sidenav-icon.active .bar2 {
 div#nav #sidenav-icon.active .bar3 {
   -webkit-transform: rotate(45deg) translate(-9px, -7px);
   transform: rotate(45deg) translate(-9px, -7px);
-  background-color: $blue;
+  background-color: $white;
 } // div#nav #sidenav-icon.active .bar3

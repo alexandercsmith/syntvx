@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: %i[index tagged create show]
-  before_action :set_tags, only: %i[index tagged create update destroy]
-  before_action :set_tag, only: %i[tagged]
   before_action :authenticate_admin!, except: %i[index show]
+  before_action :set_article,         except: %i[index tagged create show]
+  before_action :set_tags,            except: %i[show publish feature delete]
+  before_action :set_tag,             only: %i[tagged]
 
   # GET /blog
   def index
@@ -12,14 +12,14 @@ class ArticlesController < ApplicationController
 
   # GET /blog/tag/:id
   def tagged
-    @articles = @tag.articles_published(@tag.id).paginate(per_page: 10, page: params[:page])
+    @articles = @tag.articles_published.paginate(per_page: 10, page: params[:page])
     render template: 'articles/index'
   end
 
   # GET /articles/:id
   def show
     @article = Article.slugged(params[:id])
-    info_seo(@article.name.truncate(50), article_url(@article), @article.description, @article.cover_image)
+    info_seo(@article.name.truncate(50), article_url(@article), @article.description)
   end
 
   # POST /articles

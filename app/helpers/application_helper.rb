@@ -28,16 +28,14 @@ module ApplicationHelper
                         type: 'website' }
   end
 
-  def info_seo(title, path, description, image)
+  def info_seo(title, path, description)
     set_meta_tags title: title.to_s,
                   description: description.to_s,
-                  image_src: image,
                   keywords: @seo_keywords,
                   index: true,
                   follow: true,
                   og: { title: :title,
                         description: :description,
-                        image: :image_src,
                         type: 'website',
                         url: path.to_s }
   end

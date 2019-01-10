@@ -1,8 +1,8 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, except: %i[create show]
-  before_action :set_languages, only: %i[create update destroy]
-  before_action :set_categories, only: %i[create update destroy]
   before_action :authenticate_admin!, except: %i[show]
+  before_action :set_tool,            except: %i[create show]
+  before_action :set_languages,       only: %i[create update destroy]
+  before_action :set_categories,      only: %i[create update destroy]
 
   # GET /tools/:id
   def show
