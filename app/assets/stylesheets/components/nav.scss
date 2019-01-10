@@ -44,16 +44,16 @@ div#nav .admin a {
   text-decoration: none;
   margin: 0 20px 0 0;
   font-size: 0.8em;
-  color: $white;
+  color: $blue;
   i {
     font-size: 1.5em;
-    color: $white;
+    color: $blue;
     margin: 0 5px 0 0;
   } // i
   &:hover {
-    color: $light-grey;
+    color: $purple;
     i {
-      color: $light-grey;
+      color: $purple;
     } // i
   } // :hover
 } // div#nav .admin a
