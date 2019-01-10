@@ -6,13 +6,17 @@ class ArticlesController < ApplicationController
 
   # GET /blog
   def index
-    @articles = Article.all_published.paginate(per_page: 10, page: params[:page])
+    @articles = Article.all_published
+                       .paginate(per_page: 10,
+                                 page: params[:page])
     public_seo('Blog', articles_url)
   end
 
   # GET /blog/tag/:id
   def tagged
-    @articles = @tag.articles_published.paginate(per_page: 10, page: params[:page])
+    @articles = @tag.articles_published
+                    .paginate(per_page: 10,
+                              page: params[:page])
     render template: 'articles/index'
   end
 
@@ -25,7 +29,6 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
-
     if @article.save
       admins_article_responder('created')
     else

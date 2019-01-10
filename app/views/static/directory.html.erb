@@ -9,7 +9,7 @@
 
         <div class="directory-search-selected">
           <% if params[:languages].presence %>
-            <% @s_languages.each do |language| %>
+            <% @_languages.each do |language| %>
               <div class="filter-cell">
                 <input type="checkbox" name="languages[]" value="<%= language.id %>" checked="checked" />
                 <span><%= language.name %></span>
@@ -18,7 +18,7 @@
           <% end %>
 
           <% if params[:categories].presence %>
-            <% @s_categories.each do |category| %>
+            <% @_categories.each do |category| %>
               <div class="filter-cell">
                 <input type="checkbox" name="categories[]" value="<%= category.id %>" checked="checked" />
                 <span><%= category.name %></span>
@@ -36,7 +36,7 @@
           <% end %>
           <div id="languages" class="filter-dropdown">
             <% @languages.each do |language| %>
-              <% unless params[:languages].presence && @s_languages.include?(language) %>
+              <% unless params[:languages].presence && @_languages.include?(language) %>
                 <div class="filter-cell">
                   <input type="checkbox" name="languages[]" value="<%= language.id %>" />
                   <span><%= language.name %></span>
@@ -55,7 +55,7 @@
           <% end %>
           <div id="categories" class="filter-dropdown">
             <% @categories.each do |category| %>
-              <% unless params[:categories].presence && @s_categories.include?(category) %>
+              <% unless params[:categories].presence && @_categories.include?(category) %>
                 <div class="filter-cell">
                   <input type="checkbox" name="categories[]" value="<%= category.id %>" />
                   <span><%= category.name %></span>

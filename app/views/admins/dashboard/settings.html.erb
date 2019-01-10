@@ -26,7 +26,7 @@
 
   <div class="admin-panel-form">
     <%= form_tag(admins_api_key_path, method: :post) do %>
-      <%= text_field_tag :name %>
+      <%= text_field_tag :name, nil, placeholder: 'API Key Name' %>
       <%= submit_tag 'Create' %>
     <% end %>
   </div>

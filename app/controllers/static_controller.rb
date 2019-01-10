@@ -12,9 +12,10 @@ class StaticController < ApplicationController
 
   # /directory
   def directory
-    @s_languages = Language.directory_filter(params[:languages])
-    @s_categories = Category.directory_filter(params[:categories])
-    @tools = Tool.directory_search(@query, params[:q], @s_languages, @s_categories, params[:page])
+    p @query
+    @_languages = Language.directory_filter(params[:languages])
+    @_categories = Category.directory_filter(params[:categories])
+    @tools = Tool.directory_search(@query, params[:q], @_languages, @_categories, params[:page])
     public_seo('Directory', directory_url)
   end
 
@@ -29,7 +30,7 @@ class StaticController < ApplicationController
   end
 
   def set_query
-    @query = if params[:q].presence || params[:languages].presence || params[:categories].presence
+    @query = if params[:q] || params[:languages] || params[:categories]
                true
              else
                false

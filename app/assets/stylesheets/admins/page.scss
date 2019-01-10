@@ -115,12 +115,11 @@ div.admin-panel-options {
 } // div.admin-panel-options
 
 form#edit_admin {
+  @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;
-
   .actions {
     width: 100%;
   } // .actions
-
   .actions input[type="submit"] {
     width: 100%;
     outline: none;
@@ -135,8 +134,16 @@ form#edit_admin {
     padding: 0;
     margin: 0;
   } // .actions input[type="submit"]
-
   .actions input[type="submit"]:hover {
     background-color: darken($green, 5%);
   } // .actions input[type="submit"]:hover
 } // form#edit_admin
+
+form#edit_admin .admin-panel .container {
+  label {
+    font-size: 1em;
+  } // label
+  input {
+    @include input-text();
+  } // input
+} // form#edit_admin .admin-panel .container
