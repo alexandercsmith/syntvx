@@ -35,7 +35,6 @@ module Publishing
 
     def unpublish
       update_attribute(:published, 0)
-      update_attribute(:published_at, nil)
     end
 
     def publish_toggle

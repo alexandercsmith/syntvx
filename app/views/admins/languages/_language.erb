@@ -7,7 +7,7 @@
     <%= link_to admins_edit_language_path(language), class: 'edit' do %>
       <%= fa_icon "pencil" %>
     <% end %>
-    <%= link_to language_path(language), class: 'info' do %>
+    <%= link_to admins_language_info_path(language), class: 'info' do %>
       <%= fa_icon "info" %>
     <% end %>
     <%= link_to approve_language_path(language), class: "#{language.approval_check}", method: :put do %>

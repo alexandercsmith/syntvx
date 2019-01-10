@@ -1,0 +1,24 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <div class="admin-head">
+    <h1><%= controller_name.upcase %></h1>
+    <div class="admin-head-options">
+      <%= link_to 'BACK', admins_categories_path %>
+    </div>
+  </div>
+
+  <div class="admin-info-item">
+    <div class="container">
+      <p><b>ID:</b> <%= @category.id %></p>
+      <p><b>Name:</b> <%= @category.name %></p>
+      <p><b>Slug:</b> <%= @category.slug %></p>
+      <p><b>Description:</b> <%= @category.description %></p>
+      <p><b>Approved:</b> <%= @category.approved %></p>
+      <p><b>Featured:</b> <%= @category.featured %></p>
+      <p><b>Deleted:</b> <%= @category.deleted %></p>
+      <p><b>Created at:</b> <%= @category.created_time %> | <%= @category.created_date %></p>
+      <p><b>Updated at:</b> <%= @category.updated_time %> | <%= @category.updated_date %></p>
+    </div>
+  </div>
+
+</div>

@@ -9,9 +9,6 @@ class Admins::TagsController < Admins::AdminAppController
 
   # GET /admins/tags/:id
   def info
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /admins/tags/new

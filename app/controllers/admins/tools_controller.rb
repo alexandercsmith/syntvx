@@ -11,9 +11,6 @@ class Admins::ToolsController < Admins::AdminAppController
 
   # GET /admins/tools/:id
   def info
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /admins/tools/new

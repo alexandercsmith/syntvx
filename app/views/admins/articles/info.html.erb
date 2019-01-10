@@ -1,0 +1,34 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <div class="admin-head">
+    <h1><%= controller_name.upcase %></h1>
+    <div class="admin-head-options">
+      <%= link_to 'BACK', admins_articles_path %>
+    </div>
+  </div>
+
+  <div class="admin-info-item">
+    <div class="container">
+      <%= image_tag @article.cover_image if @article.cover_image.attached? %>
+      <p><b>ID:</b> <%= @article.id %></p>
+      <p><b>Name:</b> <%= @article.name %></p>
+      <p><b>Slug:</b> <%= @article.slug %></p>
+      <p><b>Description:</b> <%= @article.description %></p>
+      <p><b>Published:</b> <%= @article.published %></p>
+      <p><b>Published at:</b> <%= @article.published_time %> | <%= @article.published_date %></p>
+      <p><b>Featured:</b> <%= @article.featured %></p>
+      <p><b>Deleted:</b> <%= @article.deleted %></p>
+      <p><b>Created at:</b> <%= @article.created_time %> | <%= @article.created_date %></p>
+      <p><b>Updated at:</b> <%= @article.updated_time %> | <%= @article.updated_date %></p>
+      <p><b>Tags:</b> <%= @article.tags.pluck(:name) %></p>
+    </div>
+  </div>
+
+  <div class="admin-info-item">
+    <div class="container">
+      <h2 class="head">Body</h2>
+      <%= @article.body.html_safe %>
+    </div>
+  </div>
+
+</div>

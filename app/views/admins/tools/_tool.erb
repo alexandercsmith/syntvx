@@ -7,7 +7,7 @@
     <%= link_to admins_edit_tool_path(tool), class: 'edit' do %>
       <%= fa_icon "pencil" %>
     <% end %>
-    <%= link_to tool_path(tool), class: 'info' do %>
+    <%= link_to admins_tool_info_path(tool), class: 'info' do %>
       <%= fa_icon "info" %>
     <% end %>
     <%= link_to publish_tool_path(tool), class: "#{tool.published_check}", method: :put do %>

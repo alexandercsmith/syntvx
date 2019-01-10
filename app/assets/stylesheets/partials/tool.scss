@@ -1,9 +1,9 @@
 div.tool-card {
   @include flex(row,nowrap,space-between,center);
   width: 100%;
-  padding: 0 0 10px;
+  padding: 10px 0;
   border-bottom: 1px solid $grey;
-  margin: 0 0 10px;
+  margin: 0;
   transition: .3s;
   @media screen and (max-width: $xs) {
     flex-wrap: wrap;

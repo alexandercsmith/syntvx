@@ -114,6 +114,34 @@ div.admin-panel-options {
   } // a:first-of-type
 } // div.admin-panel-options
 
+div.admin-info-item {
+  background-color: $eggshell;
+  width: 100%;
+  margin: 0 0 15px;
+  img {
+    width: 150px;
+    margin: 0;
+  } // img
+  h2.head {
+    width: 100%;
+    margin: 0 0 15px;
+    font-size: 1.2em;
+    padding: 5px 0 10px;
+    border-bottom: 1px solid $black;
+  } // h2.head
+  p {
+    font-size: 0.9em;
+    margin: 0 0 15px;
+  } // p
+  p:first-of-type {
+    margin: 15px 0;
+  } // p
+} // div.admin-info-item
+
+div.admin-info-item:first-of-type {
+  margin: 0;
+} // div.admin-info-item:first-of-type
+
 form#edit_admin {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;

@@ -9,9 +9,6 @@ class Admins::CategoriesController < Admins::AdminAppController
 
   # GET /admins/categories/:id
   def info
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /admins/categories/new

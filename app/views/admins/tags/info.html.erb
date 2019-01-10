@@ -1,0 +1,24 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <div class="admin-head">
+    <h1><%= controller_name.upcase %></h1>
+    <div class="admin-head-options">
+      <%= link_to 'BACK', admins_tags_path %>
+    </div>
+  </div>
+
+  <div class="admin-info-item">
+    <div class="container">
+      <p><b>ID:</b> <%= @tag.id %></p>
+      <p><b>Name:</b> <%= @tag.name %></p>
+      <p><b>Slug:</b> <%= @tag.slug %></p>
+      <p><b>Description:</b> <%= @tag.description %></p>
+      <p><b>Approved:</b> <%= @tag.approved %></p>
+      <p><b>Featured:</b> <%= @tag.featured %></p>
+      <p><b>Deleted:</b> <%= @tag.deleted %></p>
+      <p><b>Created at:</b> <%= @tag.created_time %> | <%= @tag.created_date %></p>
+      <p><b>Updated at:</b> <%= @tag.updated_time %> | <%= @tag.updated_date %></p>
+    </div>
+  </div>
+
+</div>

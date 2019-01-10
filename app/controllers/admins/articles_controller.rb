@@ -10,9 +10,6 @@ class Admins::ArticlesController < Admins::AdminAppController
 
   # GET /admins/articles/:id
   def info
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /admins/articles/new

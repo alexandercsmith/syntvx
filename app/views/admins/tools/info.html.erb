@@ -1,0 +1,27 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+
+  <div class="admin-head">
+    <h1><%= controller_name.upcase %></h1>
+    <div class="admin-head-options">
+      <%= link_to 'BACK', admins_tools_path %>
+    </div>
+  </div>
+
+  <div class="admin-info-item">
+    <div class="container">
+      <p><b>ID:</b> <%= @tool.id %></p>
+      <p><b>Name:</b> <%= @tool.name %></p>
+      <p><b>Slug:</b> <%= @tool.slug %></p>
+      <p><b>Description:</b> <%= @tool.description %></p>
+      <p><b>Website:</b> <%= link_to "#{@tool.website}", @tool.website %></p>
+      <p><b>Github:</b> <%= link_to "#{@tool.github}", @tool.github %></p>
+      <p><b>Published:</b> <%= @tool.published %></p>
+      <p><b>Published at:</b> <%= @tool.published_time %> | <%= @tool.published_date %></p>
+      <p><b>Featured:</b> <%= @tool.featured %></p>
+      <p><b>Deleted:</b> <%= @tool.deleted %></p>
+      <p><b>Created at:</b> <%= @tool.created_time %> | <%= @tool.created_date %></p>
+      <p><b>Updated at:</b> <%= @tool.updated_time %> | <%= @tool.updated_date %></p>
+    </div>
+  </div>
+
+</div>

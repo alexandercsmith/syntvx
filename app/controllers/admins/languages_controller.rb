@@ -9,9 +9,6 @@ class Admins::LanguagesController < Admins::AdminAppController
 
   # GET /admins/languages/:id
   def info
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /admins/languages/new
