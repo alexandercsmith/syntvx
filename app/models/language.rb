@@ -89,7 +89,7 @@ class Language < ApplicationRecord
 
   # Language.all_active
   def self.all_active
-    Rails.cache.fetch('Language.active', expires_in: 1.hour) do
+    Rails.cache.fetch('Language.active') do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -101,21 +101,21 @@ class Language < ApplicationRecord
 
   # Language.all_approved
   def self.all_approved
-    Rails.cache.fetch('Language.approved', expires_in: 1.day) do
+    Rails.cache.fetch('Language.approved') do
       active_approved.include_assoc.name_asc.to_a
     end
   end
 
   # Language.all_featured
   def self.all_featured
-    Rails.cache.fetch('Language.featured', expires_in: 1.hour) do
+    Rails.cache.fetch('Language.featured') do
       active_featured.include_assoc.name_asc.to_a
     end
   end
 
   # Language.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Language.#{id}", expires_in: 1.hour) do
+    Rails.cache.fetch("Language.#{id}") do
       friendly.include_assoc.find(id)
     end
   end

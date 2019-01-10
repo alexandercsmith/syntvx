@@ -37,10 +37,7 @@ div.tool-card .tool-info {
 div.tool-card .tool-info .tool-associations {
  @include flex(row,wrap,flex-start,center);
  span.tag {
-   padding: 5px 7px;
-   font-size: 0.8em;
-   background-color: $eggshell;
-   border-radius: $radius;
+   @include tag();
    margin: 0 10px 10px 0;
  } // span.tag
 } // div.tool-card .tool-info .tool-associations

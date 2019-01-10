@@ -1,6 +1,13 @@
 <div id="<%= controller_name %>-<%= action_name %>">
   <div class="container">
     <div id="articles-list">
+
+      <div id="particles">
+        <div class="center">
+          <h1>B L O G</h1>
+        </div>
+      </div>
+
       <h2 class="tag-title">TAGS</h2>
       <div id="articles-tags">
         <% @tags.each do |tag| %>
@@ -18,3 +25,7 @@
     </div>
   </div>
 </div>
+
+<script>
+  particles();
+</script>

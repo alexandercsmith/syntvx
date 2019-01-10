@@ -18,54 +18,6 @@ A Developer Resource Directory Project.
 * AWS S3
 * AWS Route53
 
-## To-Do
-
-1. Implement Advertising and Analytics
-    [X] - Google Analytics
-    [ ] - Google AdSense - Need more Content
-2. Feature: Comments
-  * Implement: Terms & Conditions | Privacy Policy
-  * $ rails g scaffold Comment
-    * email:string:uniq
-    * first_name
-    * last_name
-    * message:string
-    * published:boolean(false)
-    * published_at:datetime
-    * admin_made:boolean(false)
-  * Implement: Email Check & Time Check
-    * return if Contact.blocked
-    * if Contact made multiple comments within Time span on Model
-  * Admin - Comment Management
-    * Articles 'admins/articles#show' -> Comments
-    * Tools 'admins/tools#show' -> Comments
-    * Query: All | Published | Admin
-    * Action: Publish | Destroy
-  * Callback: after_create : create_contact
-    * $ rails g scaffold Contact
-      * first_name
-      * last_name
-      * email:string:uniq
-      * blocked:boolean(false)
-      * terms:boolean(false)
-      * terms_date:datetime
-    * Admin - Contact Management
-      * Block - Email -> Blocked
-      * Delete All Comments of Contact
-  * $ rails g model ArticleComment
-    * article:references
-    * comment:references
-  * $ rails g model ToolComment
-    * tool:references
-    * comment:references
-  * Implement: Form -> Captcha
-3. Links
-  * Photo Grid
-  * $ rails g scaffold Lead
-    * leadable:polymorphic
-      : id
-      : type
-
 ## Development
 
 Install Dependencies & Database

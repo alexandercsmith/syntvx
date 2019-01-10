@@ -4,10 +4,10 @@ class ApiKey < ApplicationRecord
 
   private
 
-    def generate_token
-      begin
-        self.token = SecureRandom.hex
-      end while self.class.exists?(token: token)
-    end
-    
+  def generate_token
+    begin
+      self.token = SecureRandom.hex
+    end while self.class.exists?(token: token)
+  end
+
 end

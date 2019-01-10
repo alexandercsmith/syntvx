@@ -1,17 +1,34 @@
 <% cache article do %>
   <div class="article-card">
-    <%= link_to article.name, article_path(article) %>
 
-    <div class="article-info">
-      <div class="article-tags">
+    <div class="article-image xl-col-1-5 lg-col-1-5 md-col-1-5 sm-col-1-3 xs-col-1-3">
+      <div class="container">
+        <%= image_tag article.cover_image, alt: "#{article.name}" if article.cover_image.attached? %>
+      </div>
+    </div>
+
+    <div class="article-details-mobile hide-on-xl hide-on-lg hide-on-md sm-col-2-3 xs-col-2-3">
+      <div class="article-tags-mobile">
         <% article.tags.each do |tag| %>
           <span><%= "##{tag.name}" %></span>
         <% end %>
       </div>
-
-      <span class="published"><%= article.published_date %></span>
+      <span class="published-mobile"><%= article.published_date %></span>
     </div>
 
-    <p><%= article.description %><%= link_to ' . . . read more', article_path(article) %></p>
+    <div class="article-info xl-col-4-5 lg-col-4-5 md-col-4-5 sm-col-1-1 xs-col-1-1">
+      <%= link_to article.name, article_path(article) %>
+
+      <p><%= article.description %><%= link_to ' . . . read more', article_path(article) %></p>
+
+      <div class="article-details hide-on-sm hide-on-xs">
+        <div class="article-tags">
+          <% article.tags.each do |tag| %>
+            <span><%= "##{tag.name}" %></span>
+          <% end %>
+        </div>
+        <span class="published"><%= article.published_date %></span>
+      </div>
+    </div>
   </div>
 <% end %>

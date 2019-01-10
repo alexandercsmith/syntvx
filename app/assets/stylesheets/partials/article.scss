@@ -1,46 +1,50 @@
 // Article Card
 div.article-card {
-  @include flex(column,nowrap,flex-start,flex-start);
+  @include flex(row,wrap,space-between,stretch);
   width: 100%;
   margin: 0 0 10px;
   border-bottom: 1px solid $light-grey;
 } // div.article-card
 
-div.article-card a {
+div.article-card .article-image {
+  .container img {
+    width: 100%;
+  } // .container img
+} // div.article-card .article-image
+
+div.article-card .article-details-mobile {
+  @include flex(column,nowrap,center,center);
+} // div.article-card .article-details-mobile
+
+div.article-card .article-details-mobile .article-tags-mobile {
+  @include flex(column,nowrap,center,center);
+  width: 100%;
+  span {
+    @include tag();
+  } // span
+} // div.article-card .article-details-mobile .article-tags-mobile
+
+div.article-card .article-details-mobile span.published-mobile {
+  font-size: 0.8em;
+  color: $blue;
+  margin: 10px 0 0;
+} // div.article-card .article-details-mobile span.published-mobile
+
+div.article-card .article-info {
+  @include flex(column,nowrap,space-around,flex-start);
+} // div.article-card .article-info
+
+div.article-card .article-info a {
   width: 100%;
   font-size: 1.3em;
   color: $black;
   text-decoration: none;
-  padding: 0 0 10px;
-} // div.article-card a
+  &:hover {
+    color: $blue;
+  } // :hover
+} // div.article-card .article-info a
 
-div.article-card a:hover {
-  color: $blue;
-} // div.article-card a:hover
-
-div.article-card .article-info {
-  @include flex(row,wrap,space-between,center);
-  width: 100%;
-} // div.article-card .article-info
-
-div.article-card .article-info .article-tags {
-  @include flex(row,wrap,flex-start,center);
-} // div.article-card .article-info .article-tags
-
-div.article-card .article-info .article-tags span {
-  padding: 5px;
-  background-color: $eggshell;
-  border-radius: $radius;
-  font-size: 0.8em;
-  color: $black;
-} // div.article-card .article-info .article-tags span
-
-div.article-card .article-info span.published {
-  font-size: 0.8em;
-  color: $blue;
-} // div.article-card .article-info span.published
-
-div.article-card p {
+div.article-card .article-info p {
   width: 100%;
   font-size: 0.8em;
   color: $charcoal;
@@ -54,4 +58,21 @@ div.article-card p {
   a:hover {
     color: $red;
   } // a:hover
-} // div.article-card p
+} // div.article-card .article-info p
+
+div.article-card .article-info .article-details {
+  @include flex(row,nowrap,space-between,center);
+  width: 100%;
+  margin: 0 0 10px;
+} // div.article-card .article-info .article-details
+
+div.article-card .article-info .article-details .article-tags {
+  span {
+    @include tag();
+  } // span
+} // div.article-card .article-info .article-details .article-tags
+
+div.article-card .article-info .article-details span.published {
+  font-size: 0.8em;
+  color: $blue;
+} // div.article-card .article-info .article-details span.published

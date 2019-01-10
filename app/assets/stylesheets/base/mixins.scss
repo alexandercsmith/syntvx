@@ -25,3 +25,12 @@
   font-size: 1em;
   text-indent: 10px;
 } // input-text()
+
+// @include tag()
+@mixin tag() {
+  padding: 5px 7px;
+  background-color: $eggshell;
+  border-radius: $radius;
+  font-size: 0.8em;
+  color: $black;
+} // tag()

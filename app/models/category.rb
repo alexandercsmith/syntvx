@@ -89,7 +89,7 @@ class Category < ApplicationRecord
 
   # Category.all_active
   def self.all_active
-    Rails.cache.fetch('Category.active', expires_in: 1.hour) do
+    Rails.cache.fetch('Category.active') do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -101,21 +101,21 @@ class Category < ApplicationRecord
 
   # Category.all_approved
   def self.all_approved
-    Rails.cache.fetch('Category.approved', expires_in: 1.day) do
+    Rails.cache.fetch('Category.approved') do
       active_approved.include_assoc.name_asc.to_a
     end
   end
 
   # Category.all_featured
   def self.all_featured
-    Rails.cache.fetch('Category.featured', expires_in: 1.hour) do
+    Rails.cache.fetch('Category.featured') do
       active_featured.include_assoc.name_asc.to_a
     end
   end
 
   # Category.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Category.#{id}", expires_in: 1.hour) do
+    Rails.cache.fetch("Category.#{id}") do
       friendly.include_assoc.find(id)
     end
   end

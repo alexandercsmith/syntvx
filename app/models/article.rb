@@ -87,7 +87,7 @@ class Article < ApplicationRecord
 
   # Article.all_active
   def self.all_active
-    Rails.cache.fetch('Article.active', expires_in: 1.hour) do
+    Rails.cache.fetch('Article.active') do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -99,21 +99,21 @@ class Article < ApplicationRecord
 
   # Article.all_published
   def self.all_published
-    Rails.cache.fetch('Article.published', expires_in: 1.day) do
+    Rails.cache.fetch('Article.published') do
       active_published.include_assoc.name_asc.to_a
     end
   end
 
   # Article.all_featured
   def self.all_featured
-    Rails.cache.fetch('Article.featured', expires_in: 1.day) do
+    Rails.cache.fetch('Article.featured') do
       active_featured.include_assoc.name_asc.to_a
     end
   end
 
   # Article.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Article.#{id}", expires_in: 1.hour) do
+    Rails.cache.fetch("Article.#{id}") do
       friendly.include_assoc.find(id)
     end
   end

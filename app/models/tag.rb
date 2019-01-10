@@ -82,7 +82,7 @@ class Tag < ApplicationRecord
 
   # Tag.all_active
   def self.all_active
-    Rails.cache.fetch('Tag.active', expires_in: 1.hour) do
+    Rails.cache.fetch('Tag.active') do
       is_active.include_assoc.created_desc.to_a
     end
   end
@@ -94,28 +94,28 @@ class Tag < ApplicationRecord
 
   # Tag.all_approved
   def self.all_approved
-    Rails.cache.fetch('Tag.approved', expires_in: 1.day) do
+    Rails.cache.fetch('Tag.approved') do
       active_approved.include_assoc.name_asc.to_a
     end
   end
 
   # Tag.all_featured
   def self.all_featured
-    Rails.cache.fetch('Tag.featured', expires_in: 1.hour) do
+    Rails.cache.fetch('Tag.featured') do
       active_featured.include_assoc.name_asc.to_a
     end
   end
 
   # Tag.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Tag.#{id}", expires_in: 1.hour) do
+    Rails.cache.fetch("Tag.#{id}") do
       friendly.include_assoc.find(id)
     end
   end
 
   # @tag.articles_published(@tag.id)
   def articles_published(id)
-    Rails.cache.fetch("Tag.#{id}.articles", expires_in: 1.hour) do
+    Rails.cache.fetch("Tag.#{id}.articles") do
       articles.active_published.order(published_at: :desc).to_a
     end
   end
