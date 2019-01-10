@@ -26,13 +26,13 @@ module ApplicationHelper
                         type: 'website' }
   end
 
-  def info_seo(title, path, description, image)
+  def info_seo(title, path, description)
     set_meta_tags title: title.to_s,
                   description: description.to_s,
                   keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
-                  image_src: image.to_s,
+                  image_src: '/default-logo.png',
                   og: { title: :title,
                         description: :description,
                         image: :image_src,
