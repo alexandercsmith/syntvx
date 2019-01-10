@@ -1,10 +1,13 @@
 // STYLE CONFIG VARIABLES
 
-// transition:
+// Content Width
+$content: 800px;
+
+// transition: $speed;
 $speed: .2s;
 
-// border-radius:
+// border-radius: $radius;
 $radius: 2px;
 
 // Minimum Content Height witheld Nav
-$min-content-height: calc(100vh - 50px);
+$min-content-height: calc(100vh - 56px);

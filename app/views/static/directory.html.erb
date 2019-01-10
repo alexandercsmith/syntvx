@@ -9,12 +9,12 @@
 
         <div class="directory-search-selected">
           <% if params[:languages].presence || params[:categories].presence %>
-            <%= link_to 'Clear Filters', directory_path, class: 'clear' %>
+            <%= link_to 'Clear Filters', directory_path, class: 'clear col-1-1' %>
           <% end %>
 
           <% if params[:languages].presence %>
             <% @_languages.each do |language| %>
-              <div class="filter-cell">
+              <div class="x-filter-cell col-1-1">
                 <input type="checkbox" name="languages[]" value="<%= language.id %>" checked="checked" />
                 <span><%= language.name %></span>
               </div>
@@ -23,7 +23,7 @@
 
           <% if params[:categories].presence %>
             <% @_categories.each do |category| %>
-              <div class="filter-cell">
+              <div class="x-filter-cell col-1-1">
                 <input type="checkbox" name="categories[]" value="<%= category.id %>" checked="checked" />
                 <span><%= category.name %></span>
               </div>
@@ -32,16 +32,16 @@
         </div>
 
         <div class="directory-search-filters">
-          <%= link_to 'javascript:void(0)', onclick: 'toggleLanguages(this)' do %>
+          <%= link_to 'javascript:void(0)', onclick: 'toggleLanguages(this)', class: 'col-1-1' do %>
             <div class="link-text">
               <span>Languages</span>
             </div>
             <%= fa_icon 'caret-left' %>
           <% end %>
-          <div id="languages" class="filter-dropdown">
+          <div id="languages" class="filter-dropdown col-1-1">
             <% @languages.each do |language| %>
               <% unless params[:languages].presence && @_languages.include?(language) %>
-                <div class="filter-cell">
+                <div class="x-filter-cell col-1-1">
                   <input type="checkbox" name="languages[]" value="<%= language.id %>" />
                   <span><%= language.name %></span>
                 </div>
@@ -51,16 +51,16 @@
         </div>
 
         <div class="directory-search-filters">
-          <%= link_to 'javascript:void(0)', onclick: 'toggleCategories(this)' do %>
+          <%= link_to 'javascript:void(0)', onclick: 'toggleCategories(this)', class: 'col-1-1' do %>
             <div class="link-text">
               <span>Categories</span>
             </div>
             <%= fa_icon 'caret-left' %>
           <% end %>
-          <div id="categories" class="filter-dropdown">
+          <div id="categories" class="filter-dropdown col-1-1">
             <% @categories.each do |category| %>
               <% unless params[:categories].presence && @_categories.include?(category) %>
-                <div class="filter-cell">
+                <div class="x-filter-cell col-1-1">
                   <input type="checkbox" name="categories[]" value="<%= category.id %>" />
                   <span><%= category.name %></span>
                 </div>
@@ -80,7 +80,7 @@
         <%= render partial: 'tools/tool', collection: @tools, cached: true %>
         <%= will_paginate @tools %>
       <% else %>
-        <div id="no-results">
+        <div id="no-results" class="col-1-1">
           <h1>No Results for your Search</h1>
         </div>
       <% end %>

@@ -1,10 +1,9 @@
 div.tool-card {
   @include flex(row,nowrap,space-between,center);
-  width: 100%;
   padding: 10px 0;
   border-bottom: 1px solid $grey;
   margin: 0;
-  transition: .3s;
+  transition: $speed;
   @media screen and (max-width: $xs) {
     flex-wrap: wrap;
   } // @media
@@ -12,32 +11,15 @@ div.tool-card {
 
 div.tool-card .tool-info {
   @include flex(column,wrap,flex-start,flex-start);
-  a {
-    width: 100%;
-    font-size: 1.4em;
-    text-decoration: none;
-    color: $black;
-    margin: 0;
-    padding: 0;
-  } // a
-  a:hover {
-    color: $blue;
-  } // a:hover
-  p {
-    font-size: 0.8em;
-    color: $charcoal;
+  p.x-description {
     margin: 10px 0;
     padding: 0 10px;
-  }
-  @media screen and (max-width: $xs) {
-    width: 100%;
-  } // @media
+  } // p.x-description
 } // div.tool-card .tool-info
 
 div.tool-card .tool-info .tool-associations {
  @include flex(row,wrap,flex-start,center);
- span.tag {
-   @include tag();
+ span.x-tag {
    margin: 0 10px 10px 0;
  } // span.tag
 } // div.tool-card .tool-info .tool-associations

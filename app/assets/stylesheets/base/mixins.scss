@@ -7,7 +7,7 @@
   left: $left;
 } // position()
 
-// @include flex(row,nowrap,center,flex-start)
+// @include flex(row,nowrap,center,flex-start);
 @mixin flex($flex-direction, $flex-wrap, $justify-content, $align-items) {
   display: flex;
   flex-direction: $flex-direction;
@@ -15,6 +15,60 @@
   justify-content: $justify-content;
   align-items: $align-items;
 } // flex()
+
+// @include content-width();
+@mixin content-width() {
+  max-width: $content;
+  margin: 0 auto;
+} // content-width()
+
+.content-width {
+  @include content-width();
+} // .content-width
+
+// @include title();
+@mixin title() {
+  width: 100%;
+  text-decoration: none;
+  font-size: 1.3em;
+  color: $black;
+  font-weight: normal;
+  &:hover {
+    color: $black;
+  } // :hover
+} // title()
+
+.x-title {
+  @include title();
+} // .title
+
+// @include description();
+@mixin description() {
+  width: 100%;
+  font-size: 0.9em;
+  color: $charcoal;
+  a {
+    color: $blue;
+    text-decoration: none;
+  } // a
+  a:hover {
+    color: $purple;
+  } // a:hover
+} // description()
+
+.x-description {
+  @include description();
+} // .description
+
+// @include published()
+@mixin published() {
+  font-size: 0.9em;
+  color: $blue;
+} // published()
+
+.x-published {
+  @include published();
+} // x-published
 
 // @include input-text();
 @mixin input-text() {
@@ -26,11 +80,36 @@
   text-indent: 5px;
 } // input-text()
 
+.x-input-text {
+  @include input-text();
+} // x-input-text
+
 // @include tag()
 @mixin tag() {
   padding: 5px 7px;
   background-color: $eggshell;
   border-radius: $radius;
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: $black;
 } // tag()
+
+.x-tag {
+  @include tag();
+} // .x-tag
+
+// @include filter-cell();
+@mixin filter-cell() {
+  @include flex(row,nowrap,flex-start,center);
+  background-color: $eggshell;
+  margin: 5px 0 0;
+  border-radius: $radius;
+  padding: 8px 0;
+  font-size: 0.9em;
+  input[type="checkbox"] {
+    margin: 0 5px 0 10px;
+  } // input[type="checkbox"]
+} // filter-cell()
+
+.x-filter-cell {
+  @include filter-cell();
+} // .x-filter-cell

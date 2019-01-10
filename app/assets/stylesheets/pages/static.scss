@@ -1,9 +1,4 @@
-// INDEX
-#static-index {
-  max-width: $content;
-  margin: 0 auto;
-} // #static-index
-
+// Static#Index
 #static-index .container {
   @include flex(column,nowrap,flex-start,flex-start);
 } // #static-index .container

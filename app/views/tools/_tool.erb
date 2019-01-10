@@ -1,15 +1,15 @@
-<div class="tool-card">
-  <div class="tool-info">
-    <%= link_to tool.name, resource_path(tool) %>
-    <p><%= tool.description.truncate(250) %></p>
+<div class="tool-card col-1-1">
+  <div class="tool-info xs-col-1-1">
+    <%= link_to tool.name, resource_path(tool), class: 'x-title' %>
+    <p class="x-description"><%= tool.description.truncate(250) %></p>
 
     <div class="tool-associations">
       <% tool.languages.each do |language| %>
-        <span class="tag"><%= language.name %></span>
+        <span class="x-tag"><%= language.name %></span>
       <% end %>
 
       <% tool.categories.each do |category| %>
-        <span class="tag"><%= category.name %></span>
+        <span class="x-tag"><%= category.name %></span>
       <% end %>
     </div>
   </div>

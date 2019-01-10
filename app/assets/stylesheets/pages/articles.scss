@@ -1,18 +1,9 @@
 // Articles#Index
-#articles-index,
-#articles-tagged {
-
-}
-// #articles-index
-// #articles-tagged
-
 #articles-index #articles-list,
 #articles-tagged #articles-list {
   @include flex(column,nowrap,flex-start,flex-start);
-  max-width: $content;
-  margin: 0 auto;
+  @include content-width();
   h2.tag-title {
-    width: 100%;
     font-size: 1.8em;
     color: $charcoal;
     padding: 10px 0;
@@ -26,7 +17,6 @@
 #articles-index #articles-list #articles-tags,
 #articles-tagged #articles-list #articles-tags {
   @include flex(row,nowrap,flex-start,center);
-  width: 100%;
   overflow: scroll;
   padding: 25px 0;
   border-bottom: 1px solid $light-grey;
@@ -56,15 +46,6 @@
 // #articles-tagged #articles-list #articles-tags
 
 // Articles#Show
-#articles-show {
-  max-width: $content;
-  margin: 0 auto;
-} // #articles-show
-
-#article-title {
-  width: 100%;
-} // #article-title
-
 #article-title h1 {
   font-size: 2em;
   font-weight: normal;
@@ -77,31 +58,21 @@
   border-bottom: 1px solid $light-grey;
 } // #article-title .article-info
 
-#article-title .article-info p#article-published {
-  font-size: 0.9em;
-  color: $blue;
-} // #article-title .article-info p#article-published
-
 #article-title .article-info .tags {
   @include flex(row,nowrap,flex-start,center);
-  width: 100%;
 } // #article-title .article-info .tags
 
-#article-title .article-info .article-tags span.tag {
-  @include tag();
+#article-title .article-info .article-tags span.x-tag {
   margin: 0 10px 0 0;
 } // #article-title .article-info .article-tags span.tag
 
 #article-cover-image {
   @include flex(column,nowrap,center,center);
-  width: 100%;
   max-height: 400px;
   overflow: hidden;
   border-radius: $radius;
   box-shadow: 0 1px 1px $light-grey;
-  img {
-    width: 100%;
-  } // img
+  img { width: 100%; } // img
 } // #article-cover-image
 
 // ARTICLE SHOW - BODY
@@ -117,7 +88,9 @@
   a:hover {
     color: $red;
   } // a:hover
-  p {} // p
+  p {
+    margin: 25px 0;
+  } // p
 } // #article-body
 
 #article-body h1 {

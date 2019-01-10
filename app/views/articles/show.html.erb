@@ -1,18 +1,18 @@
-<div id="<%= controller_name %>-<%= action_name %>">
+<div id="<%= controller_name %>-<%= action_name %>" class="content-width">
   <div class="container">
-    <div id="article-title">
+    <div id="article-title" class="col-1-1">
       <h1><%= @article.name %></h1>
       <div class="article-info">
-        <div class="article-tags">
+        <div class="article-tags col-1-1">
           <% @article.tags.each do |tag| %>
-            <span class="tag"><%= tag.name %></span>
+            <span class="x-tag"><%= tag.name %></span>
           <% end %>
         </div>
-        <p id="article-published"><%= @article.published_date %></p>
+        <p class="x-published"><%= @article.published_date %></p>
       </div>
     </div>
 
-    <div id="article-cover-image">
+    <div id="article-cover-image" class="col-1-1">
       <%= image_tag @article.cover_image, alt: "#{@article.name} Image" if @article.cover_image.attached? %>
     </div>
 

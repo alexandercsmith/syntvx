@@ -1,8 +1,4 @@
-#tools-show {
-  max-width: $content;
-  margin: 0 auto;
-} // #tools-show
-
+// Tools#Show
 #tools-show .container .tool-head {
   @include flex(row,wrap,space-between,stretch);
   padding: 10px 0;
