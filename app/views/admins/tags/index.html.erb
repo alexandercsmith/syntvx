@@ -9,6 +9,7 @@
   <%= render partial: 'admins/tags/search' %>
 
   <div class="admin-items">
+    <%= will_paginate @tags %>
     <%= render @tags %>
     <%= will_paginate @tags %>
   </div>

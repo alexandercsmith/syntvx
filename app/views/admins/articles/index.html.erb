@@ -10,6 +10,7 @@
   <%= render partial: 'admins/articles/search' %>
 
   <div class="admin-items">
+    <%= will_paginate @articles %>
     <%= render @articles %>
     <%= will_paginate @articles %>
   </div>

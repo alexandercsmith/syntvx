@@ -9,6 +9,7 @@
   <%= render partial: 'admins/languages/search' %>
 
   <div class="admin-items">
+    <%= will_paginate @languages %>
     <%= render @languages %>
     <%= will_paginate @languages %>
   </div>
