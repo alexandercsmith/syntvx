@@ -6,8 +6,10 @@ module ApplicationHelper
                   keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
+                  image_src: '/default-logo.png',
                   og: { title: :title,
                         description: :description,
+                        image: :image_src,
                         type: 'website',
                         url: path.to_s }
   end
@@ -24,14 +26,16 @@ module ApplicationHelper
                         type: 'website' }
   end
 
-  def info_seo(title, path, description)
+  def info_seo(title, path, description, image)
     set_meta_tags title: title.to_s,
                   description: description.to_s,
                   keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
+                  image_src: image.to_s,
                   og: { title: :title,
                         description: :description,
+                        image: :image_src,
                         type: 'website',
                         url: path.to_s }
   end

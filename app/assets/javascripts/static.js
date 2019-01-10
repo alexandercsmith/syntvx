@@ -1,11 +1,9 @@
 // NAVIGATION
-function openSidenav() {
+function toggleSidenav() {
   var sidenav = document.getElementById('sidenav');
-  var close = document.getElementById('close-sidenav');
-  sidenav.style.width = "280px";
-  close.addEventListener('click', function() {
-    sidenav.style.width = "0";
-  })
+  var icon = document.getElementById('sidenav-icon');
+  sidenav.classList.toggle('active');
+  icon.classList.toggle('active');
 }
 
 // NOTIFICATION

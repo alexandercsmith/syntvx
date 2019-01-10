@@ -1,21 +1,31 @@
 #sidenav {
-  @include flex(column,nowrap,flex-start,flex-end);
+  @include flex(column,nowrap,flex-start,center);
   height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: $blue;
+  background-color: $black;
+  opacity: 0.98;
   overflow-x: hidden;
   transition: $speed;
 } // #sidenav
 
-#sidenav a#close-sidenav {
-  font-size: 2em;
+#sidenav.active {
+  width: 260px;
+} // #sidenav.active
+
+#sidenav img {
+  width: 150px;
+} // #sidenav img
+
+#sidenav h2 {
+  width: 100%;
+  text-align: center;
   color: $white;
-  padding: 11px 15px;
-} // #sidenav a#close-sidenav
+  margin: 0 0 15px;
+} // #sidenav h2
 
 #sidenav a.nav-link {
   width: 100%;

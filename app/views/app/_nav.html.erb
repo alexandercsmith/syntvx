@@ -1,21 +1,25 @@
 <div id="nav">
-  <div class="general hide-on-xs">
-    <%= link_to 'HOME', root_path %>
-    <%= link_to 'DIRECTORY', directory_path %>
-    <%= link_to 'BLOG', blog_path %>
-  </div>
-
-  <div id="sidenav-icon" onclick="openSidenav()" class="hide-on-xl hide-on-lg hide-on-md hide-on-sm">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
+  <div class="general">
+    <%= link_to root_path do %>
+      <%= image_tag "logo-100.png", alt: "SYNTVX Logo" %>
+      <span class="hide-on-xl hide-on-lg hide-on-md hide-on-sm">S Y N T V X</span>
+    <% end %>
+    <%= link_to 'HOME', root_path, class: 'nav-link hide-on-xs' %>
+    <%= link_to 'DIRECTORY', directory_path, class: 'nav-link hide-on-xs' %>
+    <%= link_to 'BLOG', blog_path, class: 'nav-link hide-on-xs' %>
   </div>
 
   <% if current_admin %>
-    <div class="admin">
+    <div class="admin hide-on-xs">
       <%= link_to admins_path do %>
         <%= fa_icon 'user-secret' %>
       <% end %>
     </div>
   <% end %>
+
+  <div id="sidenav-icon" onclick="toggleSidenav()" class="hide-on-xl hide-on-lg hide-on-md hide-on-sm">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
 </div>

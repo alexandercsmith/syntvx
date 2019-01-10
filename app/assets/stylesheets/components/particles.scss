@@ -1,6 +1,6 @@
 #particles {
   position: relative;
-  height: 250px;
+  height: 300px;
   width: 100%;
   @media screen and (max-width: $xs) {
     height: 200px;
@@ -14,16 +14,24 @@
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
+  img {
+    width: 170px;
+  } // img
   h1 {
-    font-size: 4em;
+    font-size: 2.2em;
+    margin: 0;
   } // h1
   h2 {
     font-weight: normal;
     color: $blue;
+    margin: 0;
   } // h2
   @media screen and (max-width: $xs) {
+    img {
+      width: 110px;
+    } // img
     h1 {
-      font-size: 3.5em;
+      font-size: 2.5em;
     } // h1
     h2 {
       font-size: 1.2em;
