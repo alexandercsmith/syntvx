@@ -9,8 +9,7 @@ class CategoriesController < ApplicationController
     if @category.save
       admins_categories_responder('created')
     else
-      render template: 'admins/categories/new',
-             layout: 'admin'
+      render template: 'admins/categories/new', layout: 'admin'
     end
   end
 
@@ -19,8 +18,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       admins_categories_responder('updated')
     else
-      render template: 'admins/categories/edit',
-             layout: 'admin'
+      render template: 'admins/categories/edit', layout: 'admin'
     end
   end
 

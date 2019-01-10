@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
     @articles = @tag.articles_published
                     .paginate(per_page: 10,
                               page: params[:page])
+    public_seo('Blog', articles_url)
     render template: 'articles/index'
   end
 
@@ -32,8 +33,7 @@ class ArticlesController < ApplicationController
     if @article.save
       admins_article_responder('created')
     else
-      render template: 'admins/articles/new',
-             layout: 'admin'
+      render template: 'admins/articles/new', layout: 'admin'
     end
   end
 
@@ -42,8 +42,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       admins_article_responder('updated')
     else
-      render template: 'admins/articles/edit',
-             layout: 'admin'
+      render template: 'admins/articles/edit', layout: 'admin'
     end
   end
 

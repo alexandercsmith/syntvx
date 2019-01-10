@@ -1,13 +1,9 @@
 module ApplicationHelper
 
-  @seo_description = 'SYNTVX | A Developer Resource Directory'
-
-  @seo_keywords = 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux'
-
   def public_seo(title, path)
     set_meta_tags title: title.to_s,
-                  description: @seo_desciption,
-                  keywords: @seo_keywords,
+                  description: 'SYNTVX | A Developer Resource Directory',
+                  keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
                   og: { title: :title,
@@ -18,8 +14,8 @@ module ApplicationHelper
 
   def private_seo(title)
     set_meta_tags title: title.to_s,
-                  description: @seo_desc,
-                  keywords: @seo_keys,
+                  description: 'SYNTVX | A Developer Resource Directory',
+                  keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: false,
                   follow: false,
                   reverse: true,
@@ -31,7 +27,7 @@ module ApplicationHelper
   def info_seo(title, path, description)
     set_meta_tags title: title.to_s,
                   description: description.to_s,
-                  keywords: @seo_keywords,
+                  keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
                   og: { title: :title,

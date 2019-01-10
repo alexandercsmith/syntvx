@@ -12,7 +12,6 @@ class StaticController < ApplicationController
 
   # /directory
   def directory
-    p @query
     @_languages = Language.directory_filter(params[:languages])
     @_categories = Category.directory_filter(params[:categories])
     @tools = Tool.directory_search(@query, params[:q], @_languages, @_categories, params[:page])

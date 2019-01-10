@@ -9,8 +9,7 @@ class LanguagesController < ApplicationController
     if @language.save
       admins_languages_responder('created')
     else
-      render template: 'admins/languages/new',
-             layout: 'admin'
+      render template: 'admins/languages/new', layout: 'admin'
     end
   end
 
@@ -19,8 +18,7 @@ class LanguagesController < ApplicationController
     if @language.update(language_params)
       admins_languages_responder('updated')
     else
-      render template: 'admins/languages/edit',
-             layout: 'admin'
+      render template: 'admins/languages/edit', layout: 'admin'
     end
   end
 
