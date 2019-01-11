@@ -2,6 +2,7 @@ div#footer {
   @include flex(row,wrap,space-between,center);
   width: 100%;
   background-color: $black;
+  padding: 10px 0;
   @media screen and (max-width: $xs) {
     @include flex(column,nowrap,flex-start,center);
   } // @media
@@ -11,15 +12,17 @@ div#footer .footer-logo {
   a {
     @include flex(row,wrap,flex-start,center);
     text-decoration: none;
+    margin: 0 0 0 15px;
     @media screen and (max-width: $xs) {
       @include flex(column,nowrap,flex-start,center);
+      margin: 0;
     } // @media
   } // a
   a:hover span {
     color: $blue;
   } // a:hover span
   a img {
-    width: 50px;
+    width: 40px;
     @media screen and (max-width: $xs) {
       width: 80px;
       margin: 20px 0 10px;
@@ -41,7 +44,7 @@ div#footer .footer-links {
     text-decoration: none;
     color: $white;
     font-size: 0.9em;
-    margin: 0 10px 0 0;
+    margin: 0 15px 0 0;
   } // a
   a:hover {
     color: $blue;

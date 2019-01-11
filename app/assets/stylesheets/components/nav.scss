@@ -13,7 +13,7 @@ div#nav .general {
   } // a
   a img {
     width: 40px;
-    margin: 0 0 0 10px;
+    margin: 0 10px 0 10px;
   } // a img
   @media screen and (min-width: $xs) {
     a img {
@@ -23,7 +23,7 @@ div#nav .general {
 } // div#nav .general
 
 div#nav .general a span {
-  font-size: 1em;
+  font-size: 1.2em;
   color: $black;
 } // div#nav .general a span
 
@@ -51,9 +51,9 @@ div#nav .admin a {
     margin: 0 5px 0 0;
   } // i
   &:hover {
-    color: $purple;
+    color: $yellow;
     i {
-      color: $purple;
+      color: $yellow;
     } // i
   } // :hover
 } // div#nav .admin a
@@ -79,7 +79,7 @@ div#nav #sidenav-icon .bar1, .bar2, .bar3 {
 div#nav #sidenav-icon.active .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);
-  background-color: $purple;
+  background-color: $yellow;
 } // div#nav #sidenav-icon.active bar1
 
 div#nav #sidenav-icon.active .bar2 {
@@ -89,5 +89,5 @@ div#nav #sidenav-icon.active .bar2 {
 div#nav #sidenav-icon.active .bar3 {
   -webkit-transform: rotate(45deg) translate(-9px, -7px);
   transform: rotate(45deg) translate(-9px, -7px);
-  background-color: $purple;
+  background-color: $yellow;
 } // div#nav #sidenav-icon.active .bar3
