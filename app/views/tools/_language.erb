@@ -1,0 +1,8 @@
+<div class="field-checkbox">
+  <% if @tool.languages.include?(language) %>
+    <input type="checkbox" name="tool[language_ids][]" value="<%= language.id %>" checked="checked"/>
+  <% else %>
+    <input type="checkbox" name="tool[language_ids][]" value="<%= language.id %>"/>
+  <% end %>
+  <span><%= language.name %></span>
+</div>

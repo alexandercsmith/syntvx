@@ -1,0 +1,8 @@
+<div class="field-checkbox">
+  <% if @article.tags.include?(tag) %>
+    <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>" checked="checked"/>
+  <% else %>
+    <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>"/>
+  <% end %>
+  <span><%= tag.name %></span>
+</div>

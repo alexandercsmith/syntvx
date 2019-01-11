@@ -36,14 +36,14 @@ class LanguagesController < ApplicationController
 
   # PATCH/PUT /languages/:id/delete
   def delete
-    @langauge.delete_toggle
+    @language.delete_toggle
     admins_languages_responder(@language.deletion_check.capitalize)
   end
 
   # DESTROY /languages/:id
   def destroy
     @language.destroy
-    admins_languages_responder('destroyed')
+    redirect_to admins_languages_trash_path, notice: "Language destroyed."
   end
 
   private

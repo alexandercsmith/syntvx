@@ -51,7 +51,7 @@ class ToolsController < ApplicationController
   # DESTROY /tools/:id
   def destroy
     @tool.destroy
-    admins_tools_responder('destroyed')
+    redirect_to admins_tools_trash_path, notice: "Tool destroyed."
   end
 
   private

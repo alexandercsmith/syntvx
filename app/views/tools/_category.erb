@@ -1,0 +1,8 @@
+<div class="field-checkbox">
+  <% if @tool.categories.include?(category) %>
+    <input type="checkbox" name="tool[category_ids][]" value="<%= category.id %>" checked="checked"/>
+  <% else %>
+    <input type="checkbox" name="tool[category_ids][]" value="<%= category.id %>"/>
+  <% end %>
+  <span><%= category.name %></span>
+</div>

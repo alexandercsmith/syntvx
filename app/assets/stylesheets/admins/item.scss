@@ -30,6 +30,10 @@ div.admin-item .admin-item-info {
   } // a:hover
 } // div.admin-item .admin-item-info
 
+div.admin-item .admin-item-links.single {
+  @include flex(row,nowrap,flex-end,center);
+} // div.admin-item .admin-item-links.single
+
 div.admin-item .admin-item-links {
   @include flex(row,nowrap,space-around,center);
   a {
@@ -126,4 +130,9 @@ div.admin-item .admin-item-links {
     background-color: $green;
     box-shadow: 0 1px 0 lighten($green,15%);
   } // a.restore
+  a.restore:hover {
+    color: $white;
+    background-color: lighten($green,10%);
+    box-shadow: none;
+  } // a.restore:hover
 } // div.admin-item .admin-item-links

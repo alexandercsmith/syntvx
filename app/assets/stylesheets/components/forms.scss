@@ -64,13 +64,17 @@ form.form .field .field-input {
   } // img
 } // form.form .field .field-input
 
+form.form .field .field-input.collection {
+  @include flex(row,wrap,space-between,center);
+} // form.form .field .field-input.collection
+
 form.form .field .field-input .field-checkbox {
   @include flex(row,nowrap,flex-start,center);
-  width: 28%;
+  width: 30%;
   padding: 7px;
   background-color: $eggshell;
   border-radius: $radius;
-  margin: 0 10px 10px 0;
+  margin: 0 0 10px;
   input[type="checkbox"] {
     margin: 0 8px 0 5px;
     padding: 0;
@@ -78,6 +82,9 @@ form.form .field .field-input .field-checkbox {
   span {
     font-size: 0.8em;
   } // span
+  @media screen and (max-width: $xs) {
+    width: 44%;
+  } // @media
 } // form.form .field .field-input .field-checkbox
 
 form.form .actions {

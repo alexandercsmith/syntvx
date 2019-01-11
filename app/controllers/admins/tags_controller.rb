@@ -7,6 +7,13 @@ class Admins::TagsController < Admins::AdminAppController
     @tags = Tag.admin_search(params[:term], params[:filter], params[:page])
   end
 
+  # GET /admins/tags/trash
+  def trash
+    private_seo('Tags Trash')
+    @tags = Tag.all_inactive.paginate(per_page: 25, page: params[:page])
+    render template: 'admins/tags/index'
+  end
+
   # GET /admins/tag/:id
   def info
   end

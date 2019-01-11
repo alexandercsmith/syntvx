@@ -46,17 +46,8 @@
     <div class="field-label">
       <%= form.label :tags %>
     </div>
-    <div class="field-input">
-      <% @tags.each do |tag| %>
-        <div class="field-checkbox">
-          <% if @article.tags.include?(tag) %>
-            <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>" checked="checked"/>
-          <% else %>
-            <input type="checkbox" name="article[tag_ids][]" value="<%= tag.id %>"/>
-          <% end %>
-          <span><%= tag.name %></span>
-        </div>
-      <% end %>
+    <div class="field-input collection">
+      <%= render partial: 'articles/tag', collection: @tags %>
     </div>
   </div>
 

@@ -170,7 +170,14 @@ form#edit_admin {
 form#edit_admin .admin-panel .container {
   label {
     font-size: 1em;
+    margin: 10px 0;
   } // label
+  span.info-notice {
+    font-size: 0.8em;
+    text-indent: 10px;
+    color: $blue;
+    margin: 0 0 5px;
+  } // span.info-notice
   input {
     @include input-text();
   } // input

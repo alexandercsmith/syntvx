@@ -67,7 +67,7 @@ class ArticlesController < ApplicationController
   # DESTROY /articles/:id
   def destroy
     @article.destroy
-    admins_article_responder('destroyed')
+    redirect_to admins_articles_trash_path, notice: "Article destroyed."
   end
 
   private

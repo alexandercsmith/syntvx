@@ -9,6 +9,13 @@ class Admins::ToolsController < Admins::AdminAppController
     @tools = Tool.admin_search(params[:term], params[:filter], params[:page])
   end
 
+  # GET /admins/tools/trash
+  def trash
+    private_seo('Tools Trash')
+    @tools = Tool.all_inactive.paginate(per_page: 25, page: params[:page])
+    render template: 'admins/tools/index'
+  end
+
   # GET /admins/tool/:id
   def info
   end

@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   # DESTROY /categories/:id
   def destroy
     @category.destroy
-    admins_categories_responder('destroyed')
+    redirect_to admins_categories_trash_path, notice: "Category #{destroyed}."
   end
 
   private

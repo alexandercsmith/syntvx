@@ -2,11 +2,16 @@
   <div class="admin-head">
     <h1><%= controller_name.upcase %></h1>
     <div class="admin-head-options">
+      <% if action_name == 'index' %>
+        <%= link_to 'TRASH', admins_tools_trash_path %>
+      <% else %>
+        <%= link_to 'TOOLS', admins_tools_path %>
+      <% end %>
       <%= link_to 'NEW', admins_new_tool_path %>
     </div>
   </div>
 
-  <%= render partial: 'admins/tools/search' %>
+  <%= render partial: 'admins/tools/search' if action_name == 'index' %>
 
   <div class="admin-items">
     <%= will_paginate @tools %>

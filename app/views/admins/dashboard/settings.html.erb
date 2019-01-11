@@ -19,23 +19,4 @@
       <%= link_to 'Trash', admins_trash_path %>
     </div>
   </div>
-
-  <div class="admin-panel">
-    <h2>API Keys</h2>
-  </div>
-
-  <div class="admin-panel-form">
-    <%= form_tag(admins_api_key_path, method: :post) do %>
-      <%= text_field_tag :name, nil, placeholder: 'API Key Name' %>
-      <%= submit_tag 'Create' %>
-    <% end %>
-  </div>
-
-  <% @api_keys.each do |key| %>
-    <div class="api-key">
-      <p><%= key.name %></p>
-      <span class="key"><%= key.token %></span>
-      <%= link_to 'DELETE', admins_destroy_api_key_path(key), method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-  <% end %>
 </div>

@@ -64,17 +64,8 @@
     <div class="field-label">
       <%= form.label :languages %>
     </div>
-    <div class="field-input">
-      <% @languages.each do |language| %>
-        <div class="field-checkbox">
-          <% if @tool.languages.include?(language) %>
-            <input type="checkbox" name="tool[language_ids][]" value="<%= language.id %>" checked="checked"/>
-          <% else %>
-            <input type="checkbox" name="tool[language_ids][]" value="<%= language.id %>"/>
-          <% end %>
-          <span><%= language.name %></span>
-        </div>
-      <% end %>
+    <div class="field-input collection">
+      <%= render partial: 'tools/language', collection: @languages %>
     </div>
   </div>
 
@@ -82,17 +73,8 @@
     <div class="field-label">
       <%= form.label :categories %>
     </div>
-    <div class="field-input">
-      <% @categories.each do |category| %>
-        <div class="field-checkbox">
-          <% if @tool.categories.include?(category) %>
-            <input type="checkbox" name="tool[category_ids][]" value="<%= category.id %>" checked="checked"/>
-          <% else %>
-            <input type="checkbox" name="tool[category_ids][]" value="<%= category.id %>"/>
-          <% end %>
-          <span><%= category.name %></span>
-        </div>
-      <% end %>
+    <div class="field-input collection">
+      <%= render partial: 'tools/category', collection: @categories %>
     </div>
   </div>
 

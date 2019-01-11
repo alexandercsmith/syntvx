@@ -7,6 +7,13 @@ class Admins::LanguagesController < Admins::AdminAppController
     @languages = Language.admin_search(params[:term], params[:filter], params[:page])
   end
 
+  # GET /admins/languages/trash
+  def trash
+    private_seo('Languages Trash')
+    @languages = Language.all_inactive.paginate(per_page: 25, page: params[:page])
+    render template: 'admins/languages/index'
+  end
+
   # GET /admins/language/:id
   def info
   end

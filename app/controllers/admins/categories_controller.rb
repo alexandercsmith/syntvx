@@ -7,6 +7,13 @@ class Admins::CategoriesController < Admins::AdminAppController
     @categories = Category.admin_search(params[:term], params[:filter], params[:page])
   end
 
+  # GET /admins/categories/trash
+  def trash
+    private_seo('Categories Trash')
+    @categories = Category.all_inactive.paginate(per_page: 25, page: params[:page])
+    render template: 'admins/categories/index'
+  end
+
   # GET /admins/category/:id
   def info
   end

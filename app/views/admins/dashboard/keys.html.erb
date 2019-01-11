@@ -1,0 +1,16 @@
+<div id="admin-<%= controller_name %>-<%= action_name %>" class="admin-page">
+  <div class="admin-head">
+    <h1>API Keys</h1>
+  </div>
+
+  <%= form_tag(admins_api_key_path, method: :post, class: 'admin-search') do %>
+    <div class="admin-search-input">
+      <%= text_field_tag :name, nil, placeholder: 'API Key Name' %>
+      <%= submit_tag 'Create' %>
+    </div>
+  <% end %>
+
+  <div class="admin-items">
+    <%= render partial: 'admins/dashboard/key', collection: @api_keys, as: :key %>
+  </div>
+</div>

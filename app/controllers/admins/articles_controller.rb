@@ -8,6 +8,13 @@ class Admins::ArticlesController < Admins::AdminAppController
     @articles = Article.admin_search(params[:term], params[:filter], params[:page])
   end
 
+  # GET /admins/articles/trash
+  def trash
+    private_seo('Articles Trash')
+    @articles = Article.all_inactive.paginate(per_page: 25, page: params[:page])
+    render template: 'admins/articles/index'
+  end
+
   # GET /admins/article/:id
   def info
   end

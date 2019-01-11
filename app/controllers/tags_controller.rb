@@ -43,7 +43,7 @@ class TagsController < ApplicationController
   # DESTROY /tags/:id
   def destroy
     @tag.destroy
-    admins_tags_responder('destroyed')
+    redirect_to admins_tags_trash_path, notice: "Tag destroyed."
   end
 
   private
