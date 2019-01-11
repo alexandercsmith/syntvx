@@ -15,6 +15,9 @@ div#footer .footer-logo {
       @include flex(column,nowrap,flex-start,center);
     } // @media
   } // a
+  a:hover span {
+    color: $blue;
+  } // a:hover span
   a img {
     width: 50px;
     @media screen and (max-width: $xs) {
@@ -40,6 +43,9 @@ div#footer .footer-links {
     font-size: 0.9em;
     margin: 0 10px 0 0;
   } // a
+  a:hover {
+    color: $blue;
+  } // a:hover
   @media screen and (max-width: $xs) {
     padding: 15px 0 25px;
     a:last-of-type {
