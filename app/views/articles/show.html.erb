@@ -3,7 +3,7 @@
     <div id="article-title" class="col-1-1">
       <h1><%= @article.name %></h1>
       <div class="article-info">
-        <div class="article-tags col-1-1">
+        <div class="article-tags xl-col-4-5 lg-col-4-5 md-col-2-3 sm-col-2-3 xs-col-1-2">
           <% @article.tags.each do |tag| %>
             <span class="x-tag"><%= tag.name %></span>
           <% end %>
