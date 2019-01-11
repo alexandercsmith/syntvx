@@ -108,6 +108,9 @@ $ heroku ps
 # Database
 $ heroku pg
 
+# Redis Stats
+# heroku redis:info
+
 # Logs
 $ heroku logs --tail
 ```
