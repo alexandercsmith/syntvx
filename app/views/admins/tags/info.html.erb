@@ -9,6 +9,7 @@
 
   <div class="admin-info-item">
     <div class="container">
+      <h2 class="head">Information</h2>
       <p><b>ID:</b> <%= @tag.id %></p>
       <p><b>Name:</b> <%= @tag.name %></p>
       <p><b>Slug:</b> <%= @tag.slug %></p>
@@ -20,5 +21,19 @@
       <p><b>Updated at:</b> <%= @tag.updated_time %> | <%= @tag.updated_date %></p>
     </div>
   </div>
+
+  <% if @tag.articles.any? %>
+    <div class="admin-info-item">
+      <div class="container">
+        <h2 class="head">Articles</h2>
+        <% @tag.articles.each do |article| %>
+          <div class="admin-info-item-association">
+            <span><b>ID</b>: <%= article.id %></span>
+            <span><b>Name</b>: <%= link_to article.name, admins_article_info_path(article) %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
 </div>

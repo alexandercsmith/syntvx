@@ -133,14 +133,27 @@ div.admin-info-item {
     font-size: 0.9em;
     margin: 0 0 15px;
   } // p
-  p:first-of-type {
-    margin: 15px 0;
-  } // p
 } // div.admin-info-item
 
 div.admin-info-item:first-of-type {
   margin: 0;
 } // div.admin-info-item:first-of-type
+
+div.admin-info-item-association {
+  @include flex(column,nowrap,flex-start,flex-start);
+  margin: 0 0 15px;
+  span {
+    font-size: 0.9em;
+    color: $black;
+  } // span
+  span a {
+    color: $blue;
+    text-decoration: none;
+  } // span a
+  span a:hover {
+    color: $purple;
+  } // span a:hover
+}
 
 form#edit_admin {
   @include flex(column,nowrap,flex-start,flex-start);

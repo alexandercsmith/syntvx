@@ -9,6 +9,7 @@
 
   <div class="admin-info-item">
     <div class="container">
+      <h2 class="head">Information</h2>
       <p><b>ID:</b> <%= @language.id %></p>
       <p><b>Name:</b> <%= @language.name %></p>
       <p><b>Slug:</b> <%= @language.slug %></p>
@@ -20,5 +21,19 @@
       <p><b>Updated at:</b> <%= @language.updated_time %> | <%= @language.updated_date %></p>
     </div>
   </div>
+
+  <% if @language.tools.any? %>
+    <div class="admin-info-item">
+      <div class="container">
+        <h2 class="head">Tools</h2>
+        <% @language.tools.each do |tool| %>
+          <div class="admin-info-item-association">
+            <span><b>ID</b>: <%= tool.id %></span>
+            <span><b>Name</b>: <%= link_to tool.name, admins_tool_info_path(tool) %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
 </div>

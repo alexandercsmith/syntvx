@@ -9,6 +9,7 @@
 
   <div class="admin-info-item">
     <div class="container">
+      <h2 class="head">Information</h2>
       <%= image_tag @article.cover_image if @article.cover_image.attached? %>
       <p><b>ID:</b> <%= @article.id %></p>
       <p><b>Name:</b> <%= @article.name %></p>
@@ -20,9 +21,22 @@
       <p><b>Deleted:</b> <%= @article.deleted %></p>
       <p><b>Created at:</b> <%= @article.created_time %> | <%= @article.created_date %></p>
       <p><b>Updated at:</b> <%= @article.updated_time %> | <%= @article.updated_date %></p>
-      <p><b>Tags:</b> <%= @article.tags.pluck(:name) %></p>
     </div>
   </div>
+
+  <% if @article.tags.any? %>
+    <div class="admin-info-item">
+      <div class="container">
+        <h2 class="head">Tags</h2>
+        <% @article.tags.each do |tag| %>
+          <div class="admin-info-item-association">
+            <span><b>ID</b>: <%= tag.id %></span>
+            <span><b>Name</b>: <%= link_to tag.name, admins_tag_info_path(tag) %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="admin-info-item">
     <div class="container">
