@@ -85,10 +85,10 @@ class Tool < ApplicationRecord
       .where(tool_languages: { language: languages },
              tool_categories: { category: categories })
       .name_asc
-      .paginate(per_page: 20, page: page)
+      .paginate(per_page: 15, page: page)
     else
       all_published
-      .paginate(per_page: 20, page: page)
+      .paginate(per_page: 15, page: page)
     end
   end
 
