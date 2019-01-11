@@ -1,5 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+// FONTS
+@font-face {
+  font-family: 'Karla';
+  src: URL('fonts/karla.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'KarlaBold';
+  src: URL('fonts/karla-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'KarlaItalic';
+  src: URL('fonts/karla-italic.ttf') format('truetype');
+}
 
 html, body {
   font-family: 'Karla', sans-serif;
 } // html, body
+
+b {
+  font-family: 'KarlaBold'
+} // b
+
+i {
+  font-family: 'KarliaItalic'
+} // i
