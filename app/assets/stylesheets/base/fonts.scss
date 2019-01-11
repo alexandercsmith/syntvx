@@ -1,17 +1,13 @@
 // FONTS
 @font-face {
   font-family: 'Karla';
-  src: URL('fonts/karla.ttf') format('truetype');
-}
+  src: font-url('/fonts/karla.ttf') format('truetype');
 
-@font-face {
   font-family: 'KarlaBold';
-  src: URL('fonts/karla-bold.ttf') format('truetype');
-}
+  src: font-url('/fonts/karla-bold.ttf') format('truetype');
 
-@font-face {
   font-family: 'KarlaItalic';
-  src: URL('fonts/karla-italic.ttf') format('truetype');
+  src: font-url('/fonts/karla-italic.ttf') format('truetype');
 }
 
 html, body {
@@ -19,9 +15,9 @@ html, body {
 } // html, body
 
 b {
-  font-family: 'KarlaBold'
+  font-family: 'KarlaBold', sans-serif;
 } // b
 
 i {
-  font-family: 'KarliaItalic'
+  font-family: 'KarliaItalic', sans-serif;
 } // i
