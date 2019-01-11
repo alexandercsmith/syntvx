@@ -10,11 +10,11 @@
     </div>
 
 
-    <%= link_to 'ARTICLES', blog_path, class: 'title' %>
+    <%= link_to 'ARTICLES', blog_path, class: 'title col-1-1' %>
 
     <%= render partial: 'articles/article', collection: @articles, cached: true %>
 
-    <%= link_to 'RECENT', directory_path, class: 'title' %>
+    <%= link_to 'RECENT', directory_path, class: 'title col-1-1' %>
 
     <%= render partial: 'tools/tool', collection: @tools, cached: true %>
 

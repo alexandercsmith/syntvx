@@ -75,6 +75,7 @@ class Tag < ApplicationRecord
   def tag_cache_clear
     Rails.cache.delete('Tag.active')
     Rails.cache.delete('Tag.approved')
+    Rails.cache.delete('Tag.draft')
     Rails.cache.delete('Tag.featured')
     Rails.cache.delete("Tag.#{slug}")
     Rails.cache.delete("Tag.#{id}.articles")
@@ -96,6 +97,13 @@ class Tag < ApplicationRecord
   def self.all_approved
     Rails.cache.fetch('Tag.approved') do
       active_approved.include_assoc.name_asc.to_a
+    end
+  end
+
+  # Tag.all_drafts
+  def self.all_drafts
+    Rails.cache.fetch('Tag.draft') do
+      active_unapproved.include_assoc.name_asc.to_a
     end
   end
 

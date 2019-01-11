@@ -4,6 +4,10 @@ class Admins::LanguagesController < Admins::AdminAppController
   # GET /admins/langauges
   def index
     private_seo('Languages')
+    @all = Language.all_active.count
+    @approved = Language.all_approved.count
+    @drafts = Language.all_drafts.count
+    @featured = Language.all_featured.count
     @languages = Language.admin_search(params[:term], params[:filter], params[:page])
   end
 

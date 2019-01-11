@@ -133,6 +133,9 @@ div.admin-info-item {
     font-size: 0.9em;
     margin: 0 0 15px;
   } // p
+  p a {
+    color: $blue;
+  } // p a
 } // div.admin-info-item
 
 div.admin-info-item:first-of-type {

@@ -3,13 +3,13 @@
     <%= text_field_tag :term, params[:term], placeholder: 'Search Tags...' %>
     <div class="admin-filter-options">
       <%= radio_button_tag :filter, 'all', filter_check('all', params[:filter]) %>
-      <span class="all">All</span>
+      <span class="all">All (<%= @all %>)</span>
       <%= radio_button_tag :filter, 'approved', filter_check('approved', params[:filter]) %>
-      <span class="approved">Approved</span>
+      <span class="approved">Approved  (<%= @approved %>)</span>
       <%= radio_button_tag :filter, 'unapproved', filter_check('unapproved', params[:filter]) %>
-      <span>Drafts</span>
+      <span>Drafts  (<%= @drafts %>)</span>
       <%= radio_button_tag :filter, 'featured', filter_check('featured', params[:filter]) %>
-      <span class="featured">Featured</span>
+      <span class="featured">Featured  (<%= @featured %>)</span>
     </div>
     <%= submit_tag 'Search' %>
   </div>

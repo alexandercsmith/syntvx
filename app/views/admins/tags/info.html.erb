@@ -3,6 +3,7 @@
   <div class="admin-head">
     <h1><%= controller_name.upcase %></h1>
     <div class="admin-head-options">
+      <%= link_to 'EDIT', admins_edit_tag_path(@tag) %>
       <%= link_to 'BACK', admins_tags_path %>
     </div>
   </div>
@@ -26,12 +27,7 @@
     <div class="admin-info-item">
       <div class="container">
         <h2 class="head">Articles</h2>
-        <% @tag.articles.each do |article| %>
-          <div class="admin-info-item-association">
-            <span><b>ID</b>: <%= article.id %></span>
-            <span><b>Name</b>: <%= link_to article.name, admins_article_info_path(article) %></span>
-          </div>
-        <% end %>
+        <%= render partial: 'admins/tags/article', collection: @tag.articles, as: :article %>
       </div>
     </div>
   <% end %>

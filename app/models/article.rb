@@ -81,6 +81,7 @@ class Article < ApplicationRecord
   def article_cache_clear
     Rails.cache.delete('Article.active')
     Rails.cache.delete('Article.published')
+    Rails.cache.delete('Article.draft')
     Rails.cache.delete('Article.featured')
     Rails.cache.delete("Article.#{slug}")
   end
@@ -101,6 +102,13 @@ class Article < ApplicationRecord
   def self.all_published
     Rails.cache.fetch('Article.published') do
       active_published.include_assoc.name_asc.to_a
+    end
+  end
+
+  # Article.all_drafts
+  def self.all_drafts
+    Rails.cache.fetch('Article.draft') do
+      active_unpublished.include_assoc.name_asc.to_a
     end
   end
 

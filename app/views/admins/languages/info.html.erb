@@ -3,6 +3,7 @@
   <div class="admin-head">
     <h1><%= controller_name.upcase %></h1>
     <div class="admin-head-options">
+      <%= link_to 'EDIT', admins_edit_language_path(@language) %>
       <%= link_to 'BACK', admins_languages_path %>
     </div>
   </div>
@@ -26,12 +27,7 @@
     <div class="admin-info-item">
       <div class="container">
         <h2 class="head">Tools</h2>
-        <% @language.tools.each do |tool| %>
-          <div class="admin-info-item-association">
-            <span><b>ID</b>: <%= tool.id %></span>
-            <span><b>Name</b>: <%= link_to tool.name, admins_tool_info_path(tool) %></span>
-          </div>
-        <% end %>
+        <%= render partial: 'admins/languages/tool', collection: @language.tools, as: :tool %>
       </div>
     </div>
   <% end %>

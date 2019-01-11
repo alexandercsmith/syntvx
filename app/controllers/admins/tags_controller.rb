@@ -4,6 +4,10 @@ class Admins::TagsController < Admins::AdminAppController
   # GET /admins/tags
   def index
     private_seo('Tags')
+    @all = Tag.all_active.count
+    @approved = Tag.all_approved.count
+    @drafts = Tag.all_drafts.count
+    @featured = Tag.all_featured.count
     @tags = Tag.admin_search(params[:term], params[:filter], params[:page])
   end
 

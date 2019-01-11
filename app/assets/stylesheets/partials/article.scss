@@ -12,7 +12,7 @@ div.article-card .article-image {
 } // div.article-card .article-image
 
 div.article-card .article-details-mobile {
-  @include flex(column,nowrap,center,center);
+  @include flex(column,nowrap,center,flex-end);
 } // div.article-card .article-details-mobile
 
 div.article-card .article-details-mobile .article-tags-mobile {

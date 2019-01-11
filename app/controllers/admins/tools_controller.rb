@@ -6,6 +6,10 @@ class Admins::ToolsController < Admins::AdminAppController
   # GET /admins/tools
   def index
     private_seo('Tools')
+    @all = Tool.all_active.count
+    @published = Tool.all_published.count
+    @drafts = Tool.all_drafts.count
+    @featured = Tool.all_featured.count
     @tools = Tool.admin_search(params[:term], params[:filter], params[:page])
   end
 

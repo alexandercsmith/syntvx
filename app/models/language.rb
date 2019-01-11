@@ -83,6 +83,7 @@ class Language < ApplicationRecord
   def language_cache_clear
     Rails.cache.delete('Language.active')
     Rails.cache.delete('Language.approved')
+    Rails.cache.delete('Language.draft')
     Rails.cache.delete('Language.featured')
     Rails.cache.delete("Language.#{slug}")
   end
@@ -103,6 +104,13 @@ class Language < ApplicationRecord
   def self.all_approved
     Rails.cache.fetch('Language.approved') do
       active_approved.include_assoc.name_asc.to_a
+    end
+  end
+  
+  # Language.all_drafts
+  def self.all_drafts
+    Rails.cache.fetch('Language.draft') do
+      active_unapproved.include_assoc.name_asc.to_a
     end
   end
 

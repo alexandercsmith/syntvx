@@ -83,6 +83,7 @@ class Category < ApplicationRecord
   def category_cache_clear
     Rails.cache.delete('Category.active')
     Rails.cache.delete('Category.approved')
+    Rails.cache.delete('Category.draft')
     Rails.cache.delete('Category.featured')
     Rails.cache.delete("Category.#{slug}")
   end
@@ -103,6 +104,13 @@ class Category < ApplicationRecord
   def self.all_approved
     Rails.cache.fetch('Category.approved') do
       active_approved.include_assoc.name_asc.to_a
+    end
+  end
+
+  # Category.all_drafts
+  def self.all_drafts
+    Rails.cache.fetch('Category.draft') do
+      active_unapproved.include_assoc.name_asc.to_a
     end
   end
 

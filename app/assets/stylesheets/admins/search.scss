@@ -17,6 +17,7 @@ form.admin-search .admin-search-input {
   @media screen and (max-width: $xs) {
     justify-content: flex-end;
     input[type="submit"] {
+      width: 100%;
       margin: 10px 0 0;
     } // // input[type="submit"]
   } // @media

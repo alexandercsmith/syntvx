@@ -4,6 +4,10 @@ class Admins::CategoriesController < Admins::AdminAppController
   # GET /admins/categories
   def index
     private_seo('Categories')
+    @all = Category.all_active.count
+    @approved = Category.all_approved.count
+    @drafts = Category.all_drafts.count
+    @featured = Category.all_featured.count
     @categories = Category.admin_search(params[:term], params[:filter], params[:page])
   end
 

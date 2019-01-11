@@ -5,6 +5,10 @@ class Admins::ArticlesController < Admins::AdminAppController
   # GET /admins/articles
   def index
     private_seo('Articles')
+    @all = Article.all_active.count
+    @published = Article.all_published.count
+    @draft = Article.all_drafts.count
+    @featured = Article.all_featured.count
     @articles = Article.admin_search(params[:term], params[:filter], params[:page])
   end
 
