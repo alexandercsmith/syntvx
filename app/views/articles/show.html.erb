@@ -5,7 +5,7 @@
       <div class="article-info">
         <div class="article-tags xl-col-4-5 lg-col-4-5 md-col-2-3 sm-col-2-3 xs-col-1-2">
           <% @article.tags.each do |tag| %>
-            <span class="x-tag"><%= tag.name %></span>
+            <span class="x-tag">#<%= tag.name %></span>
           <% end %>
         </div>
         <p class="x-published"><%= @article.published_date %></p>
