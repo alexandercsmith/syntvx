@@ -46,6 +46,7 @@
 @mixin description() {
   width: 100%;
   font-size: 0.9em;
+  line-height: 1.4em;
   color: $charcoal;
   a {
     color: $blue;

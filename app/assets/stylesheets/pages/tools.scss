@@ -1,7 +1,7 @@
 // Tools#Show
 #tools-show .container .tool-head {
   @include flex(row,wrap,space-between,stretch);
-  padding: 10px 0;
+  padding: 10px 0 15px;
   border-bottom: 1px solid $light-grey;
 } // #tools-show .container .tool-head
 
@@ -21,20 +21,38 @@
 // #tools-show .container .tool-head .tool-info .tool-languages span
 // #tools-show .container .tool-head .tool-info .tool-categories span
 
+#tools-show .container .tool-head .tool-info .tool-languages,
+#tools-show .container .tool-head .tool-info .tool-categories {
+  p {
+    width: 100%;
+    font-size: 0.8em;
+    color: $blue;
+    margin: 0 0 10px;
+    padding: 5px 0;
+    text-indent: 2px;
+  } // p
+}
+// #tools-show .container .tool-head .tool-info .tool-languages
+// #tools-show .container .tool-head .tool-info .tool-categories
+
 #tools-show .container .tool-head .tool-info .tool-languages {
-  margin: 0 0 20px;
+  margin: 0 0 30px;
 } // #tools-show .container .tool-head .tool-info .tool-languages
 
 #tools-show .container .tool-head .tool-info .tool-categories {
 
 } // #tools-show .container .tool-head .tool-info .tool-categories
 
-#tools-show .container .tool-head .tool-info .tool-description {
+#tools-show .container .tool-description {
   p {
     color: $charcoal;
     font-size: 0.9em;
+    line-height: 1.8em;
+    @media screen and (max-width: $xs) {
+      font-size: 1em;
+    } // @media
   } // p
-} // #tools-show .container .tool-head .tool-info .tool-description
+} // #tools-show .container .tool-description
 
 #tools-show .container .tool-head .tool-links {
   @include flex(column,nowrap,space-around,center);

@@ -90,6 +90,10 @@
   } // a:hover
   p {
     margin: 25px 0;
+    line-height: 1.8em;
+    @media screen and (max-width: $xs) {
+      font-size: 1.1em;
+    } // p
   } // p
 } // #article-body
 

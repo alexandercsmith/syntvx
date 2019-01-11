@@ -8,12 +8,14 @@
         </div>
 
         <div class="tool-languages">
+          <p>Languages</p>
           <% @tool.languages.each do |language| %>
             <span><%= language.name %></span>
           <% end %>
         </div>
 
         <div class="tool-categories">
+          <p>Categories</p>
           <% @tool.categories.each do |category| %>
             <span><%= category.name %></span>
           <% end %>
@@ -37,7 +39,7 @@
       </div>
     </div>
 
-    <div class="tool-description xl-col-3-4 lg-col-3-4 md-col-1-2 sm-col-1-1 xs-col-1-1">
+    <div class="tool-description xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
       <p><%= @tool.description %></p>
     </div>
 

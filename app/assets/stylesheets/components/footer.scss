@@ -1,5 +1,49 @@
 div#footer {
+  @include flex(row,wrap,space-between,center);
   width: 100%;
-  background-color: darken($blue,15%);
-  height: 50px;
+  background-color: $black;
+  @media screen and (max-width: $xs) {
+    @include flex(column,nowrap,flex-start,center);
+  } // @media
 } // div#footer
+
+div#footer .footer-logo {
+  a {
+    @include flex(row,wrap,flex-start,center);
+    text-decoration: none;
+    @media screen and (max-width: $xs) {
+      @include flex(column,nowrap,flex-start,center);
+    } // @media
+  } // a
+  a img {
+    width: 50px;
+    @media screen and (max-width: $xs) {
+      width: 80px;
+      margin: 20px 0 10px;
+    } // @media
+  } // a img
+  a span {
+    font-size: 1em;
+    color: $white;
+    margin: 0 0 0 5px;
+    @media screen and (max-width: $xs) {
+      font-size: 1.5em;
+      margin: 0 0 15px;
+    } // @media
+  } // a span
+} // div#footer .footer-logo
+
+div#footer .footer-links {
+  a {
+    text-decoration: none;
+    color: $white;
+    font-size: 0.9em;
+    margin: 0 10px 0 0;
+  } // a
+  @media screen and (max-width: $xs) {
+    padding: 15px 0 25px;
+    a:last-of-type {
+      margin: 0;
+    } // a:last-of-type
+  } // @media
+} // div#footer .footer-links
