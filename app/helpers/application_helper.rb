@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def twitter_share(url,text,hashtags)
-    "https://twitter.com/intent/tweet?url=#{url.to_s}&text=#{text.to_s}&nbsp;|&nbsp;&via=_syntvx&hashtags=#{hashtags.to_s}"
+    "https://twitter.com/intent/tweet?url=#{url.to_s}&text=#{text.to_s}&via=_syntvx&hashtags=#{hashtags.to_s}"
   end
 
   def reddit_share(url,title)

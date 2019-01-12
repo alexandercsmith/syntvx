@@ -43,7 +43,7 @@
       <%= link_to facebook_share(tool_url(@tool)), target: '_blank' do %>
         <%= fa_icon 'facebook-square' %>
       <% end %>
-      <%= link_to twitter_share(tool_url(@tool),@tool.name,"#SYNTVX"), target: '_blank' do %>
+      <%= link_to twitter_share(tool_url(@tool),"#{@tool.name} | ","#SYNTVX"), target: '_blank' do %>
         <%= fa_icon 'twitter-square' %>
       <% end %>
       <%= link_to linkedin_share(tool_url(@tool),@tool.name,@tool.description), target: '_blank' do %>
