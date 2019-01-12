@@ -20,7 +20,7 @@
       <%= link_to facebook_share(article_url(@article)), target: '_blank' do %>
         <%= fa_icon 'facebook-square' %>
       <% end %>
-      <%= link_to twitter_share(article_url(@article),"#{@article.name} | ","#SYNTVX"), target: '_blank' do %>
+      <%= link_to twitter_share(article_url(@article),@article.name,"#SYNTVX"), target: '_blank' do %>
         <%= fa_icon 'twitter-square' %>
       <% end %>
       <%= link_to linkedin_share(article_url(@article),@article.name,@article.description), target: '_blank' do %>
