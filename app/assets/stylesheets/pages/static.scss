@@ -15,3 +15,44 @@
     color: $charcoal;
   } // :hover
 } // #static-index .container a.title
+
+// Static#Terms && Static#Policy
+.legal-page .container {
+  @include flex(column,nowrap,flex-start,center);
+} // .legal-page .container
+
+.legal-page .container img {
+  width: 100px;
+} // .legal-page .container img
+
+.legal-page .container h1 {
+  width: 100%;
+  font-weight: normal;
+  border-bottom: 1px solid $grey;
+  text-align: center;
+  padding: 0 0 15px;
+} // .legal-page .container h1
+
+.legal-page .container .legal-section {
+  @include flex(column,nowrap,flex-start,flex-start);
+  width: 100%;
+} // .legal-page .container .legal-section
+
+.legal-page .container .legal-section h2 {
+  width: 100%;
+  padding: 0 0 10px;
+  font-weight: normal;
+  border-bottom: 1px solid $light-grey;
+  color: $charcoal;
+} // .legal-page .container .legal-section h2
+
+.legal-page .container .legal-section p {
+  line-height: 1.5em;
+  a {
+    text-decoration: none;
+    color: $blue;
+  } // a
+  a:hover {
+    color: $yellow;
+  } // a:hover
+} // .legal-page .container .legal-section p

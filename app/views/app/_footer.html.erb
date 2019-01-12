@@ -1,14 +1,21 @@
 <div id="footer">
-  <div class="footer-logo">
-    <%= link_to root_path do %>
-      <%= image_tag "logo-200.png", alt: 'SYNTVX Logo', title: 'SYNTVX Logo' %>
-      <span>S Y N T V X</span>
-    <% end %>
-  </div>
+  <div class="container">
+    <div class="footer-logo">
+      <%= link_to root_path do %>
+        <%= image_tag "logo-200.png", alt: 'SYNTVX Logo', title: 'SYNTVX Logo' %>
+        <span>S Y N T V X</span>
+      <% end %>
+    </div>
 
-  <div class="footer-links">
-    <%= link_to 'HOME', root_path %>
-    <%= link_to 'DIRECTORY', directory_path %>
-    <%= link_to 'BLOG', blog_path %>
+    <div class="footer-links">
+      <%= link_to 'HOME', root_path %>
+      <%= link_to 'DIRECTORY', directory_path %>
+      <%= link_to 'BLOG', blog_path %>
+    </div>
+
+    <div class="footer-bottom">
+      <%= link_to 'Terms & Conditions', terms_path %>
+      <%= link_to 'Privacy Policy', policy_path %>
+    </div>
   </div>
 </div>

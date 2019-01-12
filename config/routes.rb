@@ -82,7 +82,9 @@ Rails.application.routes.draw do
   match '/tools/:id/delete'  => 'tools#delete',  via: %i[put patch], as: :delete_tool
 
   # STATIC
-  get '/directory' => 'static#directory'
+  get '/directory'            => 'static#directory', as: :directory
+  get '/terms-and-conditions' => 'static#terms',     as: :terms
+  get '/privacy-policy'       => 'static#policy',    as: :policy
 
   # ROOT
   root to: 'static#index'

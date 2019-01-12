@@ -18,6 +18,16 @@ class StaticController < ApplicationController
     public_seo('Directory', directory_url)
   end
 
+  # /terms-and-conditions
+  def terms
+    public_seo('Terms & Conditions', terms_url)
+  end
+
+  # /privacy-policy
+  def policy
+    public_seo('Privacy Policy', policy_url)
+  end
+
   private
 
   def set_articles

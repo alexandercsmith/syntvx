@@ -1,20 +1,32 @@
-.container {
+@mixin container() {
   margin: 10px;
   @media screen and (max-width: $xs) {
-    margin: 10px 15px;
+    margin: 15px;
   } // @media
+} // container()
+
+.container {
+  @include container();
 } // .container
 
-.web-container {
-  margin: 10px;
+@mixin web-container() {
+  margin: 15px;
   @media screen and (max-width: $sm) {
     margin: 0;
   } // @media
+} // web-container()
+
+.web-container {
+  @include web-container();
 } // .web-container
 
-.mobile-container {
+@mixin mobile-container() {
   margin: 0;
   @media screen and (max-width: $sm) {
-    margin: 10px;
+    margin: 15px;
   } // @media
+} // mobile-container()
+
+.mobile-container {
+  @include mobile-container();
 } // .mobile-container
