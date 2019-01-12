@@ -52,20 +52,16 @@ module ApplicationHelper
     "http://www.facebook.com/sharer.php?u=#{url.to_s}"
   end
 
-  def twitter_share(url,text,hastags)
-    "https://twitter.com/intent/tweet?url=#{url.to_s}&text=#{text.to_s}&via=@_syntvx&hashtags=#{hashtags}"
+  def twitter_share(url,text,hashtags)
+    "https://twitter.com/intent/tweet?url=#{url.to_s}&text=#{text.to_s}&via=@_syntvx&hashtags=#{hashtags.to_s}"
   end
 
-  def article_reddit_share(url,title)
+  def reddit_share(url,title)
     "https://reddit.com/submit?url=#{url.to_s}&title=#{title.to_s}"
   end
 
   def linkedin_share(url,title,summary)
     "https://www.linkedin.com/shareArticle?mini=true&url=#{url.to_s}&title=#{title.to_s}&summary=#{summary.to_s}"
-  end
-
-  def email_share(email,subject,body)
-    "mailto:#{email.to_s}?subject=#{subject.to_s}&body=#{body.to_s}"
   end
 
 end

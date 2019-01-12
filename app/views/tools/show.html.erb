@@ -39,6 +39,21 @@
       </div>
     </div>
 
+    <div id="article-socials" class="socials">
+      <%= link_to facebook_share(tool_url(@tool)), target: '_blank' do %>
+        <%= fa_icon 'facebook-square' %>
+      <% end %>
+      <%= link_to twitter_share(tool_url(@tool),@tool.name,"#SYNTVX"), target: '_blank' do %>
+        <%= fa_icon 'twitter-square' %>
+      <% end %>
+      <%= link_to linkedin_share(tool_url(@tool),@tool.name,@tool.description), target: '_blank' do %>
+        <%= fa_icon 'linkedin-square' %>
+      <% end %>
+      <%= link_to reddit_share(tool_url(@tool),@tool.name), target: '_blank' do %>
+        <%= fa_icon 'reddit-square' %>
+      <% end %>
+    </div>
+
     <div class="tool-description xl-col-3-4 lg-col-3-4 md-col-2-3 sm-col-1-1 xs-col-1-1">
       <p><%= @tool.description %></p>
     </div>

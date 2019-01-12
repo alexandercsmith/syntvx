@@ -72,7 +72,7 @@ div#footer .container .footer-links {
 } // div#footer .container .footer-links
 
 div#footer .container .footer-bottom {
-  @include flex(row,nowrap,flex-end,center);
+  @include flex(row,nowrap,space-between,center);
   width: 100%;
   border-top: 1px solid $white;
   @media screen and (min-width: $xs) {
@@ -80,11 +80,54 @@ div#footer .container .footer-bottom {
     padding: 10px 0 0;
   } // @media
   @media screen and (max-width: $xs) {
-    @include flex(row,nowrap,space-around,center);
+    @include flex(column,nowrap,center,center);
     width: 90%;
     margin: 0 auto;
     padding: 20px 0 0;
   } // @media
+} // div#footer .container .footer-bottom
+
+div#footer .container .footer-bottom .footer-socials {
+  @media screen and (max-width: $xs) {
+    margin: 15px 0 30px;
+  } // @media
+  a {
+    text-decoration: none;
+    margin: 0 20px 0 0;
+    i {
+      font-size: 1.2em;
+      color: $white;
+      @media screen and (max-width: $xs) {
+        font-size: 1.5em;
+      } // @media
+    } // i
+    i.fa-facebook {
+      font-size: 1em;
+      @media screen and (max-width: $xs) {
+        font-size: 1.3em;
+      } // @media
+    } // i.fa-facebook
+    @media screen and (max-width: $xs) {
+      margin: 0 25px 0 0;
+    } // @media
+  } // a
+  a:hover {
+    i {
+      color: $yellow;
+    } // i
+  } // a:hover
+  a:first-of-type {
+    margin: 0 25px;
+    @media screen and (max-width: $xs) {
+      margin: 0 28px 0 0;
+    } // @media
+  } // a:first-of-type
+  a:last-of-type {
+    margin: 0;
+  } // a:last-of-type
+} // div#footer .container .footer-bottom .footer-socials
+
+div#footer .container .footer-bottom .footer-legal {
   a {
     font-size: 0.8em;
     color: $white;
@@ -97,4 +140,9 @@ div#footer .container .footer-bottom {
   a:hover {
     color: $yellow;
   } // a:hover
-} // div#footer .container .footer-bottom
+  @media screen and (max-width: $xs) {
+    a:first-of-type {
+      margin: 0 25px 0 0;
+    } // a:first-of-type
+  } // @media
+} // div#footer .container .footer-bottom .footer-legal

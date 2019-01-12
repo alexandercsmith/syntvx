@@ -40,6 +40,26 @@ div#nav .general a.nav-link:hover {
   background-color: $blue;
 } // div#nav a.nav-link:hover
 
+div#nav .nav-socials {
+  @include flex(row,nowrap,flex-end,center);
+  a {
+    text-decoration: none;
+    margin: 0 25px 0 0;
+    i {
+      font-size: 1.3em;
+      color: $blue;
+    } // i
+    i.fa-facebook {
+      font-size: 1em;
+    } // i.fa-facebook
+    &:hover {
+      i {
+        color: $yellow;
+      } // i
+    } // :hover
+  } // a
+} // div#nav .nav-socials
+
 div#nav .admin a {
   text-decoration: none;
   margin: 0 20px 0 0;
@@ -61,7 +81,7 @@ div#nav .admin a {
 div#nav #sidenav-icon {
   display: inline-block;
   cursor: pointer;
-  padding: 10px 12px;
+  padding: 8px 12px;
   &:active div {
     background-color: $white;
   } // :active div

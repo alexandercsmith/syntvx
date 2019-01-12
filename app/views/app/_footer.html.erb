@@ -14,8 +14,21 @@
     </div>
 
     <div class="footer-bottom">
-      <%= link_to 'Terms & Conditions', terms_path %>
-      <%= link_to 'Privacy Policy', policy_path %>
+      <div class="footer-socials">
+        <%= link_to "https://www.facebook.com/syntvx.code", target: '_blank' do %>
+          <%= fa_icon 'facebook' %>
+        <% end %>
+        <%= link_to "https://twitter.com/_syntvx", target: '_blank' do %>
+          <%= fa_icon 'twitter' %>
+        <% end %>
+        <%= link_to "https://www.instagram.com/syntvx/", target: '_blank' do %>
+          <%= fa_icon 'instagram' %>
+        <% end %>
+      </div>
+      <div class="footer-legal">
+        <%= link_to 'Terms & Conditions', terms_path %>
+        <%= link_to 'Privacy Policy', policy_path %>
+      </div>
     </div>
   </div>
 </div>

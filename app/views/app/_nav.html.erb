@@ -15,6 +15,18 @@
         <%= fa_icon 'user-secret' %>
       <% end %>
     </div>
+  <% else %>
+    <div class="nav-socials hide-on-xs">
+      <%= link_to "https://www.facebook.com/syntvx.code", target: '_blank' do %>
+        <%= fa_icon 'facebook' %>
+      <% end %>
+      <%= link_to "https://twitter.com/_syntvx", target: '_blank' do %>
+        <%= fa_icon 'twitter' %>
+      <% end %>
+      <%= link_to "https://www.instagram.com/syntvx/", target: '_blank' do %>
+        <%= fa_icon 'instagram' %>
+      <% end %>
+    </div>
   <% end %>
 
   <div id="sidenav-icon" onclick="toggleSidenav()" class="hide-on-xl hide-on-lg hide-on-md hide-on-sm">
