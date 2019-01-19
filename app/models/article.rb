@@ -35,7 +35,7 @@ class Article < ApplicationRecord
   store_accessor :style
 
   # Images
-  has_one_attached :cover_image
+  has_one_attached :cover_image, dependent: :destroy
 
   # Scopes
   scope :include_assoc, -> { includes(:tags) }
