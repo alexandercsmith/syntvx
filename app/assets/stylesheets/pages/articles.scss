@@ -122,7 +122,13 @@
   margin: 10px 0;
   border-bottom: 1px solid $light-grey;
 } // #article-body h1
-#article-body h2 {} // #article-body h2
+#article-body h2 {
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px 0 10px;
+  border-bottom: 1px solid: $light-grey;
+  color: $charcoal;
+} // #article-body h2
 #article-body h3 {} // #article-body h3
 #article-body h4 {} // #article-body h4
 #article-body h5 {} // #article-body h5
