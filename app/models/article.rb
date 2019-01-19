@@ -20,15 +20,12 @@ class Article < ApplicationRecord
   include Deletions
   include Features
   include Ordering
+  include Slugs
   include Timing
+  include Validations
 
-  # Validations
-  validates :name,        presence: true, length: { minimum: 2 }
-  validates :description, presence: true, length: { minimum: 2 }
-
-  # Slug
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  # Functions
+  include ArticlesHelper
 
   # Associations
   has_many :article_tags, dependent: :destroy
@@ -41,11 +38,17 @@ class Article < ApplicationRecord
   has_one_attached :cover_image
 
   # Scopes
-  scope :active_published, -> { is_active.is_published }
-  scope :active_unpublished, -> { is_active.is_unpublished }
-  scope :active_featured, -> { is_active.is_published.is_featured }
   scope :include_assoc, -> { includes(:tags) }
   scope :joins_assoc, -> { joins(:tags) }
+  scope :active_published, -> {
+    is_active.is_published.include_assoc
+  }
+  scope :active_unpublished, -> {
+    is_active.is_unpublished.include_assoc
+  }
+  scope :active_featured, -> {
+    is_active.is_published.is_featured.include_assoc
+  }
 
   # Query
   def self.admin_search(term, filter, page)
@@ -78,51 +81,28 @@ class Article < ApplicationRecord
   after_commit :article_cache_clear
   after_destroy :article_cache_clear
 
-  def article_cache_clear
-    Rails.cache.delete('Article.active')
-    Rails.cache.delete('Article.published')
-    Rails.cache.delete('Article.draft')
-    Rails.cache.delete('Article.featured')
-    Rails.cache.delete("Article.#{slug}")
-  end
-
   # Article.all_active
   def self.all_active
-    Rails.cache.fetch('Article.active') do
-      is_active.include_assoc.created_desc.to_a
-    end
+    Rails.cache.fetch('Article.active') { is_active.created_desc.to_a }
   end
-
   # Article.all_inactive - Non-Cache
   def self.all_inactive
     is_inactive.created_desc
   end
-
   # Article.all_published
   def self.all_published
-    Rails.cache.fetch('Article.published') do
-      active_published.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Article.published') { active_published.name_asc.to_a }
   end
-
   # Article.all_drafts
   def self.all_drafts
-    Rails.cache.fetch('Article.draft') do
-      active_unpublished.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Article.draft') { active_unpublished.name_asc.to_a }
   end
-
   # Article.all_featured
   def self.all_featured
-    Rails.cache.fetch('Article.featured') do
-      active_featured.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Article.featured') { active_featured.name_asc.to_a }
   end
-
   # Article.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Article.#{id}") do
-      friendly.include_assoc.find(id)
-    end
+    Rails.cache.fetch("Article.#{id}") { include_assoc.friendly.find(id) }
   end
 end

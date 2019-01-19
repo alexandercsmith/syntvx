@@ -17,15 +17,12 @@ class Language < ApplicationRecord
   include Deletions
   include Features
   include Ordering
+  include Slugs
   include Timing
+  include Validations
 
-  # Validations
-  validates :name,        presence: true, length: { minimum: 1 }
-  validates :description, presence: true, length: { minimum: 2 }
-
-  # Slug
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  # Functions
+  include LanguagesHelper
 
   # Associations
   has_many :tool_languages, dependent: :destroy
@@ -35,10 +32,16 @@ class Language < ApplicationRecord
   store_accessor :style
 
   # Scopes
-  scope :active_approved, -> { is_active.is_approved }
-  scope :active_unapproved, -> { is_active.is_unapproved }
-  scope :active_featured, -> { is_active.is_approved.is_featured }
   scope :include_assoc,   -> { includes(:tools) }
+  scope :active_approved, -> {
+    is_active.is_approved.include_assoc
+  }
+  scope :active_unapproved, -> {
+    is_active.is_unapproved.include_assoc
+  }
+  scope :active_featured, -> {
+    is_active.is_approved.is_featured.include_assoc
+  }
 
   # Query
   def self.admin_search(term, filter, page)
@@ -80,51 +83,28 @@ class Language < ApplicationRecord
   after_commit :language_cache_clear
   after_destroy :language_cache_clear
 
-  def language_cache_clear
-    Rails.cache.delete('Language.active')
-    Rails.cache.delete('Language.approved')
-    Rails.cache.delete('Language.draft')
-    Rails.cache.delete('Language.featured')
-    Rails.cache.delete("Language.#{slug}")
-  end
-
   # Language.all_active
   def self.all_active
-    Rails.cache.fetch('Language.active') do
-      is_active.include_assoc.created_desc.to_a
-    end
+    Rails.cache.fetch('Language.active') { is_active.created_desc.to_a }
   end
-
   # Language.all_inactive - Non-Cache
   def self.all_inactive
     is_inactive.created_desc
   end
-
   # Language.all_approved
   def self.all_approved
-    Rails.cache.fetch('Language.approved') do
-      active_approved.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Language.approved') { active_approved.name_asc.to_a }
   end
-  
   # Language.all_drafts
   def self.all_drafts
-    Rails.cache.fetch('Language.draft') do
-      active_unapproved.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Language.draft') { active_unapproved.name_asc.to_a }
   end
-
   # Language.all_featured
   def self.all_featured
-    Rails.cache.fetch('Language.featured') do
-      active_featured.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Language.featured') { active_featured.name_asc.to_a }
   end
-
   # Language.slugged(params[:id])
   def self.slugged(id)
-    Rails.cache.fetch("Language.#{id}") do
-      friendly.include_assoc.find(id)
-    end
+    Rails.cache.fetch("Language.#{id}") { include_assoc.friendly.find(id) }
   end
 end

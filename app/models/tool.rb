@@ -20,15 +20,12 @@ class Tool < ApplicationRecord
   include Deletions
   include Features
   include Ordering
+  include Slugs
   include Timing
+  include Validations
 
-  # Validations
-  validates :name,        presence: true, length: { minimum: 2 }
-  validates :description, presence: true, length: { minimum: 2 }
-
-  # Slug
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  # Functions
+  include ToolsHelper
 
   # Associations
   has_many :tool_languages, dependent: :destroy
@@ -42,11 +39,17 @@ class Tool < ApplicationRecord
   store_accessor :style
 
   # Scopes
-  scope :active_published, -> { is_active.is_published }
-  scope :active_unpublished, -> { is_active.is_unpublished }
-  scope :active_featured, -> { is_active.is_published.is_featured }
   scope :include_assoc, -> { includes(:languages, :categories) }
   scope :joins_assoc, -> { joins(:languages, :categories) }
+  scope :active_published, -> {
+    is_active.is_published.include_assoc
+  }
+  scope :active_unpublished, -> {
+    is_active.is_unpublished.include_assoc
+  }
+  scope :active_featured, -> {
+    is_active.is_published.is_featured.include_assoc
+  }
 
   # Query
   def self.admin_search(term, filter, page)
@@ -75,7 +78,6 @@ class Tool < ApplicationRecord
     end
   end
 
-  # Directory
   # Tool.directory_search(Boolean, String, @relation, @relation, Integer)
   def self.directory_search(query, term, languages, categories, page)
     if query
@@ -96,59 +98,34 @@ class Tool < ApplicationRecord
   after_commit :tool_cache_clear
   after_destroy :tool_cache_clear
 
-  def tool_cache_clear
-    Rails.cache.delete('Tool.active')
-    Rails.cache.delete('Tool.published')
-    Rails.cache.delete('Tool.draft')
-    Rails.cache.delete('Tool.featured')
-    Rails.cache.delete('Tool.recent')
-    Rails.cache.delete("Tool.#{slug}")
-  end
-
   # Tool.all_active
   def self.all_active
-    Rails.cache.fetch('Tool.active') do
-      is_active.include_assoc.created_desc.to_a
-    end
+    Rails.cache.fetch('Tool.active') { is_active.created_desc.to_a }
   end
-
   # Tool.all_inactive - Non-Cache
   def self.all_inactive
     is_inactive.created_desc
   end
-
   # Tool.all_published
   def self.all_published
-    Rails.cache.fetch('Tool.published') do
-      active_published.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Tool.published') { active_published.name_asc.to_a }
   end
-
   # Tool.all_drafts
   def self.all_drafts
-    Rails.cache.fetch('Tool.draft') do
-      active_unpublished.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Tool.draft') { active_unpublished.name_asc.to_a }
   end
-
   # Tool.all_featured
   def self.all_featured
-    Rails.cache.fetch('Tool.featured') do
-      active_featured.include_assoc.name_asc.to_a
-    end
+    Rails.cache.fetch('Tool.featured') { active_featured.name_asc.to_a }
   end
-
+  # Tool.slugged(params[:id])
+  def self.slugged(id)
+    Rails.cache.fetch("Tool.#{id}") { include_assoc.friendly.find(id) }
+  end
   # Tool.all_recent
   def self.all_recent
     Rails.cache.fetch('Tool.recent') do
-      active_published.include_assoc.published_desc.limit(10).to_a
-    end
-  end
-
-  # Tool.slugged(params[:id])
-  def self.slugged(id)
-    Rails.cache.fetch("Tool.#{id}") do
-      friendly.include_assoc.find(id)
+      active_published.published_desc.limit(10).to_a
     end
   end
 end

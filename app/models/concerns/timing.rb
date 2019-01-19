@@ -1,4 +1,4 @@
-# ORDERING
+# TIMING
 #
 # ~/app/models/concerns
 #

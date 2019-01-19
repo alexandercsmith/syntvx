@@ -68,6 +68,17 @@
   margin: 0 10px 0 0;
 } // #article-title .article-info .article-tags span.tag
 
+#article-description {
+  .container p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    font-style: italic;
+    line-height: 2em;
+    color: $charcoal;
+  } // .container p
+} // #article-description
+
 #article-cover-image {
   @include flex(column,nowrap,center,center);
   max-height: 400px;

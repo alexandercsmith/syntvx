@@ -11,7 +11,12 @@ module ApplicationHelper
                         description: :description,
                         image: :image_src,
                         type: 'website',
-                        url: path.to_s }
+                        url: path.to_s },
+                  twitter: {
+                    card: :description,
+                    photo: :image_src,
+                    site: "@_syntvx"
+                  }
   end
 
   def private_seo(title)
@@ -38,7 +43,12 @@ module ApplicationHelper
                         description: :description,
                         image: :image_src,
                         type: 'website',
-                        url: path.to_s }
+                        url: path.to_s },
+                  twitter: {
+                    card: :description,
+                    photo: :image_src,
+                    site: "@_syntvx"
+                  }
   end
 
   def filter_check(filter, param)

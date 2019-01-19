@@ -17,26 +17,11 @@ div.dashboard-panel {
 
  div.dashboard-panel .dashboard-panel-options {
    a {
-     background-color: $blue;
-     box-shadow: 1px 1px 1px lighten($blue,5%);
-     margin: 0 10px 0 0;
-     text-decoration: none;
-     border-radius: 50%;
-     transition: $speed;
+     @include admin-link();
    } // a
-   a.list {
-     padding: 5px 4px 5px 8px;;
-   } // a.list
-   a.new {
-     padding: 5px 8px;
-   } // a.new
-   a i {
-     color: $white;
-   } // a i
-   a:hover {
-     box-shadow: none;
-     background-color: lighten($blue,5%);
-   } // a:hover
+   a:first-of-type {
+     margin: 0 10px 0 0;
+   } // a:first-of-type
  } // div.dashboard-panel .dashboard-panel-options
 
 div.admin-panel {
@@ -157,6 +142,84 @@ div.admin-info-item-association {
     color: $yellow;
   } // span a:hover
 }
+
+// ---------------------------------------------------------------------------
+
+#sessions-new .container {
+  @include flex(row,nowrap,center,center);
+} // #sessions-new .container
+
+#sessions-new .container #admin-login {
+  max-width: 600px;
+  background-color: $black;
+  border-radius: $radius;
+  box-shadow: 0 1px 2px $light-grey;
+  margin: 20px 0 0;
+} // #sessions-new .container #admin-login
+
+#sessions-new .container #admin-login .container {
+  @include flex(row,wrap,flex-start,center);
+} // #sessions-new .container #admin-login .container
+
+#sessions-new .container #admin-login .container .admin-login-head {
+  @include flex(row,nowrap,space-between,center);
+  padding: 0 0 15px;
+  border-bottom: 1px solid $white;
+  img {
+    width: 50px;
+  } // img
+  h1 {
+    font-size: 1.3em;
+    font-weight: normal;
+    color: $white;
+  } // h1
+} // #sessions-new .container #admin-login .container .admin-login-head
+
+#sessions-new .container #admin-login .container form {
+  @include flex(column,nowrap,flex-start,flex-start);
+  width: 100%;
+} // #sessions-new .container #admin-login .container form
+
+#sessions-new .container #admin-login .container form .field {
+  @include flex(column,nowrap,flex-start,flex-start);
+  margin: 20px 0 0;
+  label {
+    color: $white;
+    font-size: 0.9em;
+    margin: 5px 0;
+  } // label
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    text-indent: 5px;
+    font-size: 1em;
+    background-color: $white;
+    border-radius: $radius;
+  } // input
+} // #sessions-new .container #admin-login .container form .field
+
+#sessions-new .container #admin-login .container form .actions {
+  margin: 20px 0 0;
+  input {
+    width: 100%;
+    font-size: 1em;
+    color: $white;
+    background-color: $green;
+    padding: 10px 0;
+    outline: none;
+    border: none;
+    border-radius: $radius;
+    transition: $speed;
+    cursor: pointer;
+  } // input
+  input:hover {
+    background-color: darken($green,5%);
+  } // input:hover
+} // #sessions-new .container #admin-login .container form .actions
 
 // ---------------------------------------------------------------------------
 

@@ -9,8 +9,11 @@
 # updated_at             :datetime
 
 class Admin < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable
 
   # Attributes => :jsonb
   store_accessor :profile, :name

@@ -16,6 +16,12 @@
       <%= image_tag @article.cover_image, alt: "#{@article.name} Image" if @article.cover_image.attached? %>
     </div>
 
+    <div id="article-description" class="col-1-1">
+      <div class="container">
+        <p><%= @article.description %></p>
+      </div>
+    </div>
+
     <div id="article-socials" class="socials">
       <%= link_to facebook_share(article_url(@article)), target: '_blank' do %>
         <%= fa_icon 'facebook-square' %>

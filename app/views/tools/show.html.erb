@@ -9,16 +9,12 @@
 
         <div class="tool-languages">
           <p>Languages</p>
-          <% @tool.languages.each do |language| %>
-            <span><%= language.name %></span>
-          <% end %>
+          <% @tool.languages.each do |l| %><span><%= l.name %></span><% end %>
         </div>
 
         <div class="tool-categories">
           <p>Categories</p>
-          <% @tool.categories.each do |category| %>
-            <span><%= category.name %></span>
-          <% end %>
+          <% @tool.categories.each do |c| %><span><%= c.name %></span><% end %>
         </div>
       </div>
 
@@ -39,7 +35,7 @@
       </div>
     </div>
 
-    <div id="article-socials" class="socials">
+    <div id="tool-socials" class="socials">
       <%= link_to facebook_share(tool_url(@tool)), target: '_blank' do %>
         <%= fa_icon 'facebook-square' %>
       <% end %>
