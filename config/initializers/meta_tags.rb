@@ -16,7 +16,7 @@ MetaTags.configure do |config|
 
   # Default separator for keywords meta tag (used when an Array passed with
   # the list of keywords). Default is ", ".
-  # config.keywords_separator = ', '
+  config.keywords_separator = ','
 
   # When true, keywords will be converted to lowercase, otherwise they will
   # appear on the page as is. Default is true.

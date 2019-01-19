@@ -15,7 +15,7 @@ A Developer Resource Directory Project.
 * Cache:     Heroku Redis
 * Analytics: Google Analytics
 * Ads:       Google AdSense
-* Storage:   AWS S3
+* Storage:   AWS S3 - 'https://assets.syntvx.com/'
 * Domain:    AWS Route53
 
 ## Development Start
