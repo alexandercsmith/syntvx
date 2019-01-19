@@ -158,6 +158,8 @@ div.admin-info-item-association {
   } // span a:hover
 }
 
+// ---------------------------------------------------------------------------
+
 form#edit_admin {
   @include flex(column,nowrap,flex-start,flex-start);
   width: 100%;

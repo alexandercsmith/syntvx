@@ -9,6 +9,8 @@
   @include container();
 } // .container
 
+// ---------------------------------------------------------------------------
+
 @mixin web-container() {
   margin: 15px;
   @media screen and (max-width: $sm) {
@@ -19,6 +21,8 @@
 .web-container {
   @include web-container();
 } // .web-container
+
+// ---------------------------------------------------------------------------
 
 @mixin mobile-container() {
   margin: 0;

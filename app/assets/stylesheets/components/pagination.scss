@@ -11,10 +11,12 @@
 // .pagination span.previous_page
 // .pagination span.next_page
 
-.pagination a.previous_page {} // .pagination a.previous_page
+.pagination a.previous_page {
+  margin: 0 5px 10px;
+} // .pagination a.previous_page
 
 .pagination a {
-  margin: 0 5px;
+  margin: 0 5px 10px;
   padding: 4px 6px;
   background-color: $light-grey;
   border-radius: $radius;
@@ -30,15 +32,17 @@
 } // .pagination a:hover
 
 .pagination em.current {
+  margin: 0 5px 10px;
   font-style: normal;
   padding: 4px 6px;
   background-color: $blue;
   color: $white;
   border-radius: $radius;
-  margin: 0 5px;
   @media screen and (max-width: $xs) {
     padding: 10px;
   } // @media
 } // .pagination em.current
 
-.pagination a.next_page {} // .pagination a.next_page
+.pagination a.next_page {
+  margin: 0 5px 10px;
+} // .pagination a.next_page

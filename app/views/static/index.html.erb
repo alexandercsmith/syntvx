@@ -14,9 +14,13 @@
 
     <%= render partial: 'articles/article', collection: @articles, cached: true %>
 
+    <%= link_to 'GO TO BLOG', blog_path, class: 'bottom' %>
+
     <%= link_to 'RECENT', directory_path, class: 'title col-1-1' %>
 
     <%= render partial: 'tools/tool', collection: @tools, cached: true %>
+
+    <%= link_to 'GO TO DIRECTORY', directory_path, class: 'bottom' %>
 
   </div>
 </div>

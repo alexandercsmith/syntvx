@@ -45,6 +45,8 @@
 // #articles-index #articles-list #articles-tags
 // #articles-tagged #articles-list #articles-tags
 
+// ---------------------------------------------------------------------------
+
 // Articles#Show
 #article-title h1 {
   font-size: 2em;
@@ -71,7 +73,6 @@
   max-height: 400px;
   overflow: hidden;
   border-radius: $radius;
-  box-shadow: 0 1px 1px $light-grey;
   img { width: 100%; } // img
 } // #article-cover-image
 

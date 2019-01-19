@@ -1,6 +1,6 @@
 // Static#Index
 #static-index .container {
-  @include flex(column,nowrap,flex-start,flex-start);
+  @include flex(column,nowrap,flex-start,flex-end);
 } // #static-index .container
 
 #static-index .container a.title {
@@ -9,12 +9,34 @@
   font-weight: normal;
   color: $blue;
   border-bottom: 1px solid $light-grey;
-  padding: 50px 0 10px;
-  margin: 10px 0 0;
+  padding: 10px 0 10px;
+  margin: 50px 0 0;
   &:hover {
     color: $charcoal;
   } // :hover
 } // #static-index .container a.title
+
+#static-index .container a.bottom {
+  text-decoration: none;
+  color: $white;
+  background-color: $blue;
+  box-shadow: 0 1px 1px lighten($blue,10%);
+  padding: 5px 7px;
+  font-size: 0.9em;
+  border-radius: $radius;
+  transition: $speed;
+} // #static-index .container a.bottom
+
+#static-index .container a.bottom:hover {
+  background-color: lighten($blue,10%);
+  box-shadow: none;
+} // #static-index .container a.bottom:hover
+
+#static-index .container a.bottom:last-of-type {
+  margin: 10px 0 0;
+} // :first-of-type
+
+// ---------------------------------------------------------------------------
 
 // Static#Terms && Static#Policy
 .legal-page .container {
