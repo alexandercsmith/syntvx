@@ -50,6 +50,7 @@ div.tool-card .tool-links {
     height: 35px;
     width: 35px;
     border-radius: 50%;
+    border: 1px solid darken($blue,5%);
     background-color: $blue;
     box-shadow: 0 0 1px lighten($blue,10%);
   } // a i

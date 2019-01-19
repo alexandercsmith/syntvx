@@ -16,7 +16,7 @@
   text-decoration: none;
   border-radius: $radius;
   outline: none;
-  border: none;
+  border: 1px solid darken($blue,5%);
   cursor: pointer;
   transition: $speed;
   &:hover {

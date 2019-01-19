@@ -18,10 +18,8 @@ div.dashboard-panel {
  div.dashboard-panel .dashboard-panel-options {
    a {
      @include admin-link();
-   } // a
-   a:first-of-type {
      margin: 0 10px 0 0;
-   } // a:first-of-type
+   } // a
  } // div.dashboard-panel .dashboard-panel-options
 
 div.admin-panel {
