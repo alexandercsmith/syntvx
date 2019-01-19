@@ -3,7 +3,9 @@
 
     <div class="article-image xl-col-1-5 lg-col-1-5 md-col-1-5 sm-col-1-3 xs-col-1-3">
       <div class="container">
-        <%= image_tag article.cover_image, alt: "#{article.name}" if article.cover_image.attached? %>
+        <%= link_to article_path(article) do %>
+          <%= image_tag article.cover_image, alt: "#{article.name}" if article.cover_image.attached? %>
+        <% end %>
       </div>
     </div>
 

@@ -7,9 +7,15 @@ div.article-card {
 } // div.article-card
 
 div.article-card .article-image {
-  .container img {
+  .container a img {
     width: 100%;
-  } // .container img
+    box-shadow: 0 1px 2px $light-grey;
+    cursor: pointer;
+    transition: $speed;
+  } // .container a img
+  .container a:hover img {
+    box-shadow: none;
+  } // .container a:hover img
 } // div.article-card .article-image
 
 div.article-card .article-details-mobile {

@@ -1,6 +1,6 @@
 // NOTIFICATION
 div#notification {
-  @include position(absolute,null,null,0,null);
+  @include position(fixed,null,null,0,null);
   width: 100%;
   transition: $speed;
 } // div#notification
