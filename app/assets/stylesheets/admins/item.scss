@@ -28,6 +28,10 @@ div.admin-item .admin-item-info {
   a:hover {
     color: $blue;
   } // a:hover
+  span {
+    text-indent: 10px;
+    font-size: 0.9em;
+  } // span
 } // div.admin-item .admin-item-info
 
 div.admin-item .admin-item-links.single {

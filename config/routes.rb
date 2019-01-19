@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       get    '/api_keys'            => 'dashboard#keys',            as: :api_keys
       post   '/api_key'             => 'dashboard#create_api_key',  as: :api_key
       delete '/api_key/:id'         => 'dashboard#destroy_api_key', as: :destroy_api_key
-      get    '/trash'               => 'dashboard#trash'
       get    '/cache'               => 'dashboard#cache_clear',     as: :cache_clear
       get    '/exp_cache'           => 'dashboard#exp_cache_clear', as: :explicit_cache_clear
       get    '/articles'            => 'articles#index'

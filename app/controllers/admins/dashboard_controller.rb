@@ -33,15 +33,6 @@ class Admins::DashboardController < Admins::AdminAppController
     redirect_to admins_keys_path, notice: 'API Key destroyed.'
   end
 
-  # GET /trash
-  def trash
-    @articles = Article.is_inactive
-    @categories = Category.is_inactive
-    @langauges = Language.is_inactive
-    @tags = Tag.is_inactive
-    @tools = Tool.is_inactive
-  end
-
   # GET /admins/cache_clear
   def cache_clear
     Rails.cache.clear
