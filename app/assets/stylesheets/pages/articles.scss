@@ -90,6 +90,9 @@
 // ARTICLE SHOW - BODY
 #article-body {
   width: 100%;
+  img {
+    max-width: 100%;
+  } // img
   h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
   } // h1, h2, h3, h4, h5, h6

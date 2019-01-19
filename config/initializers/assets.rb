@@ -4,9 +4,9 @@
 # Be sure to restart your server when you modify this file.
 
 # Version of your assets, change this if you want to expire all your assets.
-# 01-18-2018 : 11:00 PM : v1.60
+# 01-19-2018 : 1:00 AM : v1.61
 # Format: '#.##' | after #.#9 Increment to New Decedant | if .99 = New Full Version
-Rails.application.config.assets.version = '1.60'
+Rails.application.config.assets.version = '1.61'
 
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
