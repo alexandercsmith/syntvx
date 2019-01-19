@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # ADMIN
   devise_for :admins,
   path: 'admins',
@@ -50,7 +49,7 @@ Rails.application.routes.draw do
 
   # ARTICLES
   resources :articles, except: %i[index new edit]
-  get '/blog' => 'articles#index', as: :blog
+  get '/blog' => 'articles#index',          as: :blog
   get '/blog/tag/:id' => 'articles#tagged', as: :blog_tag
   match '/articles/:id/publish' => 'articles#publish', via: %i[put patch], as: :publish_article
   match '/articles/:id/feature' => 'articles#feature', via: %i[put patch], as: :feature_article
@@ -76,7 +75,7 @@ Rails.application.routes.draw do
 
   # TOOLS
   resources :tools, except: %i[index show new edit]
-  get   '/resource/:id'      => 'tools#show', as: :resource
+  get   '/resource/:id'      => 'tools#show',     as: :resource
   match '/tools/:id/publish' => 'tools#publish', via: %i[put patch], as: :publish_tool
   match '/tools/:id/feature' => 'tools#feature', via: %i[put patch], as: :feature_tool
   match '/tools/:id/delete'  => 'tools#delete',  via: %i[put patch], as: :delete_tool

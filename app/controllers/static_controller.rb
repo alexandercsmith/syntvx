@@ -1,12 +1,11 @@
 class StaticController < ApplicationController
-  before_action :set_articles,   only: %i[index]
-  before_action :set_tools,      only: %i[index]
   before_action :set_query,      only: %i[directory]
-  before_action :set_languages,  only: %i[directory]
-  before_action :set_categories, only: %i[directory]
+  before_action :set_defaults,  only: %i[directory]
 
   # /
   def index
+    @articles = Article.all_featured
+    @tools = Tool.all_recent
     public_seo('Home', root_url)
   end
 
@@ -30,14 +29,6 @@ class StaticController < ApplicationController
 
   private
 
-  def set_articles
-    @articles = Article.all_featured
-  end
-
-  def set_tools
-    @tools = Tool.all_recent
-  end
-
   def set_query
     @query = if params[:q] || params[:languages] || params[:categories]
                true
@@ -46,11 +37,8 @@ class StaticController < ApplicationController
              end
   end
 
-  def set_languages
+  def set_defaults
     @languages = Language.all_approved
-  end
-
-  def set_categories
     @categories = Category.all_approved
   end
 

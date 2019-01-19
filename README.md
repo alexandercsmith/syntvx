@@ -18,7 +18,7 @@ A Developer Resource Directory Project.
 * Storage:   AWS S3
 * Domain:    AWS Route53
 
-## Development
+## Development Start
 
 Install Dependencies & Database
 
@@ -33,7 +33,7 @@ $ rails db:create
 $ rails db:migrate
 ```
 
-Initiate Server & Cache after Check
+## Development Server
 
 ```
 # Check Developer Notes and Tasks
@@ -46,7 +46,7 @@ $ rails dev:cache
 $ rails server
 ```
 
-Console Commands
+## Development Console
 
 ```
 # Access Console
@@ -63,8 +63,6 @@ $ rails notes
 ```
 
 ## Deployment
-
-Prep App Deployment
 
 ```
 # Check Notes for Config Tasks
