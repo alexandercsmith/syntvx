@@ -7,7 +7,7 @@ class ToolsController < ApplicationController
   # GET /tools/:id
   def show
     @tool = Tool.slugged(params[:id])
-    public_seo(@tool.name, tool_url(@tool))
+    info_seo(@tool.name, tool_url(@tool), @tool.description)
   end
 
   # POST /tools

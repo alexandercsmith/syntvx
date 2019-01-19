@@ -75,27 +75,22 @@ $ git add .
 $ git commit -m "{message}"
 ```
 
-Push to Github Repository
+## Github
 
 ```
 $ git push -u origin master
 ```
 
-Deploy App to Heroku
+
+## Heroku
 
 ```
+# Deploy
 $ git push heroku master
-```
 
-Migrate Database if Schema Updates
-
-```
+# Database Migration
 $ heroku run rails db:migrate
-```
 
-## Server Operations
-
-```
 # Console
 $ heroku run rails console
 

@@ -32,6 +32,7 @@ module ApplicationHelper
                   keywords: 'developer,development,web,mobile,apps,applications,websites,programming,program,code,coding,resource,tool,library,design,ui,ux',
                   index: true,
                   follow: true,
+                  reverse: true,
                   image_src: '/default-logo.png',
                   og: { title: :title,
                         description: :description,
