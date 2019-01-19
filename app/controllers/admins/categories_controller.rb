@@ -20,6 +20,7 @@ class Admins::CategoriesController < Admins::AdminAppController
 
   # GET /admins/category/:id
   def info
+    private_seo('Category')
   end
 
   # GET /admins/categories/new

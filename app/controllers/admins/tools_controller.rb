@@ -22,6 +22,7 @@ class Admins::ToolsController < Admins::AdminAppController
 
   # GET /admins/tool/:id
   def info
+    private_seo('Tool')
   end
 
   # GET /admins/tools/new

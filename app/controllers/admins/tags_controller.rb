@@ -20,6 +20,7 @@ class Admins::TagsController < Admins::AdminAppController
 
   # GET /admins/tag/:id
   def info
+    private_seo('Tag')
   end
 
   # GET /admins/tags/new

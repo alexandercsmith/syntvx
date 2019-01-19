@@ -21,6 +21,7 @@ class Admins::ArticlesController < Admins::AdminAppController
 
   # GET /admins/article/:id
   def info
+    private_seo('Article')
   end
 
   # GET /admins/articles/new

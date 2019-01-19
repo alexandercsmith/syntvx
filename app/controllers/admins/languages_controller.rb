@@ -20,6 +20,7 @@ class Admins::LanguagesController < Admins::AdminAppController
 
   # GET /admins/language/:id
   def info
+    private_seo('Language')
   end
 
   # GET /admins/languages/new
