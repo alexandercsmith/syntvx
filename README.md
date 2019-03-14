@@ -1,11 +1,5 @@
 # S Y N T V X
 
-[SYNTVX](http://www.syntvx.com)
-
-Created by: Alexander Smith
-
-A Developer Resource Directory Project.
-
 ## Specs & Services
 
 * Framework: Rails 5.2.2
@@ -13,9 +7,7 @@ A Developer Resource Directory Project.
 * Database:  PostgreSQL
 * Hosting:   Heroku
 * Cache:     Heroku Redis
-* Analytics: Google Analytics
-* Ads:       Google AdSense
-* Storage:   AWS S3 - 'https://assets.syntvx.com/'
+* Storage:   AWS S3
 * Domain:    AWS Route53
 
 ## Development Start
