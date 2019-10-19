@@ -8,7 +8,7 @@ gem "aws-sdk-s3", require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dalli', '~> 2.7', '>= 2.7.9'
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.7'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'friendly_id', '~> 5.2.4'
 gem 'jbuilder', '~> 2.5'
